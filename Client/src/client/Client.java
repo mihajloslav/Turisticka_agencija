@@ -4,6 +4,12 @@
  */
 package client;
 
+import client.communication.Communication;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import java.io.IOException;
+import java.net.Socket;
+import view.form.PrijaviAgentForm;
+
 /**
  *
  * @author mihajlo
@@ -14,7 +20,19 @@ public class Client {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        FlatIntelliJLaf.setup();
+        Client client = new Client();
+        try {
+            client.connect();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
-    
+
+    private void connect() throws IOException {
+        Socket socket = new Socket("127.0.0.1", 9000);
+        Communication.getInstance().setSocket(socket);
+        new PrijaviAgentForm().setVisible(true);
+    }
+
 }

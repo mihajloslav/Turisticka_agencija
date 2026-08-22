@@ -4,6 +4,9 @@
  */
 package server;
 
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import view.ServerAdminForm;
+
 /**
  *
  * @author mihajlo
@@ -13,8 +16,9 @@ public class Server {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception {
+        FlatIntelliJLaf.setup();
+        new ServerAdminForm().setVisible(true);
     }
-    
+
 }
