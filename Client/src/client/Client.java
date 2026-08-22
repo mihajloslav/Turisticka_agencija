@@ -6,9 +6,9 @@ package client;
 
 import client.communication.Communication;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+import coordinator.Coordinator;
 import java.io.IOException;
 import java.net.Socket;
-import view.form.PrijaviAgentForm;
 
 /**
  *
@@ -32,7 +32,7 @@ public class Client {
     private void connect() throws IOException {
         Socket socket = new Socket("127.0.0.1", 9000);
         Communication.getInstance().setSocket(socket);
-        new PrijaviAgentForm().setVisible(true);
+        Coordinator.getInstance().otvoriLoginFormu();
     }
 
 }

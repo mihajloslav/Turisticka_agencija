@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
 import domain.Agent;
 import domain.Aranzman;
 import domain.Putnik;
@@ -16,6 +17,7 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JOptionPane;
 import validation.Validator;
 import view.components.TableModelStavkaRezervacije;
+import view.form.PromeniRezervacijaForm;
 
 /**
  *
@@ -39,9 +41,13 @@ public class PromeniRezervacijaController {
         addActionListeners();
     }
 
+    public void otvoriFormu() {
+        form.setVisible(true);
+    }
+
     private void ucitajListe() {
         try {
-            List<Agent> agenti = controller.Controller.getInstance().vratiListuSviAgent();
+            List<Agent> agenti = Communication.getInstance().vratiListuSviAgent();
             form.getCmbAgent().setModel(new DefaultComboBoxModel<>(agenti.toArray(new Agent[0])));
             form.getCmbAgent().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -52,7 +58,7 @@ public class PromeniRezervacijaController {
                 }
             });
 
-            List<Putnik> putnici = controller.Controller.getInstance().vratiListuSviPutnik();
+            List<Putnik> putnici = Communication.getInstance().vratiListuSviPutnik();
             form.getCmbPutnik().setModel(new DefaultComboBoxModel<>(putnici.toArray(new Putnik[0])));
             form.getCmbPutnik().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -63,7 +69,7 @@ public class PromeniRezervacijaController {
                 }
             });
 
-            List<Aranzman> aranzmani = controller.Controller.getInstance().vratiListuSviAranzman();
+            List<Aranzman> aranzmani = Communication.getInstance().vratiListuSviAranzman();
             form.getCmbAranzman().setModel(new DefaultComboBoxModel<>(aranzmani.toArray(new Aranzman[0])));
             form.getCmbAranzman().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -169,7 +175,7 @@ public class PromeniRezervacijaController {
             rezervacija.setNapomena(napomena.isEmpty() ? null : napomena);
             rezervacija.setStavke(tableModel.getStavke());
 
-            controller.Controller.getInstance().promeniRezervacija(rezervacija);
+            Communication.getInstance().promeniRezervacija(rezervacija);
             JOptionPane.showMessageDialog(form, "Rezervacija je sačuvana.");
             form.dispose();
         } catch (Exception ex) {

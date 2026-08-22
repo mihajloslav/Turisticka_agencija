@@ -15,7 +15,6 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
      */
     public KreirajRezervacijaForm() {
         initComponents();
-        new KreirajRezervacijaController(this);
         setLocationRelativeTo(null);
     }
 

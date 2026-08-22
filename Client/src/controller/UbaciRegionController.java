@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
 import domain.Region;
 import javax.swing.JOptionPane;
 import validation.Validator;
+import view.form.UbaciRegionForm;
 
 /**
  *
@@ -19,6 +21,10 @@ public class UbaciRegionController {
     public UbaciRegionController(UbaciRegionForm form) {
         this.form = form;
         addActionListeners();
+    }
+
+    public void otvoriFormu() {
+        form.setVisible(true);
     }
 
     private void addActionListeners() {
@@ -47,7 +53,7 @@ public class UbaciRegionController {
             region.setKontinent(kontinent);
             region.setOpis(opis.isEmpty() ? null : opis);
 
-            controller.Controller.getInstance().ubaciRegion(region);
+            Communication.getInstance().ubaciRegion(region);
             JOptionPane.showMessageDialog(form, "Region je sačuvan.");
             form.dispose();
         } catch (Exception ex) {

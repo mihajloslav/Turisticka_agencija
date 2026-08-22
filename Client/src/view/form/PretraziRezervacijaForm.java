@@ -15,7 +15,6 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
      */
     public PretraziRezervacijaForm() {
         initComponents();
-        new PretraziRezervacijaController(this);
         setLocationRelativeTo(null);
     }
 

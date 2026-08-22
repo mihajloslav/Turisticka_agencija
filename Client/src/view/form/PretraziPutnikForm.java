@@ -15,7 +15,6 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
      */
     public PretraziPutnikForm() {
         initComponents();
-        new PretraziPutnikController(this);
         setLocationRelativeTo(null);
     }
 

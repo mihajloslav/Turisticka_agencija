@@ -2,11 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
+import coordinator.Coordinator;
 import domain.Agent;
 import javax.swing.JOptionPane;
 import validation.Validator;
+import view.form.PrijaviAgentForm;
 
 /**
  *
@@ -19,6 +22,10 @@ public class PrijaviAgentController {
     public PrijaviAgentController(PrijaviAgentForm form) {
         this.form = form;
         addActionListeners();
+    }
+
+    public void otvoriFormu() {
+        form.setVisible(true);
     }
 
     private void addActionListeners() {
@@ -35,11 +42,11 @@ public class PrijaviAgentController {
                     .validateNotNullOrEmpty(sifra, "Šifra je obavezna.")
                     .throwIfInvalide();
 
-            Agent agent = controller.Controller.getInstance().prijaviAgent(korisnickoIme, sifra);
-            controller.Controller.getInstance().setCurrentAgent(agent);
+            Agent agent = Communication.getInstance().prijaviAgent(korisnickoIme, sifra);
+            Coordinator.getInstance().setCurrentAgent(agent);
 
             form.dispose();
-            new MainForm().setVisible(true);
+            Coordinator.getInstance().otvoriGlavnuFormu();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }

@@ -2,10 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
 import domain.Putnik;
 import javax.swing.JOptionPane;
+import view.form.ObrisiPutnikForm;
 
 /**
  *
@@ -21,6 +23,10 @@ public class ObrisiPutnikController {
         this.putnik = putnik;
         prikaziPodatke();
         addActionListeners();
+    }
+
+    public void otvoriFormu() {
+        form.setVisible(true);
     }
 
     private void prikaziPodatke() {
@@ -42,7 +48,7 @@ public class ObrisiPutnikController {
 
     private void obrisi() {
         try {
-            controller.Controller.getInstance().obrisiPutnik(putnik);
+            Communication.getInstance().obrisiPutnik(putnik);
             JOptionPane.showMessageDialog(form, "Putnik je obrisan.");
             form.dispose();
         } catch (Exception ex) {

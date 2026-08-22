@@ -17,7 +17,6 @@ public class ObrisiPutnikForm extends javax.swing.JFrame {
      */
     public ObrisiPutnikForm(Putnik putnik) {
         initComponents();
-        new ObrisiPutnikController(this, putnik);
         setLocationRelativeTo(null);
     }
 

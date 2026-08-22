@@ -15,7 +15,6 @@ public class PrijaviAgentForm extends javax.swing.JFrame {
      */
     public PrijaviAgentForm() {
         initComponents();
-        new PrijaviAgentController(this);
         setLocationRelativeTo(null);
     }
 

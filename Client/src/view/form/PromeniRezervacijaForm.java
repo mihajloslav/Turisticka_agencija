@@ -17,7 +17,6 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
      */
     public PromeniRezervacijaForm(Rezervacija rezervacija) {
         initComponents();
-        new PromeniRezervacijaController(this, rezervacija);
         setLocationRelativeTo(null);
     }
 

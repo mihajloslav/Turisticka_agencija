@@ -17,7 +17,6 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
      */
     public PromeniPutnikForm(Putnik putnik) {
         initComponents();
-        new PromeniPutnikController(this, putnik);
         setLocationRelativeTo(null);
     }
 

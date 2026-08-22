@@ -2,8 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
+import coordinator.Coordinator;
 import domain.Agent;
 import domain.Aranzman;
 import domain.Putnik;
@@ -15,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JOptionPane;
 import view.components.TableModelRezervacija;
+import view.form.PretraziRezervacijaForm;
 
 /**
  *
@@ -31,9 +34,13 @@ public class PretraziRezervacijaController {
         addActionListeners();
     }
 
+    public void otvoriFormu() {
+        form.setVisible(true);
+    }
+
     private void ucitajListe() {
         try {
-            List<Agent> agenti = controller.Controller.getInstance().vratiListuSviAgent();
+            List<Agent> agenti = Communication.getInstance().vratiListuSviAgent();
             form.getCmbAgentKriterijum().setModel(new DefaultComboBoxModel<>(agenti.toArray(new Agent[0])));
             form.getCmbAgentKriterijum().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -44,7 +51,7 @@ public class PretraziRezervacijaController {
                 }
             });
 
-            List<Putnik> putnici = controller.Controller.getInstance().vratiListuSviPutnik();
+            List<Putnik> putnici = Communication.getInstance().vratiListuSviPutnik();
             form.getCmbPutnikKriterijum().setModel(new DefaultComboBoxModel<>(putnici.toArray(new Putnik[0])));
             form.getCmbPutnikKriterijum().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -55,7 +62,7 @@ public class PretraziRezervacijaController {
                 }
             });
 
-            List<Aranzman> aranzmani = controller.Controller.getInstance().vratiListuSviAranzman();
+            List<Aranzman> aranzmani = Communication.getInstance().vratiListuSviAranzman();
             form.getCmbAranzmanKriterijum().setModel(new DefaultComboBoxModel<>(aranzmani.toArray(new Aranzman[0])));
             form.getCmbAranzmanKriterijum().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -94,7 +101,7 @@ public class PretraziRezervacijaController {
             String status = form.getTxtStatusKriterijum().getText().trim();
             Rezervacija kriterijum = new Rezervacija();
             kriterijum.setStatusPlacanja(status.isEmpty() ? null : status);
-            prikaziRezultat(controller.Controller.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
+            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
@@ -106,7 +113,7 @@ public class PretraziRezervacijaController {
             if (agent == null) {
                 return;
             }
-            prikaziRezultat(controller.Controller.getInstance().vratiListuRezervacijaKriterijumAgent(agent));
+            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumAgent(agent));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
@@ -118,7 +125,7 @@ public class PretraziRezervacijaController {
             if (putnik == null) {
                 return;
             }
-            prikaziRezultat(controller.Controller.getInstance().vratiListuRezervacijaKriterijumPutnik(putnik));
+            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumPutnik(putnik));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
@@ -130,7 +137,7 @@ public class PretraziRezervacijaController {
             if (aranzman == null) {
                 return;
             }
-            prikaziRezultat(controller.Controller.getInstance().vratiListuRezervacijaKriterijumAranzman(aranzman));
+            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumAranzman(aranzman));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
@@ -152,7 +159,7 @@ public class PretraziRezervacijaController {
             return;
         }
         try {
-            Rezervacija rezervacija = controller.Controller.getInstance().pretraziRezervacija(selektovana);
+            Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
             form.getTxtAreaDetalji().setText(formatirajDetalje(rezervacija));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
@@ -185,8 +192,8 @@ public class PretraziRezervacijaController {
             return;
         }
         try {
-            Rezervacija rezervacija = controller.Controller.getInstance().pretraziRezervacija(selektovana);
-            new PromeniRezervacijaForm(rezervacija).setVisible(true);
+            Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
+            Coordinator.getInstance().otvoriPromeniRezervacijaFormu(rezervacija);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }

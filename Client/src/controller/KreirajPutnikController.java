@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
 import domain.Mesto;
 import domain.Putnik;
 import java.util.List;
@@ -11,27 +12,29 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JOptionPane;
 import validation.Validator;
+import view.form.KreirajPutnikForm;
 
 /**
  *
  * @author mihajlo
  */
-public class PromeniPutnikController {
+public class KreirajPutnikController {
 
-    private final PromeniPutnikForm form;
-    private final Putnik putnik;
+    private final KreirajPutnikForm form;
 
-    public PromeniPutnikController(PromeniPutnikForm form, Putnik putnik) {
+    public KreirajPutnikController(KreirajPutnikForm form) {
         this.form = form;
-        this.putnik = putnik;
         ucitajMesta();
-        popuniPolja();
         addActionListeners();
+    }
+
+    public void otvoriFormu() {
+        form.setVisible(true);
     }
 
     private void ucitajMesta() {
         try {
-            List<Mesto> mesta = controller.Controller.getInstance().vratiListuSviMesto();
+            List<Mesto> mesta = Communication.getInstance().vratiListuSviMesto();
             form.getCmbMesto().setModel(new DefaultComboBoxModel<>(mesta.toArray(new Mesto[0])));
             form.getCmbMesto().setRenderer(new DefaultListCellRenderer() {
                 @Override
@@ -41,24 +44,9 @@ public class PromeniPutnikController {
                     return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
                 }
             });
-            for (Mesto m : mesta) {
-                if (m.getIdMesto().equals(putnik.getMesto().getIdMesto())) {
-                    form.getCmbMesto().setSelectedItem(m);
-                    break;
-                }
-            }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    private void popuniPolja() {
-        form.getTxtIme().setText(putnik.getIme());
-        form.getTxtPrezime().setText(putnik.getPrezime());
-        form.getTxtEmail().setText(putnik.getEmail());
-        form.getTxtTelefon().setText(putnik.getTelefon());
-        form.getTxtJmbg().setText(putnik.getJmbg());
-        form.getTxtBrojPasosa().setText(putnik.getBrojPasosa());
     }
 
     private void addActionListeners() {
@@ -92,6 +80,7 @@ public class PromeniPutnikController {
                 throw new validation.ValidationException("JMBG mora imati tačno 13 karaktera.");
             }
 
+            Putnik putnik = new Putnik();
             putnik.setIme(ime);
             putnik.setPrezime(prezime);
             putnik.setEmail(email);
@@ -100,7 +89,7 @@ public class PromeniPutnikController {
             putnik.setBrojPasosa(brojPasosa);
             putnik.setMesto(mesto);
 
-            controller.Controller.getInstance().promeniPutnik(putnik);
+            Communication.getInstance().kreirajPutnik(putnik);
             JOptionPane.showMessageDialog(form, "Sistem je zapamtio putnika.");
             form.dispose();
         } catch (Exception ex) {

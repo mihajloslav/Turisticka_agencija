@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import coordinator.Coordinator;
 import javax.swing.JOptionPane;
+import view.form.MainForm;
 
 /**
  *
@@ -19,12 +21,16 @@ public class MainController {
         addActionListeners();
     }
 
+    public void otvoriFormu() {
+        form.setVisible(true);
+    }
+
     private void addActionListeners() {
-        form.getMiKreirajRezervaciju().addActionListener(evt -> new KreirajRezervacijaForm().setVisible(true));
-        form.getMiPretraziRezervaciju().addActionListener(evt -> new PretraziRezervacijaForm().setVisible(true));
-        form.getMiKreirajPutnika().addActionListener(evt -> new KreirajPutnikForm().setVisible(true));
-        form.getMiPretraziPutnika().addActionListener(evt -> new PretraziPutnikForm().setVisible(true));
-        form.getMiRegion().addActionListener(evt -> new UbaciRegionForm().setVisible(true));
+        form.getMiKreirajRezervaciju().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajRezervacijaFormu());
+        form.getMiPretraziRezervaciju().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziRezervacijaFormu());
+        form.getMiKreirajPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajPutnikFormu());
+        form.getMiPretraziPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziPutnikFormu());
+        form.getMiRegion().addActionListener(evt -> Coordinator.getInstance().otvoriUbaciRegionFormu());
         form.getMiOProgramu().addActionListener(evt -> oProgramu());
     }
 

@@ -15,7 +15,6 @@ public class UbaciRegionForm extends javax.swing.JFrame {
      */
     public UbaciRegionForm() {
         initComponents();
-        new UbaciRegionController(this);
         setLocationRelativeTo(null);
     }
 

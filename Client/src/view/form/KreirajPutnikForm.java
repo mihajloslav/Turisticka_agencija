@@ -15,7 +15,6 @@ public class KreirajPutnikForm extends javax.swing.JFrame {
      */
     public KreirajPutnikForm() {
         initComponents();
-        new KreirajPutnikController(this);
         setLocationRelativeTo(null);
     }
 

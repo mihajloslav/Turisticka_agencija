@@ -2,12 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package view.form;
+package controller;
 
+import client.communication.Communication;
+import coordinator.Coordinator;
 import domain.Putnik;
 import java.util.List;
 import javax.swing.JOptionPane;
 import view.components.TableModelPutnik;
+import view.form.PretraziPutnikForm;
 
 /**
  *
@@ -20,6 +23,10 @@ public class PretraziPutnikController {
     public PretraziPutnikController(PretraziPutnikForm form) {
         this.form = form;
         addActionListeners();
+    }
+
+    public void otvoriFormu() {
+        form.setVisible(true);
     }
 
     private void addActionListeners() {
@@ -37,7 +44,7 @@ public class PretraziPutnikController {
             kriterijum.setIme(ime.isEmpty() ? null : ime);
             kriterijum.setPrezime(prezime.isEmpty() ? null : prezime);
 
-            List<Putnik> rezultat = controller.Controller.getInstance().vratiListuPutnikKriterijumPutnik(kriterijum);
+            List<Putnik> rezultat = Communication.getInstance().vratiListuPutnikKriterijumPutnik(kriterijum);
 
             if (rezultat.isEmpty()) {
                 JOptionPane.showMessageDialog(form,
@@ -66,8 +73,8 @@ public class PretraziPutnikController {
             return;
         }
         try {
-            Putnik putnik = controller.Controller.getInstance().pretraziPutnik(selektovan);
-            new PromeniPutnikForm(putnik).setVisible(true);
+            Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
+            Coordinator.getInstance().otvoriPromeniPutnikFormu(putnik);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
@@ -79,8 +86,8 @@ public class PretraziPutnikController {
             return;
         }
         try {
-            Putnik putnik = controller.Controller.getInstance().pretraziPutnik(selektovan);
-            new ObrisiPutnikForm(putnik).setVisible(true);
+            Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
+            Coordinator.getInstance().otvoriObrisiPutnikFormu(putnik);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
         }
