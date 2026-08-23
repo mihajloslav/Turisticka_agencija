@@ -29,142 +29,204 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        menuBar = new javax.swing.JMenuBar();
-        menuDokumenti = new javax.swing.JMenu();
-        menuRezervacija = new javax.swing.JMenu();
-        miKreirajRezervaciju = new javax.swing.JMenuItem();
-        miPretraziRezervaciju = new javax.swing.JMenuItem();
-        menuPruzalacUsluge = new javax.swing.JMenu();
-        miAgent = new javax.swing.JMenuItem();
-        menuPrimalacUsluge = new javax.swing.JMenu();
-        menuPutnik = new javax.swing.JMenu();
-        miKreirajPutnika = new javax.swing.JMenuItem();
-        miPretraziPutnika = new javax.swing.JMenuItem();
-        menuSifarnici = new javax.swing.JMenu();
-        miAranzman = new javax.swing.JMenuItem();
-        miMesto = new javax.swing.JMenuItem();
-        miRegion = new javax.swing.JMenuItem();
-        miPodesavanja = new javax.swing.JMenuItem();
-        miOProgramu = new javax.swing.JMenuItem();
+        pnlHeader = new javax.swing.JPanel();
+        lblNaslov = new javax.swing.JLabel();
+        lblAgent = new javax.swing.JLabel();
+        btnOProgramu = new javax.swing.JButton();
+        pnlRezervacije = new javax.swing.JPanel();
+        btnKreirajRezervaciju = new javax.swing.JButton();
+        btnPretraziRezervaciju = new javax.swing.JButton();
+        pnlPutnici = new javax.swing.JPanel();
+        btnKreirajPutnika = new javax.swing.JButton();
+        btnPretraziPutnika = new javax.swing.JButton();
+        pnlRegioni = new javax.swing.JPanel();
+        btnUbaciRegion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turistička agencija");
 
-        menuDokumenti.setText("Dokumenti");
+        lblNaslov.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        lblNaslov.setText("Turistička agencija");
 
-        menuRezervacija.setText("Rezervacija");
+        lblAgent.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lblAgent.setText("Agent: -");
 
-        miKreirajRezervaciju.setText("Kreiraj rezervaciju");
-        menuRezervacija.add(miKreirajRezervaciju);
+        btnOProgramu.setText("O programu");
 
-        miPretraziRezervaciju.setText("Pretraži rezervaciju");
-        menuRezervacija.add(miPretraziRezervaciju);
+        javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
+        pnlHeader.setLayout(pnlHeaderLayout);
+        pnlHeaderLayout.setHorizontalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNaslov)
+                .addGap(0, 186, Short.MAX_VALUE)
+                .addComponent(lblAgent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnOProgramu)
+                .addContainerGap())
+        );
+        pnlHeaderLayout.setVerticalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNaslov)
+                    .addComponent(lblAgent)
+                    .addComponent(btnOProgramu))
+                .addContainerGap())
+        );
 
-        menuDokumenti.add(menuRezervacija);
+        pnlRezervacije.setBorder(javax.swing.BorderFactory.createTitledBorder("Rezervacije"));
 
-        menuBar.add(menuDokumenti);
+        btnKreirajRezervaciju.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnKreirajRezervaciju.setText("🧳  Kreiraj rezervaciju");
 
-        menuPruzalacUsluge.setText("Pružalac usluge");
+        btnPretraziRezervaciju.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPretraziRezervaciju.setText("🔍  Pretraži rezervaciju");
 
-        miAgent.setText("Agent");
-        miAgent.setEnabled(false);
-        menuPruzalacUsluge.add(miAgent);
+        javax.swing.GroupLayout pnlRezervacijeLayout = new javax.swing.GroupLayout(pnlRezervacije);
+        pnlRezervacije.setLayout(pnlRezervacijeLayout);
+        pnlRezervacijeLayout.setHorizontalGroup(
+            pnlRezervacijeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRezervacijeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnKreirajRezervaciju, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPretraziRezervaciju, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlRezervacijeLayout.setVerticalGroup(
+            pnlRezervacijeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRezervacijeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRezervacijeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKreirajRezervaciju, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPretraziRezervaciju, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
-        menuBar.add(menuPruzalacUsluge);
+        pnlPutnici.setBorder(javax.swing.BorderFactory.createTitledBorder("Putnici"));
 
-        menuPrimalacUsluge.setText("Primalac usluge");
+        btnKreirajPutnika.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnKreirajPutnika.setText("🧑  Kreiraj putnika");
 
-        menuPutnik.setText("Putnik");
+        btnPretraziPutnika.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPretraziPutnika.setText("🔍  Pretraži putnika");
 
-        miKreirajPutnika.setText("Kreiraj putnika");
-        menuPutnik.add(miKreirajPutnika);
+        javax.swing.GroupLayout pnlPutniciLayout = new javax.swing.GroupLayout(pnlPutnici);
+        pnlPutnici.setLayout(pnlPutniciLayout);
+        pnlPutniciLayout.setHorizontalGroup(
+            pnlPutniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPutniciLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnKreirajPutnika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPretraziPutnika, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pnlPutniciLayout.setVerticalGroup(
+            pnlPutniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPutniciLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlPutniciLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKreirajPutnika, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPretraziPutnika, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
-        miPretraziPutnika.setText("Pretraži putnika");
-        menuPutnik.add(miPretraziPutnika);
+        pnlRegioni.setBorder(javax.swing.BorderFactory.createTitledBorder("Regioni"));
 
-        menuPrimalacUsluge.add(menuPutnik);
+        btnUbaciRegion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnUbaciRegion.setText("🌍  Ubaci region");
 
-        menuBar.add(menuPrimalacUsluge);
-
-        menuSifarnici.setText("Šifarnici");
-
-        miAranzman.setText("Aranžman");
-        miAranzman.setEnabled(false);
-        menuSifarnici.add(miAranzman);
-
-        miMesto.setText("Mesto");
-        miMesto.setEnabled(false);
-        menuSifarnici.add(miMesto);
-
-        miRegion.setText("Ubaci region");
-        menuSifarnici.add(miRegion);
-
-        menuBar.add(menuSifarnici);
-
-        miPodesavanja.setText("Podešavanja softverskog sistema");
-        miPodesavanja.setEnabled(false);
-        menuBar.add(miPodesavanja);
-
-        miOProgramu.setText("O programu");
-        menuBar.add(miOProgramu);
-
-        setJMenuBar(menuBar);
+        javax.swing.GroupLayout pnlRegioniLayout = new javax.swing.GroupLayout(pnlRegioni);
+        pnlRegioni.setLayout(pnlRegioniLayout);
+        pnlRegioniLayout.setHorizontalGroup(
+            pnlRegioniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegioniLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnUbaciRegion)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlRegioniLayout.setVerticalGroup(
+            pnlRegioniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRegioniLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnUbaciRegion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlRezervacije, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlPutnici, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlRegioni, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlRezervacije, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlPutnici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRegioni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu menuDokumenti;
-    private javax.swing.JMenuItem miAgent;
-    private javax.swing.JMenuItem miAranzman;
-    private javax.swing.JMenuItem miKreirajPutnika;
-    private javax.swing.JMenuItem miKreirajRezervaciju;
-    private javax.swing.JMenuItem miMesto;
-    private javax.swing.JMenuItem miOProgramu;
-    private javax.swing.JMenuItem miPodesavanja;
-    private javax.swing.JMenuItem miPretraziPutnika;
-    private javax.swing.JMenuItem miPretraziRezervaciju;
-    private javax.swing.JMenuItem miRegion;
-    private javax.swing.JMenu menuPrimalacUsluge;
-    private javax.swing.JMenu menuPruzalacUsluge;
-    private javax.swing.JMenu menuPutnik;
-    private javax.swing.JMenu menuRezervacija;
-    private javax.swing.JMenu menuSifarnici;
+    private javax.swing.JButton btnKreirajPutnika;
+    private javax.swing.JButton btnKreirajRezervaciju;
+    private javax.swing.JButton btnOProgramu;
+    private javax.swing.JButton btnPretraziPutnika;
+    private javax.swing.JButton btnPretraziRezervaciju;
+    private javax.swing.JButton btnUbaciRegion;
+    private javax.swing.JLabel lblAgent;
+    private javax.swing.JLabel lblNaslov;
+    private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlPutnici;
+    private javax.swing.JPanel pnlRegioni;
+    private javax.swing.JPanel pnlRezervacije;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JMenuItem getMiKreirajRezervaciju() {
-        return miKreirajRezervaciju;
+    public javax.swing.JButton getBtnKreirajRezervaciju() {
+        return btnKreirajRezervaciju;
     }
 
-    public javax.swing.JMenuItem getMiPretraziRezervaciju() {
-        return miPretraziRezervaciju;
+    public javax.swing.JButton getBtnPretraziRezervaciju() {
+        return btnPretraziRezervaciju;
     }
 
-    public javax.swing.JMenuItem getMiKreirajPutnika() {
-        return miKreirajPutnika;
+    public javax.swing.JButton getBtnKreirajPutnika() {
+        return btnKreirajPutnika;
     }
 
-    public javax.swing.JMenuItem getMiPretraziPutnika() {
-        return miPretraziPutnika;
+    public javax.swing.JButton getBtnPretraziPutnika() {
+        return btnPretraziPutnika;
     }
 
-    public javax.swing.JMenuItem getMiRegion() {
-        return miRegion;
+    public javax.swing.JButton getBtnUbaciRegion() {
+        return btnUbaciRegion;
     }
 
-    public javax.swing.JMenuItem getMiOProgramu() {
-        return miOProgramu;
+    public javax.swing.JButton getBtnOProgramu() {
+        return btnOProgramu;
+    }
+
+    public javax.swing.JLabel getLblAgent() {
+        return lblAgent;
     }
 }

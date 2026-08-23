@@ -5,6 +5,7 @@
 package controller;
 
 import coordinator.Coordinator;
+import domain.Agent;
 import javax.swing.JOptionPane;
 import view.form.MainForm;
 
@@ -18,6 +19,7 @@ public class MainController {
 
     public MainController(MainForm form) {
         this.form = form;
+        prikaziPrijavljenogAgenta();
         addActionListeners();
     }
 
@@ -25,13 +27,20 @@ public class MainController {
         form.setVisible(true);
     }
 
+    private void prikaziPrijavljenogAgenta() {
+        Agent agent = Coordinator.getInstance().getCurrentAgent();
+        if (agent != null) {
+            form.getLblAgent().setText("Agent: " + agent.getIme() + " " + agent.getPrezime());
+        }
+    }
+
     private void addActionListeners() {
-        form.getMiKreirajRezervaciju().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajRezervacijaFormu());
-        form.getMiPretraziRezervaciju().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziRezervacijaFormu());
-        form.getMiKreirajPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajPutnikFormu());
-        form.getMiPretraziPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziPutnikFormu());
-        form.getMiRegion().addActionListener(evt -> Coordinator.getInstance().otvoriUbaciRegionFormu());
-        form.getMiOProgramu().addActionListener(evt -> oProgramu());
+        form.getBtnKreirajRezervaciju().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajRezervacijaFormu());
+        form.getBtnPretraziRezervaciju().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziRezervacijaFormu());
+        form.getBtnKreirajPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajPutnikFormu());
+        form.getBtnPretraziPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziPutnikFormu());
+        form.getBtnUbaciRegion().addActionListener(evt -> Coordinator.getInstance().otvoriUbaciRegionFormu());
+        form.getBtnOProgramu().addActionListener(evt -> oProgramu());
     }
 
     private void oProgramu() {
