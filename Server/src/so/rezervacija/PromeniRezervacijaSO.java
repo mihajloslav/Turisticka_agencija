@@ -61,7 +61,7 @@ public class PromeniRezervacijaSO extends AbstractSO {
             for (GenericEntity e : postojece) {
                 repository.delete(e);
             }
-            long rb = 1;
+            int rb = 1;
             for (StavkaRezervacije s : rezervacija.getStavke()) {
                 s.setRezervacija(rezervacija);
                 s.setRb(rb++);

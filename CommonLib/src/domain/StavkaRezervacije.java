@@ -16,7 +16,7 @@ import java.util.Objects;
 public class StavkaRezervacije implements GenericEntity {
 
     private Rezervacija rezervacija;
-    private Long rb;
+    private Integer rb;
     private Integer brojOsoba;
     private Date datumPolaska;
     private Date datumDolaska;
@@ -27,7 +27,7 @@ public class StavkaRezervacije implements GenericEntity {
     public StavkaRezervacije() {
     }
 
-    public StavkaRezervacije(Rezervacija rezervacija, Long rb, Integer brojOsoba, Date datumPolaska,
+    public StavkaRezervacije(Rezervacija rezervacija, Integer rb, Integer brojOsoba, Date datumPolaska,
             Date datumDolaska, Double popust, Double cena, Aranzman aranzman) {
         this.rezervacija = rezervacija;
         this.rb = rb;
@@ -47,11 +47,11 @@ public class StavkaRezervacije implements GenericEntity {
         this.rezervacija = rezervacija;
     }
 
-    public Long getRb() {
+    public Integer getRb() {
         return rb;
     }
 
-    public void setRb(Long rb) {
+    public void setRb(Integer rb) {
         this.rb = rb;
     }
 
@@ -195,7 +195,7 @@ public class StavkaRezervacije implements GenericEntity {
         Rezervacija r = new Rezervacija();
         r.setIdRezervacija(rs.getLong("idRezervacija"));
         s.setRezervacija(r);
-        s.setRb(rs.getLong("rb"));
+        s.setRb(rs.getInt("rb"));
         s.setBrojOsoba(rs.getInt("brojOsoba"));
         s.setDatumPolaska(rs.getDate("datumPolaska"));
         s.setDatumDolaska(rs.getDate("datumDolaska"));

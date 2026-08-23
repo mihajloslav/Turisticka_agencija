@@ -57,7 +57,7 @@ public class KreirajRezervacijaSO extends AbstractSO {
         rezervacija.setUkupanIznos(ukupanIznos);
         try {
             repository.add(rezervacija);
-            long rb = 1;
+            int rb = 1;
             for (StavkaRezervacije s : rezervacija.getStavke()) {
                 s.setRezervacija(rezervacija);
                 s.setRb(rb++);
