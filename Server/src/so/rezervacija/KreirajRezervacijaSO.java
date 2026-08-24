@@ -6,7 +6,7 @@ package so.rezervacija;
 
 import domain.Rezervacija;
 import domain.StavkaRezervacije;
-import java.util.Date;
+import java.time.LocalDate;
 import so.AbstractSO;
 
 /**
@@ -32,7 +32,7 @@ public class KreirajRezervacijaSO extends AbstractSO {
         for (StavkaRezervacije s : r.getStavke()) {
             if (s.getBrojOsoba() == null || s.getBrojOsoba() <= 0
                     || s.getDatumPolaska() == null || s.getDatumDolaska() == null
-                    || !s.getDatumDolaska().after(s.getDatumPolaska())
+                    || !s.getDatumDolaska().isAfter(s.getDatumPolaska())
                     || s.getAranzman() == null || s.getAranzman().getIdAranzman() == null
                     || s.getAranzman().getCenaPoOsobi() == null) {
                 throw new Exception("Систем не може да креира резервацију");
@@ -44,7 +44,7 @@ public class KreirajRezervacijaSO extends AbstractSO {
     protected void executeOperation(Object param) throws Exception {
         rezervacija = (Rezervacija) param;
         if (rezervacija.getDatumKreiranja() == null) {
-            rezervacija.setDatumKreiranja(new Date());
+            rezervacija.setDatumKreiranja(LocalDate.now());
         }
         double ukupanIznos = 0;
         for (StavkaRezervacije s : rezervacija.getStavke()) {

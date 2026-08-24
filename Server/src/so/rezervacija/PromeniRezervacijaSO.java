@@ -34,7 +34,7 @@ public class PromeniRezervacijaSO extends AbstractSO {
         for (StavkaRezervacije s : r.getStavke()) {
             if (s.getBrojOsoba() == null || s.getBrojOsoba() <= 0
                     || s.getDatumPolaska() == null || s.getDatumDolaska() == null
-                    || !s.getDatumDolaska().after(s.getDatumPolaska())
+                    || !s.getDatumDolaska().isAfter(s.getDatumPolaska())
                     || s.getAranzman() == null || s.getAranzman().getIdAranzman() == null
                     || s.getAranzman().getCenaPoOsobi() == null) {
                 throw new Exception("Систем не може да запамти резервацију");

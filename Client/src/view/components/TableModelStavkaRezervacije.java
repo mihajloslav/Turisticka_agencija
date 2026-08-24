@@ -5,7 +5,7 @@
 package view.components;
 
 import domain.StavkaRezervacije;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -19,7 +19,7 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
     private List<StavkaRezervacije> stavke;
     private String[] columnNames = new String[]{"Aranžman", "Broj osoba", "Datum polaska", "Datum dolaska", "Popust", "Cena"};
     private Class[] columnClass = new Class[]{String.class, Integer.class, String.class, String.class, Double.class, Double.class};
-    private final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 
     public TableModelStavkaRezervacije(List<StavkaRezervacije> stavke) {
         this.stavke = stavke != null ? stavke : new ArrayList<>();
@@ -67,9 +67,9 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
             case 1:
                 return stavka.getBrojOsoba();
             case 2:
-                return stavka.getDatumPolaska() == null ? "" : sdf.format(stavka.getDatumPolaska());
+                return stavka.getDatumPolaska() == null ? "" : stavka.getDatumPolaska().format(dtf);
             case 3:
-                return stavka.getDatumDolaska() == null ? "" : sdf.format(stavka.getDatumDolaska());
+                return stavka.getDatumDolaska() == null ? "" : stavka.getDatumDolaska().format(dtf);
             case 4:
                 return stavka.getPopust();
             case 5:

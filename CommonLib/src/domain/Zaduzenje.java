@@ -7,7 +7,7 @@ package domain;
 import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -18,15 +18,15 @@ public class Zaduzenje implements GenericEntity {
 
     private Agent agent;
     private Region region;
-    private Date datumOd;
-    private Date datumDo;
+    private LocalDate datumOd;
+    private LocalDate datumDo;
     private Integer mesecnaKvota;
     private String napomena;
 
     public Zaduzenje() {
     }
 
-    public Zaduzenje(Agent agent, Region region, Date datumOd, Date datumDo,
+    public Zaduzenje(Agent agent, Region region, LocalDate datumOd, LocalDate datumDo,
             Integer mesecnaKvota, String napomena) {
         this.agent = agent;
         this.region = region;
@@ -52,19 +52,19 @@ public class Zaduzenje implements GenericEntity {
         this.region = region;
     }
 
-    public Date getDatumOd() {
+    public LocalDate getDatumOd() {
         return datumOd;
     }
 
-    public void setDatumOd(Date datumOd) {
+    public void setDatumOd(LocalDate datumOd) {
         this.datumOd = datumOd;
     }
 
-    public Date getDatumDo() {
+    public LocalDate getDatumDo() {
         return datumDo;
     }
 
-    public void setDatumDo(Date datumDo) {
+    public void setDatumDo(LocalDate datumDo) {
         this.datumDo = datumDo;
     }
 
@@ -129,8 +129,8 @@ public class Zaduzenje implements GenericEntity {
         return new Object[]{
             agent == null ? null : agent.getIdAgent(),
             region == null ? null : region.getIdRegion(),
-            datumOd == null ? null : new java.sql.Date(datumOd.getTime()),
-            datumDo == null ? null : new java.sql.Date(datumDo.getTime()),
+            datumOd == null ? null : java.sql.Date.valueOf(datumOd),
+            datumDo == null ? null : java.sql.Date.valueOf(datumDo),
             mesecnaKvota, napomena
         };
     }
@@ -154,7 +154,7 @@ public class Zaduzenje implements GenericEntity {
         return new Object[]{
             agent == null ? null : agent.getIdAgent(),
             region == null ? null : region.getIdRegion(),
-            datumOd == null ? null : new java.sql.Date(datumOd.getTime())
+            datumOd == null ? null : java.sql.Date.valueOf(datumOd)
         };
     }
 
@@ -166,7 +166,7 @@ public class Zaduzenje implements GenericEntity {
     @Override
     public Object[] getUpdateSetParams() {
         return new Object[]{
-            datumDo == null ? null : new java.sql.Date(datumDo.getTime()),
+            datumDo == null ? null : java.sql.Date.valueOf(datumDo),
             mesecnaKvota, napomena
         };
     }
@@ -180,8 +180,10 @@ public class Zaduzenje implements GenericEntity {
         Region r = new Region();
         r.setIdRegion(rs.getLong("idRegion"));
         z.setRegion(r);
-        z.setDatumOd(rs.getDate("datumOd"));
-        z.setDatumDo(rs.getDate("datumDo"));
+        java.sql.Date datumOdSql = rs.getDate("datumOd");
+        z.setDatumOd(datumOdSql == null ? null : datumOdSql.toLocalDate());
+        java.sql.Date datumDoSql = rs.getDate("datumDo");
+        z.setDatumDo(datumDoSql == null ? null : datumDoSql.toLocalDate());
         z.setMesecnaKvota(rs.getInt("mesecnaKvota"));
         z.setNapomena(rs.getString("napomena"));
         return z;

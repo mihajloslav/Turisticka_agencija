@@ -10,7 +10,8 @@ import domain.Aranzman;
 import domain.Putnik;
 import domain.Rezervacija;
 import domain.StavkaRezervacije;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -27,13 +28,12 @@ public class PromeniRezervacijaController {
 
     private final PromeniRezervacijaForm form;
     private final Rezervacija rezervacija;
-    private final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
     private TableModelStavkaRezervacije tableModel;
 
     public PromeniRezervacijaController(PromeniRezervacijaForm form, Rezervacija rezervacija) {
         this.form = form;
         this.rezervacija = rezervacija;
-        sdf.setLenient(false);
         tableModel = new TableModelStavkaRezervacije(rezervacija.getStavke());
         form.getTblStavke().setModel(tableModel);
         ucitajListe();
@@ -126,9 +126,9 @@ public class PromeniRezervacijaController {
             if (brojOsoba <= 0) {
                 throw new validation.ValidationException("Broj osoba mora biti veći od 0.");
             }
-            java.util.Date datumPolaska = sdf.parse(datumPolaskaText);
-            java.util.Date datumDolaska = sdf.parse(datumDolaskaText);
-            if (!datumDolaska.after(datumPolaska)) {
+            LocalDate datumPolaska = LocalDate.parse(datumPolaskaText, dtf);
+            LocalDate datumDolaska = LocalDate.parse(datumDolaskaText, dtf);
+            if (!datumDolaska.isAfter(datumPolaska)) {
                 throw new validation.ValidationException("Datum dolaska mora biti posle datuma polaska.");
             }
 

@@ -37,7 +37,7 @@ public class VratiListuRezervacijaKriterijumRezervacijaSO extends AbstractSO {
             }
             if (criteria.getDatumKreiranja() != null) {
                 where.append(where.length() == 0 ? "" : " AND ").append("datumKreiranja = ?");
-                params.add(new java.sql.Date(criteria.getDatumKreiranja().getTime()));
+                params.add(java.sql.Date.valueOf(criteria.getDatumKreiranja()));
             }
         }
         List<GenericEntity> found = repository.getAll(new Rezervacija(), where.toString(), params.toArray());

@@ -6,8 +6,8 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ import java.util.Objects;
 public class Rezervacija implements GenericEntity {
 
     private Long idRezervacija;
-    private Date datumKreiranja;
+    private LocalDate datumKreiranja;
     private Double ukupanIznos;
     private String statusPlacanja;
     private String napomena;
@@ -29,7 +29,7 @@ public class Rezervacija implements GenericEntity {
     public Rezervacija() {
     }
 
-    public Rezervacija(Long idRezervacija, Date datumKreiranja, Double ukupanIznos,
+    public Rezervacija(Long idRezervacija, LocalDate datumKreiranja, Double ukupanIznos,
             String statusPlacanja, String napomena, Agent agent, Putnik putnik) {
         this.idRezervacija = idRezervacija;
         this.datumKreiranja = datumKreiranja;
@@ -48,11 +48,11 @@ public class Rezervacija implements GenericEntity {
         this.idRezervacija = idRezervacija;
     }
 
-    public Date getDatumKreiranja() {
+    public LocalDate getDatumKreiranja() {
         return datumKreiranja;
     }
 
-    public void setDatumKreiranja(Date datumKreiranja) {
+    public void setDatumKreiranja(LocalDate datumKreiranja) {
         this.datumKreiranja = datumKreiranja;
     }
 
@@ -141,7 +141,7 @@ public class Rezervacija implements GenericEntity {
     @Override
     public Object[] getInsertValues() {
         return new Object[]{
-            datumKreiranja == null ? null : new java.sql.Date(datumKreiranja.getTime()),
+            datumKreiranja == null ? null : java.sql.Date.valueOf(datumKreiranja),
             ukupanIznos, statusPlacanja, napomena,
             agent == null ? null : agent.getIdAgent(),
             putnik == null ? null : putnik.getIdPutnik()
@@ -182,7 +182,8 @@ public class Rezervacija implements GenericEntity {
     public GenericEntity fromResultSet(ResultSet rs) throws SQLException {
         Rezervacija r = new Rezervacija();
         r.setIdRezervacija(rs.getLong("idRezervacija"));
-        r.setDatumKreiranja(rs.getDate("datumKreiranja"));
+        java.sql.Date datumKreiranjaSql = rs.getDate("datumKreiranja");
+        r.setDatumKreiranja(datumKreiranjaSql == null ? null : datumKreiranjaSql.toLocalDate());
         r.setUkupanIznos(rs.getDouble("ukupanIznos"));
         r.setStatusPlacanja(rs.getString("statusPlacanja"));
         r.setNapomena(rs.getString("napomena"));

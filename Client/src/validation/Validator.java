@@ -5,8 +5,9 @@
 package validation;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,13 +58,12 @@ public class Validator {
     public Validator validateValueIsDate(String value, String pattern, String errorMessage) {
         try {
             if (value != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-                sdf.setLenient(false);
-                sdf.parse(value);
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
+                LocalDate.parse(value, dtf);
             } else {
                 this.validationErrors.add(errorMessage);
             }
-        } catch (ParseException ex) {
+        } catch (DateTimeParseException ex) {
             this.validationErrors.add(errorMessage);
         }
         return this;

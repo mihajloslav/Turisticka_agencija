@@ -6,7 +6,7 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -18,8 +18,8 @@ public class StavkaRezervacije implements GenericEntity {
     private Rezervacija rezervacija;
     private Integer rb;
     private Integer brojOsoba;
-    private Date datumPolaska;
-    private Date datumDolaska;
+    private LocalDate datumPolaska;
+    private LocalDate datumDolaska;
     private Double popust;
     private Double cena;
     private Aranzman aranzman;
@@ -27,8 +27,8 @@ public class StavkaRezervacije implements GenericEntity {
     public StavkaRezervacije() {
     }
 
-    public StavkaRezervacije(Rezervacija rezervacija, Integer rb, Integer brojOsoba, Date datumPolaska,
-            Date datumDolaska, Double popust, Double cena, Aranzman aranzman) {
+    public StavkaRezervacije(Rezervacija rezervacija, Integer rb, Integer brojOsoba, LocalDate datumPolaska,
+            LocalDate datumDolaska, Double popust, Double cena, Aranzman aranzman) {
         this.rezervacija = rezervacija;
         this.rb = rb;
         this.brojOsoba = brojOsoba;
@@ -63,19 +63,19 @@ public class StavkaRezervacije implements GenericEntity {
         this.brojOsoba = brojOsoba;
     }
 
-    public Date getDatumPolaska() {
+    public LocalDate getDatumPolaska() {
         return datumPolaska;
     }
 
-    public void setDatumPolaska(Date datumPolaska) {
+    public void setDatumPolaska(LocalDate datumPolaska) {
         this.datumPolaska = datumPolaska;
     }
 
-    public Date getDatumDolaska() {
+    public LocalDate getDatumDolaska() {
         return datumDolaska;
     }
 
-    public void setDatumDolaska(Date datumDolaska) {
+    public void setDatumDolaska(LocalDate datumDolaska) {
         this.datumDolaska = datumDolaska;
     }
 
@@ -147,8 +147,8 @@ public class StavkaRezervacije implements GenericEntity {
         return new Object[]{
             rezervacija == null ? null : rezervacija.getIdRezervacija(),
             rb, brojOsoba,
-            datumPolaska == null ? null : new java.sql.Date(datumPolaska.getTime()),
-            datumDolaska == null ? null : new java.sql.Date(datumDolaska.getTime()),
+            datumPolaska == null ? null : java.sql.Date.valueOf(datumPolaska),
+            datumDolaska == null ? null : java.sql.Date.valueOf(datumDolaska),
             popust, cena,
             aranzman == null ? null : aranzman.getIdAranzman()
         };
@@ -182,8 +182,8 @@ public class StavkaRezervacije implements GenericEntity {
     public Object[] getUpdateSetParams() {
         return new Object[]{
             brojOsoba,
-            datumPolaska == null ? null : new java.sql.Date(datumPolaska.getTime()),
-            datumDolaska == null ? null : new java.sql.Date(datumDolaska.getTime()),
+            datumPolaska == null ? null : java.sql.Date.valueOf(datumPolaska),
+            datumDolaska == null ? null : java.sql.Date.valueOf(datumDolaska),
             popust, cena,
             aranzman == null ? null : aranzman.getIdAranzman()
         };
@@ -197,8 +197,10 @@ public class StavkaRezervacije implements GenericEntity {
         s.setRezervacija(r);
         s.setRb(rs.getInt("rb"));
         s.setBrojOsoba(rs.getInt("brojOsoba"));
-        s.setDatumPolaska(rs.getDate("datumPolaska"));
-        s.setDatumDolaska(rs.getDate("datumDolaska"));
+        java.sql.Date datumPolaskaSql = rs.getDate("datumPolaska");
+        s.setDatumPolaska(datumPolaskaSql == null ? null : datumPolaskaSql.toLocalDate());
+        java.sql.Date datumDolaskaSql = rs.getDate("datumDolaska");
+        s.setDatumDolaska(datumDolaskaSql == null ? null : datumDolaskaSql.toLocalDate());
         s.setPopust(rs.getDouble("popust"));
         s.setCena(rs.getDouble("cena"));
         Aranzman a = new Aranzman();

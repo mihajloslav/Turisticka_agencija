@@ -26,10 +26,10 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
     }
 
     @Override
-    public List<GenericEntity> getAll(GenericEntity prototype, String whereClause, Object[] params) throws Exception {
+    public List<GenericEntity> getAll(GenericEntity entity, String whereClause, Object[] params) throws Exception {
         List<GenericEntity> result = new ArrayList<>();
         Connection connection = DbConnectionFactory.getInstance().getConnection();
-        String query = "SELECT * FROM " + prototype.getTableName()
+        String query = "SELECT * FROM " + entity.getTableName()
                 + (whereClause == null || whereClause.isEmpty() ? "" : " WHERE " + whereClause);
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             if (params != null) {
@@ -39,7 +39,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
             }
             try (ResultSet rs = statement.executeQuery()) {
                 while (rs.next()) {
-                    result.add(prototype.fromResultSet(rs));
+                    result.add(entity.fromResultSet(rs));
                 }
             }
         }
@@ -114,15 +114,15 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
     }
 
     @Override
-    public GenericEntity getById(GenericEntity prototype, Long k) throws Exception {
+    public GenericEntity getById(GenericEntity entity, Long k) throws Exception {
         Connection connection = DbConnectionFactory.getInstance().getConnection();
-        String query = "SELECT * FROM " + prototype.getTableName()
-                + " WHERE " + prototype.getPrimaryKeyColumnName() + " = ?";
+        String query = "SELECT * FROM " + entity.getTableName()
+                + " WHERE " + entity.getPrimaryKeyColumnName() + " = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setObject(1, k);
             try (ResultSet rs = statement.executeQuery()) {
                 if (rs.next()) {
-                    return prototype.fromResultSet(rs);
+                    return entity.fromResultSet(rs);
                 }
                 return null;
             }

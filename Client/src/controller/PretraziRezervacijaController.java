@@ -11,7 +11,7 @@ import domain.Aranzman;
 import domain.Putnik;
 import domain.Rezervacija;
 import domain.StavkaRezervacije;
-import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -26,7 +26,7 @@ import view.form.PretraziRezervacijaForm;
 public class PretraziRezervacijaController {
 
     private final PretraziRezervacijaForm form;
-    private final SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
 
     public PretraziRezervacijaController(PretraziRezervacijaForm form) {
         this.form = form;
@@ -169,7 +169,7 @@ public class PretraziRezervacijaController {
     private String formatirajDetalje(Rezervacija rezervacija) {
         StringBuilder sb = new StringBuilder();
         sb.append("ID rezervacije: ").append(rezervacija.getIdRezervacija()).append("\n");
-        sb.append("Datum kreiranja: ").append(rezervacija.getDatumKreiranja() == null ? "" : sdf.format(rezervacija.getDatumKreiranja())).append("\n");
+        sb.append("Datum kreiranja: ").append(rezervacija.getDatumKreiranja() == null ? "" : rezervacija.getDatumKreiranja().format(dtf)).append("\n");
         sb.append("Status plaćanja: ").append(rezervacija.getStatusPlacanja()).append("\n");
         sb.append("Ukupan iznos: ").append(rezervacija.getUkupanIznos()).append("\n");
         sb.append("Napomena: ").append(rezervacija.getNapomena() == null ? "" : rezervacija.getNapomena()).append("\n");
@@ -177,8 +177,8 @@ public class PretraziRezervacijaController {
         for (StavkaRezervacije s : rezervacija.getStavke()) {
             sb.append("  - rb ").append(s.getRb())
                     .append(", broj osoba: ").append(s.getBrojOsoba())
-                    .append(", polazak: ").append(s.getDatumPolaska() == null ? "" : sdf.format(s.getDatumPolaska()))
-                    .append(", dolazak: ").append(s.getDatumDolaska() == null ? "" : sdf.format(s.getDatumDolaska()))
+                    .append(", polazak: ").append(s.getDatumPolaska() == null ? "" : s.getDatumPolaska().format(dtf))
+                    .append(", dolazak: ").append(s.getDatumDolaska() == null ? "" : s.getDatumDolaska().format(dtf))
                     .append(", popust: ").append(s.getPopust())
                     .append(", cena: ").append(s.getCena())
                     .append("\n");
