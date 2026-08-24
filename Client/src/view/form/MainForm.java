@@ -29,6 +29,14 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menuBar = new javax.swing.JMenuBar();
+        menuTema = new javax.swing.JMenu();
+        miTemaLight = new javax.swing.JMenuItem();
+        miTemaDark = new javax.swing.JMenuItem();
+        miTemaIntelliJ = new javax.swing.JMenuItem();
+        miTemaDarcula = new javax.swing.JMenuItem();
+        miTemaMacLight = new javax.swing.JMenuItem();
+        miTemaMacDark = new javax.swing.JMenuItem();
         pnlHeader = new javax.swing.JPanel();
         lblNaslov = new javax.swing.JLabel();
         lblAgent = new javax.swing.JLabel();
@@ -41,6 +49,30 @@ public class MainForm extends javax.swing.JFrame {
         btnPretraziPutnika = new javax.swing.JButton();
         pnlRegioni = new javax.swing.JPanel();
         btnUbaciRegion = new javax.swing.JButton();
+
+        menuTema.setText("Tema");
+
+        miTemaLight.setText("FlatLaf Light");
+        menuTema.add(miTemaLight);
+
+        miTemaDark.setText("FlatLaf Dark");
+        menuTema.add(miTemaDark);
+
+        miTemaIntelliJ.setText("FlatLaf IntelliJ");
+        menuTema.add(miTemaIntelliJ);
+
+        miTemaDarcula.setText("FlatLaf Darcula");
+        menuTema.add(miTemaDarcula);
+
+        miTemaMacLight.setText("✔ FlatLaf macOS Light");
+        menuTema.add(miTemaMacLight);
+
+        miTemaMacDark.setText("FlatLaf macOS Dark");
+        menuTema.add(miTemaMacDark);
+
+        menuBar.add(menuTema);
+
+        setJMenuBar(menuBar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turistička agencija");
@@ -196,6 +228,14 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton btnUbaciRegion;
     private javax.swing.JLabel lblAgent;
     private javax.swing.JLabel lblNaslov;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuTema;
+    private javax.swing.JMenuItem miTemaDark;
+    private javax.swing.JMenuItem miTemaDarcula;
+    private javax.swing.JMenuItem miTemaIntelliJ;
+    private javax.swing.JMenuItem miTemaLight;
+    private javax.swing.JMenuItem miTemaMacDark;
+    private javax.swing.JMenuItem miTemaMacLight;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlPutnici;
     private javax.swing.JPanel pnlRegioni;
@@ -228,5 +268,29 @@ public class MainForm extends javax.swing.JFrame {
 
     public javax.swing.JLabel getLblAgent() {
         return lblAgent;
+    }
+
+    public javax.swing.JMenuItem getMiTemaLight() {
+        return miTemaLight;
+    }
+
+    public javax.swing.JMenuItem getMiTemaDark() {
+        return miTemaDark;
+    }
+
+    public javax.swing.JMenuItem getMiTemaIntelliJ() {
+        return miTemaIntelliJ;
+    }
+
+    public javax.swing.JMenuItem getMiTemaDarcula() {
+        return miTemaDarcula;
+    }
+
+    public javax.swing.JMenuItem getMiTemaMacLight() {
+        return miTemaMacLight;
+    }
+
+    public javax.swing.JMenuItem getMiTemaMacDark() {
+        return miTemaMacDark;
     }
 }

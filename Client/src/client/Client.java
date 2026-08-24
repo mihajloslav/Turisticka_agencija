@@ -5,7 +5,7 @@
 package client;
 
 import client.communication.Communication;
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import coordinator.Coordinator;
 import java.io.IOException;
 import java.net.Socket;
@@ -20,7 +20,7 @@ public class Client {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        FlatIntelliJLaf.setup();
+        FlatMacLightLaf.setup();
         Client client = new Client();
         try {
             client.connect();

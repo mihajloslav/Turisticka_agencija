@@ -4,7 +4,7 @@
  */
 package server;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import view.ServerAdminForm;
 
 /**
@@ -17,7 +17,7 @@ public class Server {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception {
-        FlatIntelliJLaf.setup();
+        FlatMacLightLaf.setup();
         new ServerAdminForm().setVisible(true);
     }
 

@@ -4,11 +4,21 @@
  */
 package view;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import com.formdev.flatlaf.FlatLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import controller.Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import threads.HandleClientThread;
 import threads.ServerListener;
 import view.components.TableModelKlijent;
@@ -56,6 +66,13 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         menuBar = new javax.swing.JMenuBar();
         menuPodesavanja = new javax.swing.JMenu();
         miKonfiguracija = new javax.swing.JMenuItem();
+        menuTema = new javax.swing.JMenu();
+        miTemaLight = new javax.swing.JMenuItem();
+        miTemaDark = new javax.swing.JMenuItem();
+        miTemaIntelliJ = new javax.swing.JMenuItem();
+        miTemaDarcula = new javax.swing.JMenuItem();
+        miTemaMacLight = new javax.swing.JMenuItem();
+        miTemaMacDark = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turistička agencija - Server");
@@ -164,6 +181,58 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
 
         menuBar.add(menuPodesavanja);
 
+        menuTema.setText("Tema");
+
+        miTemaLight.setText("FlatLaf Light");
+        miTemaLight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTemaLightActionPerformed(evt);
+            }
+        });
+        menuTema.add(miTemaLight);
+
+        miTemaDark.setText("FlatLaf Dark");
+        miTemaDark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTemaDarkActionPerformed(evt);
+            }
+        });
+        menuTema.add(miTemaDark);
+
+        miTemaIntelliJ.setText("FlatLaf IntelliJ");
+        miTemaIntelliJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTemaIntelliJActionPerformed(evt);
+            }
+        });
+        menuTema.add(miTemaIntelliJ);
+
+        miTemaDarcula.setText("FlatLaf Darcula");
+        miTemaDarcula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTemaDarculaActionPerformed(evt);
+            }
+        });
+        menuTema.add(miTemaDarcula);
+
+        miTemaMacLight.setText("✔ FlatLaf macOS Light");
+        miTemaMacLight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTemaMacLightActionPerformed(evt);
+            }
+        });
+        menuTema.add(miTemaMacLight);
+
+        miTemaMacDark.setText("FlatLaf macOS Dark");
+        miTemaMacDark.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miTemaMacDarkActionPerformed(evt);
+            }
+        });
+        menuTema.add(miTemaMacDark);
+
+        menuBar.add(menuTema);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,6 +283,30 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         }
     }//GEN-LAST:event_btnZaustaviServerActionPerformed
 
+    private void miTemaLightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTemaLightActionPerformed
+        primeniTemu(new FlatLightLaf(), miTemaLight);
+    }//GEN-LAST:event_miTemaLightActionPerformed
+
+    private void miTemaDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTemaDarkActionPerformed
+        primeniTemu(new FlatDarkLaf(), miTemaDark);
+    }//GEN-LAST:event_miTemaDarkActionPerformed
+
+    private void miTemaIntelliJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTemaIntelliJActionPerformed
+        primeniTemu(new FlatIntelliJLaf(), miTemaIntelliJ);
+    }//GEN-LAST:event_miTemaIntelliJActionPerformed
+
+    private void miTemaDarculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTemaDarculaActionPerformed
+        primeniTemu(new FlatDarculaLaf(), miTemaDarcula);
+    }//GEN-LAST:event_miTemaDarculaActionPerformed
+
+    private void miTemaMacLightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTemaMacLightActionPerformed
+        primeniTemu(new FlatMacLightLaf(), miTemaMacLight);
+    }//GEN-LAST:event_miTemaMacLightActionPerformed
+
+    private void miTemaMacDarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTemaMacDarkActionPerformed
+        primeniTemu(new FlatMacDarkLaf(), miTemaMacDark);
+    }//GEN-LAST:event_miTemaMacDarkActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPokreniServer;
     private javax.swing.JButton btnZaustaviServer;
@@ -221,7 +314,14 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
     private javax.swing.JLabel lblStatus;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuPodesavanja;
+    private javax.swing.JMenu menuTema;
     private javax.swing.JMenuItem miKonfiguracija;
+    private javax.swing.JMenuItem miTemaDark;
+    private javax.swing.JMenuItem miTemaDarcula;
+    private javax.swing.JMenuItem miTemaIntelliJ;
+    private javax.swing.JMenuItem miTemaLight;
+    private javax.swing.JMenuItem miTemaMacDark;
+    private javax.swing.JMenuItem miTemaMacLight;
     private javax.swing.JPanel pnlKlijenti;
     private javax.swing.JPanel pnlLog;
     private javax.swing.JPanel pnlTop;
@@ -230,6 +330,26 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
     private javax.swing.JTable tblKlijenti;
     private javax.swing.JTextArea txtLog;
     // End of variables declaration//GEN-END:variables
+
+    private static final String OZNAKA = "✔ ";
+
+    private void primeniTemu(LookAndFeel laf, JMenuItem izabrana) {
+        try {
+            UIManager.setLookAndFeel(laf);
+            FlatLaf.updateUI();
+            oznaciIzabranuTemu(izabrana);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void oznaciIzabranuTemu(JMenuItem izabrana) {
+        JMenuItem[] sve = {miTemaLight, miTemaDark, miTemaIntelliJ, miTemaDarcula, miTemaMacLight, miTemaMacDark};
+        for (JMenuItem stavka : sve) {
+            String tekst = stavka.getText().replace(OZNAKA, "");
+            stavka.setText(stavka == izabrana ? OZNAKA + tekst : tekst);
+        }
+    }
 
     private void azurirajStatus(boolean pokrenut) {
         if (pokrenut) {
