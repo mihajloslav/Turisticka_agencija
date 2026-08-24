@@ -26,30 +26,92 @@ import java.net.Socket;
 public class HandleClientThread extends Thread {
 
     private Socket socket;
+    private ServerListener listener;
+    private Agent prijavljeniAgent;
 
-    public HandleClientThread(Socket socket) {
+    public HandleClientThread(Socket socket, ServerListener listener) {
         this.socket = socket;
+        this.listener = listener;
     }
 
     @Override
     public void run() {
-        while (!socket.isClosed()) {
-            try {
-                Request request = (Request) new Receiver(socket).receive();
-                Response response = handleRequest(request);
-                new Sender(socket).send(response);
-            } catch (Exception ex) {
+        try {
+            while (!socket.isClosed()) {
                 try {
-                    socket.close();
-                } catch (Exception closeEx) {
+                    Request request = (Request) new Receiver(socket).receive();
+                    if (listener != null) {
+                        listener.onLog("Zahtev [" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort()
+                                + "]: " + nazivOperacije(request.getOperation()));
+                    }
+                    Response response = handleRequest(request);
+                    new Sender(socket).send(response);
+                } catch (Exception ex) {
+                    try {
+                        socket.close();
+                    } catch (Exception closeEx) {
+                    }
+                    break;
                 }
-                break;
+            }
+        } finally {
+            if (prijavljeniAgent != null) {
+                Controller.getInstance().odjaviAgenta(prijavljeniAgent.getIdAgent());
+            }
+            if (listener != null) {
+                listener.onLog("Klijent diskonektovan: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
+                listener.onKlijentOdjavljen(this);
             }
         }
     }
 
     public Socket getSocket() {
         return socket;
+    }
+
+    public Agent getPrijavljeniAgent() {
+        return prijavljeniAgent;
+    }
+
+    private String nazivOperacije(int operacija) {
+        switch (operacija) {
+            case Operations.PRIJAVI_AGENT:
+                return "Prijavi agenta";
+            case Operations.KREIRAJ_REZERVACIJA:
+                return "Kreiraj rezervaciju";
+            case Operations.PROMENI_REZERVACIJA:
+                return "Promeni rezervaciju";
+            case Operations.PRETRAZI_REZERVACIJA:
+                return "Pretraži rezervaciju";
+            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_REZERVACIJA:
+            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT:
+            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK:
+            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN:
+                return "Vrati listu rezervacija";
+            case Operations.VRATI_LISTU_SVI_AGENT:
+                return "Vrati listu svih agenata";
+            case Operations.VRATI_LISTU_SVI_PUTNIK:
+                return "Vrati listu svih putnika";
+            case Operations.VRATI_LISTU_SVI_ARANZMAN:
+                return "Vrati listu svih aranžmana";
+            case Operations.VRATI_LISTU_SVI_MESTO:
+                return "Vrati listu svih mesta";
+            case Operations.KREIRAJ_PUTNIK:
+                return "Kreiraj putnika";
+            case Operations.PROMENI_PUTNIK:
+                return "Promeni putnika";
+            case Operations.OBRISI_PUTNIK:
+                return "Obriši putnika";
+            case Operations.PRETRAZI_PUTNIK:
+                return "Pretraži putnika";
+            case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK:
+            case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO:
+                return "Vrati listu putnika";
+            case Operations.UBACI_REGION:
+                return "Ubaci region";
+            default:
+                return "Nepoznata operacija (#" + operacija + ")";
+        }
     }
 
     private Response handleRequest(Request request) {
@@ -102,11 +164,19 @@ public class HandleClientThread extends Thread {
         String[] credentials = (String[]) request.getArgument();
         try {
             Agent agent = Controller.getInstance().prijaviAgent(credentials[0], credentials[1]);
+            prijavljeniAgent = agent;
             response.setResponseType(ResponseType.SUCCESS);
             response.setResult(agent);
+            if (listener != null) {
+                listener.onLog("Uspešna prijava agenta: " + credentials[0]);
+                listener.onKlijentAzuriran(this);
+            }
         } catch (Exception ex) {
             response.setResponseType(ResponseType.ERROR);
             response.setException(ex);
+            if (listener != null) {
+                listener.onLog("Odbijena prijava agenta: " + credentials[0] + " (" + ex.getMessage() + ")");
+            }
         }
         return response;
     }

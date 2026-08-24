@@ -13,6 +13,9 @@ import domain.Putnik;
 import domain.Region;
 import domain.Rezervacija;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import threads.ServerListener;
 import threads.ServerThread;
 import so.agent.PrijaviAgentSO;
 import so.agent.VratiListuSviAgentSO;
@@ -42,6 +45,8 @@ public class Controller {
 
     private static Controller instance;
     private ServerThread serverThread;
+    private ServerListener listener;
+    private final Set<Long> aktivniAgenti = ConcurrentHashMap.newKeySet();
 
     private Controller() {
     }
@@ -53,11 +58,19 @@ public class Controller {
         return instance;
     }
 
+    public void setListener(ServerListener listener) {
+        this.listener = listener;
+    }
+
     public void startServer() throws Exception {
         if (serverThread == null || !serverThread.isAlive()) {
             int port = Integer.parseInt(Configuration.getInstance().getServerProperty(MyServerConstants.SERVER_CONFIG_PORT));
-            serverThread = new ServerThread(port);
+            serverThread = new ServerThread(port, listener);
             serverThread.start();
+            if (listener != null) {
+                listener.onLog("Server pokrenut na portu " + port);
+                listener.onPromenaStatusa(true);
+            }
         }
     }
 
@@ -65,11 +78,21 @@ public class Controller {
         if (serverThread != null && serverThread.getServerSocket() != null
                 && !serverThread.getServerSocket().isClosed()) {
             serverThread.getServerSocket().close();
+            if (listener != null) {
+                listener.onLog("Server zaustavljen");
+                listener.onPromenaStatusa(false);
+            }
         }
     }
 
     public boolean isServerRunning() {
         return serverThread != null && serverThread.isAlive();
+    }
+
+    public void odjaviAgenta(Long idAgent) {
+        if (idAgent != null) {
+            aktivniAgenti.remove(idAgent);
+        }
     }
 
     public String getDbProperty(String key) {
@@ -95,7 +118,11 @@ public class Controller {
     public Agent prijaviAgent(String korisnickoIme, String sifra) throws Exception {
         PrijaviAgentSO so = new PrijaviAgentSO();
         so.execute(new String[]{korisnickoIme, sifra});
-        return so.getAgent();
+        Agent agent = so.getAgent();
+        if (!aktivniAgenti.add(agent.getIdAgent())) {
+            throw new Exception("Agent je već prijavljen na sistemu.");
+        }
+        return agent;
     }
 
     public Rezervacija kreirajRezervacija(Rezervacija rezervacija) throws Exception {

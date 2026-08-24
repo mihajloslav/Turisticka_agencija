@@ -18,10 +18,12 @@ public class ServerThread extends Thread {
 
     private ServerSocket serverSocket;
     private List<HandleClientThread> clients;
+    private ServerListener listener;
 
-    public ServerThread(int port) throws IOException {
+    public ServerThread(int port, ServerListener listener) throws IOException {
         serverSocket = new ServerSocket(port);
         clients = new ArrayList<>();
+        this.listener = listener;
     }
 
     @Override
@@ -29,9 +31,13 @@ public class ServerThread extends Thread {
         while (!serverSocket.isClosed()) {
             try {
                 Socket socket = serverSocket.accept();
-                HandleClientThread thread = new HandleClientThread(socket);
+                HandleClientThread thread = new HandleClientThread(socket, listener);
                 thread.start();
                 clients.add(thread);
+                if (listener != null) {
+                    listener.onLog("Klijent povezan: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
+                    listener.onKlijentPovezan(thread);
+                }
             } catch (IOException ex) {
             }
         }

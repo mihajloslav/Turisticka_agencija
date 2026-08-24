@@ -5,19 +5,31 @@
 package view;
 
 import controller.Controller;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import threads.HandleClientThread;
+import threads.ServerListener;
+import view.components.TableModelKlijent;
 
 /**
  *
  * @author mihajlo
  */
-public class ServerAdminForm extends javax.swing.JFrame {
+public class ServerAdminForm extends javax.swing.JFrame implements ServerListener {
+
+    private final TableModelKlijent modelKlijenti = new TableModelKlijent();
+    private final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
     /**
      * Creates new form ServerAdminForm
      */
     public ServerAdminForm() {
         initComponents();
+        tblKlijenti.setModel(modelKlijenti);
+        Controller.getInstance().setListener(this);
+        azurirajStatus(Controller.getInstance().isServerRunning());
         setLocationRelativeTo(null);
     }
 
@@ -30,36 +42,115 @@ public class ServerAdminForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlTop = new javax.swing.JPanel();
+        lblNaslov = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        btnPokreniServer = new javax.swing.JButton();
+        btnZaustaviServer = new javax.swing.JButton();
+        pnlLog = new javax.swing.JPanel();
+        scrollLog = new javax.swing.JScrollPane();
+        txtLog = new javax.swing.JTextArea();
+        pnlKlijenti = new javax.swing.JPanel();
+        scrollKlijenti = new javax.swing.JScrollPane();
+        tblKlijenti = new javax.swing.JTable();
         menuBar = new javax.swing.JMenuBar();
-        menuServer = new javax.swing.JMenu();
-        miPokreniServer = new javax.swing.JMenuItem();
-        miZaustaviServer = new javax.swing.JMenuItem();
         menuPodesavanja = new javax.swing.JMenu();
         miKonfiguracija = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Turistička agencija - Server");
 
-        menuServer.setText("Server");
+        lblNaslov.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblNaslov.setText("Turistička agencija - Server");
 
-        miPokreniServer.setText("Pokreni server");
-        miPokreniServer.addActionListener(new java.awt.event.ActionListener() {
+        lblStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblStatus.setText("Server je ugašen");
+
+        btnPokreniServer.setText("Pokreni server");
+        btnPokreniServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miPokreniServerActionPerformed(evt);
+                btnPokreniServerActionPerformed(evt);
             }
         });
-        menuServer.add(miPokreniServer);
 
-        miZaustaviServer.setText("Zaustavi server");
-        miZaustaviServer.setEnabled(false);
-        miZaustaviServer.addActionListener(new java.awt.event.ActionListener() {
+        btnZaustaviServer.setEnabled(false);
+        btnZaustaviServer.setText("Zaustavi server");
+        btnZaustaviServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                miZaustaviServerActionPerformed(evt);
+                btnZaustaviServerActionPerformed(evt);
             }
         });
-        menuServer.add(miZaustaviServer);
 
-        menuBar.add(menuServer);
+        javax.swing.GroupLayout pnlTopLayout = new javax.swing.GroupLayout(pnlTop);
+        pnlTop.setLayout(pnlTopLayout);
+        pnlTopLayout.setHorizontalGroup(
+            pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblNaslov)
+                .addGap(0, 25, Short.MAX_VALUE)
+                .addComponent(lblStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPokreniServer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnZaustaviServer)
+                .addContainerGap())
+        );
+        pnlTopLayout.setVerticalGroup(
+            pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTopLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNaslov)
+                    .addComponent(lblStatus)
+                    .addComponent(btnPokreniServer)
+                    .addComponent(btnZaustaviServer))
+                .addContainerGap())
+        );
+
+        pnlLog.setBorder(javax.swing.BorderFactory.createTitledBorder("Log servera"));
+
+        txtLog.setEditable(false);
+        txtLog.setRows(10);
+        scrollLog.setViewportView(txtLog);
+
+        javax.swing.GroupLayout pnlLogLayout = new javax.swing.GroupLayout(pnlLog);
+        pnlLog.setLayout(pnlLogLayout);
+        pnlLogLayout.setHorizontalGroup(
+            pnlLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollLog)
+                .addContainerGap())
+        );
+        pnlLogLayout.setVerticalGroup(
+            pnlLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLogLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollLog)
+                .addContainerGap())
+        );
+
+        pnlKlijenti.setBorder(javax.swing.BorderFactory.createTitledBorder("Povezani klijenti"));
+
+        scrollKlijenti.setViewportView(tblKlijenti);
+
+        javax.swing.GroupLayout pnlKlijentiLayout = new javax.swing.GroupLayout(pnlKlijenti);
+        pnlKlijenti.setLayout(pnlKlijentiLayout);
+        pnlKlijentiLayout.setHorizontalGroup(
+            pnlKlijentiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKlijentiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollKlijenti)
+                .addContainerGap())
+        );
+        pnlKlijentiLayout.setVerticalGroup(
+            pnlKlijentiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKlijentiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollKlijenti, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         menuPodesavanja.setText("Podešavanja");
 
@@ -79,46 +170,104 @@ public class ServerAdminForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlLog, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlKlijenti, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(pnlTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlKlijenti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void miPokreniServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miPokreniServerActionPerformed
-        try {
-            Controller.getInstance().startServer();
-            miPokreniServer.setEnabled(false);
-            miZaustaviServer.setEnabled(true);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_miPokreniServerActionPerformed
-
-    private void miZaustaviServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miZaustaviServerActionPerformed
-        try {
-            Controller.getInstance().stopServer();
-            miPokreniServer.setEnabled(true);
-            miZaustaviServer.setEnabled(false);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_miZaustaviServerActionPerformed
 
     private void miKonfiguracijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miKonfiguracijaActionPerformed
         new ServerConfigForm(this, true).setVisible(true);
     }//GEN-LAST:event_miKonfiguracijaActionPerformed
 
+    private void btnPokreniServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokreniServerActionPerformed
+        try {
+            Controller.getInstance().startServer();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPokreniServerActionPerformed
+
+    private void btnZaustaviServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZaustaviServerActionPerformed
+        try {
+            Controller.getInstance().stopServer();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnZaustaviServerActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPokreniServer;
+    private javax.swing.JButton btnZaustaviServer;
+    private javax.swing.JLabel lblNaslov;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu menuServer;
-    private javax.swing.JMenuItem miPokreniServer;
-    private javax.swing.JMenuItem miZaustaviServer;
     private javax.swing.JMenu menuPodesavanja;
     private javax.swing.JMenuItem miKonfiguracija;
+    private javax.swing.JPanel pnlKlijenti;
+    private javax.swing.JPanel pnlLog;
+    private javax.swing.JPanel pnlTop;
+    private javax.swing.JScrollPane scrollKlijenti;
+    private javax.swing.JScrollPane scrollLog;
+    private javax.swing.JTable tblKlijenti;
+    private javax.swing.JTextArea txtLog;
     // End of variables declaration//GEN-END:variables
+
+    private void azurirajStatus(boolean pokrenut) {
+        if (pokrenut) {
+            lblStatus.setText("Server je pokrenut");
+            lblStatus.setForeground(new java.awt.Color(0, 128, 0));
+        } else {
+            lblStatus.setText("Server je ugašen");
+            lblStatus.setForeground(java.awt.Color.RED);
+        }
+        btnPokreniServer.setEnabled(!pokrenut);
+        btnZaustaviServer.setEnabled(pokrenut);
+    }
+
+    @Override
+    public void onLog(String poruka) {
+        SwingUtilities.invokeLater(() -> {
+            txtLog.append("[" + sdf.format(new Date()) + "] " + poruka + "\n");
+            txtLog.setCaretPosition(txtLog.getDocument().getLength());
+        });
+    }
+
+    @Override
+    public void onKlijentPovezan(HandleClientThread klijent) {
+        SwingUtilities.invokeLater(() -> modelKlijenti.dodajKlijenta(klijent));
+    }
+
+    @Override
+    public void onKlijentAzuriran(HandleClientThread klijent) {
+        SwingUtilities.invokeLater(() -> modelKlijenti.azurirajKlijenta(klijent));
+    }
+
+    @Override
+    public void onKlijentOdjavljen(HandleClientThread klijent) {
+        SwingUtilities.invokeLater(() -> modelKlijenti.ukloniKlijenta(klijent));
+    }
+
+    @Override
+    public void onPromenaStatusa(boolean pokrenut) {
+        SwingUtilities.invokeLater(() -> azurirajStatus(pokrenut));
+    }
 }
