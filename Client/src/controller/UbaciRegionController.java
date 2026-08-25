@@ -35,7 +35,7 @@ public class UbaciRegionController {
         try {
             String naziv = form.getTxtNaziv().getText().trim();
             String oznaka = form.getTxtOznaka().getText().trim();
-            String kontinent = form.getTxtKontinent().getText().trim();
+            String kontinent = (String) form.getCmbKontinent().getSelectedItem();
             String opis = form.getTxtOpis().getText().trim();
 
             Validator.startValidation()

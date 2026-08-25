@@ -52,7 +52,7 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
         btnSacuvajRezervaciju = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Промени резервацију");
+        setTitle("Туристичка агенција - Промени резервацију");
 
         lblAgent.setText("Агент:");
 

@@ -44,7 +44,7 @@ public class KreirajPutnikForm extends javax.swing.JFrame {
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Креирај путника");
+        setTitle("Туристичка агенција - Креирај путника");
 
         lblIme.setText("Име:");
 

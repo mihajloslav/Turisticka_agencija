@@ -10,13 +10,13 @@ import domain.Agent;
 import domain.Aranzman;
 import domain.Putnik;
 import domain.Rezervacija;
-import domain.StavkaRezervacije;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JOptionPane;
 import view.components.TableModelRezervacija;
+import view.components.TableModelStavkaRezervacije;
 import view.form.PretraziRezervacijaForm;
 
 /**
@@ -94,6 +94,7 @@ public class PretraziRezervacijaController {
         }
         form.getTblRezervacije().setModel(new TableModelRezervacija(rezultat));
         form.getTxtAreaDetalji().setText("");
+        form.getTblStavke().setModel(new TableModelStavkaRezervacije(null));
     }
 
     private void pretraziPoStatusu() {
@@ -161,6 +162,7 @@ public class PretraziRezervacijaController {
         try {
             Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
             form.getTxtAreaDetalji().setText(formatirajDetalje(rezervacija));
+            form.getTblStavke().setModel(new TableModelStavkaRezervacije(rezervacija.getStavke()));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
@@ -173,16 +175,6 @@ public class PretraziRezervacijaController {
         sb.append("Статус плаћања: ").append(rezervacija.getStatusPlacanja()).append("\n");
         sb.append("Укупан износ: ").append(rezervacija.getUkupanIznos()).append("\n");
         sb.append("Напомена: ").append(rezervacija.getNapomena() == null ? "" : rezervacija.getNapomena()).append("\n");
-        sb.append("Ставке:\n");
-        for (StavkaRezervacije s : rezervacija.getStavke()) {
-            sb.append("  - рб ").append(s.getRb())
-                    .append(", број особа: ").append(s.getBrojOsoba())
-                    .append(", полазак: ").append(s.getDatumPolaska() == null ? "" : s.getDatumPolaska().format(dtf))
-                    .append(", долазак: ").append(s.getDatumDolaska() == null ? "" : s.getDatumDolaska().format(dtf))
-                    .append(", попуст: ").append(s.getPopust())
-                    .append(", цена: ").append(s.getCena())
-                    .append("\n");
-        }
         return sb.toString();
     }
 

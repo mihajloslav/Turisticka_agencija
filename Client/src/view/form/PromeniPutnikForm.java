@@ -46,7 +46,7 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Промени путника");
+        setTitle("Туристичка агенција - Промени путника");
 
         lblIme.setText("Име:");
 

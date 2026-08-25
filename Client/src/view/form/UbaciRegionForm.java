@@ -32,13 +32,13 @@ public class UbaciRegionForm extends javax.swing.JFrame {
         lblOznaka = new javax.swing.JLabel();
         txtOznaka = new javax.swing.JTextField();
         lblKontinent = new javax.swing.JLabel();
-        txtKontinent = new javax.swing.JTextField();
+        cmbKontinent = new javax.swing.JComboBox<>(new String[]{"Африка", "Азија", "Европа", "Северна Америка", "Јужна Америка", "Аустралија и Океанија", "Антарктик"});
         lblOpis = new javax.swing.JLabel();
         txtOpis = new javax.swing.JTextField();
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Убаци регион");
+        setTitle("Туристичка агенција - Убаци регион");
 
         lblNaziv.setText("Назив:");
 
@@ -67,7 +67,7 @@ public class UbaciRegionForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                             .addComponent(txtOznaka)
-                            .addComponent(txtKontinent)
+                            .addComponent(cmbKontinent, 0, 260, Short.MAX_VALUE)
                             .addComponent(txtOpis)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -88,7 +88,7 @@ public class UbaciRegionForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblKontinent)
-                    .addComponent(txtKontinent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbKontinent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblOpis)
@@ -103,11 +103,11 @@ public class UbaciRegionForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSacuvaj;
+    private javax.swing.JComboBox<java.lang.String> cmbKontinent;
     private javax.swing.JLabel lblKontinent;
     private javax.swing.JLabel lblNaziv;
     private javax.swing.JLabel lblOpis;
     private javax.swing.JLabel lblOznaka;
-    private javax.swing.JTextField txtKontinent;
     private javax.swing.JTextField txtNaziv;
     private javax.swing.JTextField txtOpis;
     private javax.swing.JTextField txtOznaka;
@@ -121,8 +121,8 @@ public class UbaciRegionForm extends javax.swing.JFrame {
         return txtOznaka;
     }
 
-    public javax.swing.JTextField getTxtKontinent() {
-        return txtKontinent;
+    public javax.swing.JComboBox<java.lang.String> getCmbKontinent() {
+        return cmbKontinent;
     }
 
     public javax.swing.JTextField getTxtOpis() {

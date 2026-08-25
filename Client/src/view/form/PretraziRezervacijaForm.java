@@ -45,9 +45,11 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
         btnPromeni = new javax.swing.JButton();
         scrollDetalji = new javax.swing.JScrollPane();
         txtAreaDetalji = new javax.swing.JTextArea();
+        scrollTabelaStavki = new javax.swing.JScrollPane();
+        tblStavke = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Претражи резервацију");
+        setTitle("Туристичка агенција - Претражи резервацију");
 
         lblStatus.setText("Статус плаћања:");
 
@@ -73,8 +75,10 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
 
         txtAreaDetalji.setEditable(false);
         txtAreaDetalji.setColumns(20);
-        txtAreaDetalji.setRows(5);
+        txtAreaDetalji.setRows(4);
         scrollDetalji.setViewportView(txtAreaDetalji);
+
+        scrollTabelaStavki.setViewportView(tblStavke);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +89,7 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollTabelaRezervacije, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addComponent(scrollDetalji, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -146,7 +151,9 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
                     .addComponent(btnPrikazi)
                     .addComponent(btnPromeni))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollDetalji, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(scrollDetalji, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -169,7 +176,9 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblStatus;
     private javax.swing.JScrollPane scrollDetalji;
     private javax.swing.JScrollPane scrollTabelaRezervacije;
+    private javax.swing.JScrollPane scrollTabelaStavki;
     private javax.swing.JTable tblRezervacije;
+    private javax.swing.JTable tblStavke;
     private javax.swing.JTextArea txtAreaDetalji;
     private javax.swing.JTextField txtStatusKriterijum;
     // End of variables declaration//GEN-END:variables
@@ -220,5 +229,9 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
 
     public javax.swing.JTextArea getTxtAreaDetalji() {
         return txtAreaDetalji;
+    }
+
+    public javax.swing.JTable getTblStavke() {
+        return tblStavke;
     }
 }

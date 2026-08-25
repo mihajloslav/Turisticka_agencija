@@ -17,8 +17,8 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelStavkaRezervacije extends AbstractTableModel {
 
     private List<StavkaRezervacije> stavke;
-    private String[] columnNames = new String[]{"Аранжман", "Број особа", "Датум поласка", "Датум доласка", "Попуст", "Цена"};
-    private Class[] columnClass = new Class[]{String.class, Integer.class, String.class, String.class, Double.class, Double.class};
+    private String[] columnNames = new String[]{"РБ", "Број особа", "Датум поласка", "Датум доласка", "Попуст", "Цена", "Аранжман"};
+    private Class[] columnClass = new Class[]{Integer.class, Integer.class, String.class, String.class, Double.class, Double.class, String.class};
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public TableModelStavkaRezervacije(List<StavkaRezervacije> stavke) {
@@ -63,7 +63,7 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
         StavkaRezervacije stavka = stavke.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return stavka.getAranzman() == null ? "н/д" : stavka.getAranzman().getNaziv();
+                return stavka.getRb();
             case 1:
                 return stavka.getBrojOsoba();
             case 2:
@@ -74,6 +74,8 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
                 return stavka.getPopust();
             case 5:
                 return stavka.getCena();
+            case 6:
+                return stavka.getAranzman() == null ? "н/д" : stavka.getAranzman().getNaziv();
             default:
                 return "н/д";
         }

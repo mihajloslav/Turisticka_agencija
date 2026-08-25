@@ -50,7 +50,7 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
         btnSacuvajRezervaciju = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Креирај резервацију");
+        setTitle("Туристичка агенција - Креирај резервацију");
 
         lblAgent.setText("Агент:");
 

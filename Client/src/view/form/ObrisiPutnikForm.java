@@ -34,7 +34,7 @@ public class ObrisiPutnikForm extends javax.swing.JFrame {
         btnPotvrdi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Обриши путника");
+        setTitle("Туристичка агенција - Обриши путника");
 
         lblPodaci.setText("<html></html>");
 

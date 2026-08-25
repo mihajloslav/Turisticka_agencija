@@ -38,7 +38,7 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
         btnObrisi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Претражи путника");
+        setTitle("Туристичка агенција - Претражи путника");
 
         lblIme.setText("Име:");
 

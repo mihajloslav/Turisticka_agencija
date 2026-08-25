@@ -34,7 +34,7 @@ public class PrijaviAgentForm extends javax.swing.JFrame {
         btnPrijaviSe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Туристичка агенција - Пријава");
+        setTitle("Туристичка агенција - Пријава агента");
 
         lblKorisnickoIme.setText("Корисничко име:");
 
