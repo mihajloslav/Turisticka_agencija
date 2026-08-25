@@ -43,8 +43,10 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
         tblRezervacije = new javax.swing.JTable();
         btnPrikazi = new javax.swing.JButton();
         btnPromeni = new javax.swing.JButton();
+        pnlInformacije = new javax.swing.JPanel();
         scrollDetalji = new javax.swing.JScrollPane();
         txtAreaDetalji = new javax.swing.JTextArea();
+        pnlStavke = new javax.swing.JPanel();
         scrollTabelaStavki = new javax.swing.JScrollPane();
         tblStavke = new javax.swing.JTable();
 
@@ -73,12 +75,50 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
 
         btnPromeni.setText("Промени");
 
+        pnlInformacije.setBorder(javax.swing.BorderFactory.createTitledBorder("Информације о резервацији"));
+
         txtAreaDetalji.setEditable(false);
         txtAreaDetalji.setColumns(20);
         txtAreaDetalji.setRows(4);
         scrollDetalji.setViewportView(txtAreaDetalji);
 
+        javax.swing.GroupLayout pnlInformacijeLayout = new javax.swing.GroupLayout(pnlInformacije);
+        pnlInformacije.setLayout(pnlInformacijeLayout);
+        pnlInformacijeLayout.setHorizontalGroup(
+            pnlInformacijeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInformacijeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollDetalji)
+                .addContainerGap())
+        );
+        pnlInformacijeLayout.setVerticalGroup(
+            pnlInformacijeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlInformacijeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollDetalji)
+                .addContainerGap())
+        );
+
+        pnlStavke.setBorder(javax.swing.BorderFactory.createTitledBorder("Ставке резервације"));
+
         scrollTabelaStavki.setViewportView(tblStavke);
+
+        javax.swing.GroupLayout pnlStavkeLayout = new javax.swing.GroupLayout(pnlStavke);
+        pnlStavke.setLayout(pnlStavkeLayout);
+        pnlStavkeLayout.setHorizontalGroup(
+            pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStavkeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollTabelaStavki)
+                .addContainerGap())
+        );
+        pnlStavkeLayout.setVerticalGroup(
+            pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStavkeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scrollTabelaStavki)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,8 +128,8 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollTabelaRezervacije, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                    .addComponent(scrollDetalji, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                    .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addComponent(pnlInformacije, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,9 +191,9 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
                     .addComponent(btnPrikazi)
                     .addComponent(btnPromeni))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollDetalji, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addComponent(pnlInformacije, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -174,6 +214,8 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblAranzmanKriterijum;
     private javax.swing.JLabel lblPutnikKriterijum;
     private javax.swing.JLabel lblStatus;
+    private javax.swing.JPanel pnlInformacije;
+    private javax.swing.JPanel pnlStavke;
     private javax.swing.JScrollPane scrollDetalji;
     private javax.swing.JScrollPane scrollTabelaRezervacije;
     private javax.swing.JScrollPane scrollTabelaStavki;

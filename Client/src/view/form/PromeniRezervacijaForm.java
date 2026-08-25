@@ -37,6 +37,7 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
         cmbStatusPlacanja = new javax.swing.JComboBox<>(new String[]{"Ceka", "Placeno"});
         lblNapomena = new javax.swing.JLabel();
         txtNapomena = new javax.swing.JTextField();
+        pnlStavke = new javax.swing.JPanel();
         lblAranzman = new javax.swing.JLabel();
         cmbAranzman = new javax.swing.JComboBox<>();
         lblBrojOsoba = new javax.swing.JLabel();
@@ -62,6 +63,8 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
 
         lblNapomena.setText("Напомена:");
 
+        pnlStavke.setBorder(javax.swing.BorderFactory.createTitledBorder("Ставке"));
+
         lblAranzman.setText("Аранжман:");
 
         lblBrojOsoba.setText("Број особа:");
@@ -74,6 +77,56 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
 
         scrollTabelaStavki.setViewportView(tblStavke);
 
+        javax.swing.GroupLayout pnlStavkeLayout = new javax.swing.GroupLayout(pnlStavke);
+        pnlStavke.setLayout(pnlStavkeLayout);
+        pnlStavkeLayout.setHorizontalGroup(
+            pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStavkeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addGroup(pnlStavkeLayout.createSequentialGroup()
+                        .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAranzman)
+                            .addComponent(lblBrojOsoba)
+                            .addComponent(lblDatumPolaska)
+                            .addComponent(lblDatumDolaska))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbAranzman, 0, 390, Short.MAX_VALUE)
+                            .addComponent(txtBrojOsoba)
+                            .addComponent(txtDatumPolaska)
+                            .addGroup(pnlStavkeLayout.createSequentialGroup()
+                                .addComponent(txtDatumDolaska, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDodajStavku)))))
+                .addContainerGap())
+        );
+        pnlStavkeLayout.setVerticalGroup(
+            pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlStavkeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAranzman)
+                    .addComponent(cmbAranzman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblBrojOsoba)
+                    .addComponent(txtBrojOsoba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDatumPolaska)
+                    .addComponent(txtDatumPolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDatumDolaska)
+                    .addComponent(txtDatumDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDodajStavku))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         btnUkloniStavku.setText("Уклони ставку");
 
         btnSacuvajRezervaciju.setText("Сачувај резервацију");
@@ -85,30 +138,19 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAgent)
                             .addComponent(lblPutnik)
                             .addComponent(lblStatusPlacanja)
-                            .addComponent(lblNapomena)
-                            .addComponent(lblAranzman)
-                            .addComponent(lblBrojOsoba)
-                            .addComponent(lblDatumPolaska)
-                            .addComponent(lblDatumDolaska))
+                            .addComponent(lblNapomena))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbAgent, 0, 400, Short.MAX_VALUE)
                             .addComponent(cmbPutnik, 0, 400, Short.MAX_VALUE)
                             .addComponent(cmbStatusPlacanja, 0, 400, Short.MAX_VALUE)
-                            .addComponent(txtNapomena)
-                            .addComponent(cmbAranzman, 0, 400, Short.MAX_VALUE)
-                            .addComponent(txtBrojOsoba)
-                            .addComponent(txtDatumPolaska)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDatumDolaska, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDodajStavku))))
+                            .addComponent(txtNapomena)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnUkloniStavku)
@@ -136,24 +178,7 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
                     .addComponent(lblNapomena)
                     .addComponent(txtNapomena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAranzman)
-                    .addComponent(cmbAranzman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBrojOsoba)
-                    .addComponent(txtBrojOsoba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDatumPolaska)
-                    .addComponent(txtDatumPolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDatumDolaska)
-                    .addComponent(txtDatumDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDodajStavku))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUkloniStavku)
@@ -180,6 +205,7 @@ public class PromeniRezervacijaForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblNapomena;
     private javax.swing.JLabel lblPutnik;
     private javax.swing.JLabel lblStatusPlacanja;
+    private javax.swing.JPanel pnlStavke;
     private javax.swing.JScrollPane scrollTabelaStavki;
     private javax.swing.JTable tblStavke;
     private javax.swing.JTextField txtBrojOsoba;

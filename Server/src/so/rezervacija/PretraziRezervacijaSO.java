@@ -4,11 +4,14 @@
  */
 package so.rezervacija;
 
+import domain.Aranzman;
 import domain.GenericEntity;
 import domain.Rezervacija;
 import domain.StavkaRezervacije;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import so.AbstractSO;
 
 /**
@@ -35,10 +38,20 @@ public class PretraziRezervacijaSO extends AbstractSO {
         }
         List<GenericEntity> stavkeRedovi = repository.getAll(new StavkaRezervacije(),
                 "idRezervacija = ?", new Object[]{found.getIdRezervacija()});
-        List<StavkaRezervacije> stavke = new ArrayList<>();
+        List<StavkaRezervacije> stavke = new ArrayList<>();  
+        Map<Long, Aranzman> ucitaniAranzmani = new HashMap<>(); //Zbog zbog toga sto je  Aranzman plitak
         for (GenericEntity e : stavkeRedovi) {
             StavkaRezervacije s = (StavkaRezervacije) e;
             s.setRezervacija(found);
+            Long idAranzman = s.getAranzman() == null ? null : s.getAranzman().getIdAranzman();
+            if (idAranzman != null) {
+                Aranzman aranzman = ucitaniAranzmani.get(idAranzman);
+                if (aranzman == null) {
+                    aranzman = (Aranzman) repository.getById(new Aranzman(), idAranzman);
+                    ucitaniAranzmani.put(idAranzman, aranzman);
+                }
+                s.setAranzman(aranzman);
+            }
             stavke.add(s);
         }
         found.setStavke(stavke);

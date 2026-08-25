@@ -27,17 +27,13 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scrollTabelaStavki" pref="650" max="32767" attributes="0"/>
+                  <Component id="pnlStavke" pref="650" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblAgent" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPutnik" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblStatusPlacanja" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblNapomena" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAranzman" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblBrojOsoba" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDatumPolaska" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDatumDolaska" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -45,20 +41,10 @@
                           <Component id="cmbPutnik" max="32767" attributes="0"/>
                           <Component id="cmbStatusPlacanja" max="32767" attributes="0"/>
                           <Component id="txtNapomena" max="32767" attributes="0"/>
-                          <Component id="cmbAranzman" max="32767" attributes="0"/>
-                          <Component id="txtBrojOsoba" max="32767" attributes="0"/>
-                          <Component id="txtDatumPolaska" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="txtDatumDolaska" pref="220" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnDodajStavku" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnUkloniStavku" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSacuvajRezervaciju" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -90,33 +76,9 @@
                   <Component id="txtNapomena" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblAranzman" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbAranzman" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="pnlStavke" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblBrojOsoba" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtBrojOsoba" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDatumPolaska" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDatumPolaska" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblDatumDolaska" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtDatumDolaska" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnDodajStavku" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="scrollTabelaStavki" pref="200" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnUkloniStavku" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnSacuvajRezervaciju" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnSacuvajRezervaciju" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -169,60 +131,140 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNapomena">
     </Component>
-    <Component class="javax.swing.JLabel" name="lblAranzman">
+    <Container class="javax.swing.JPanel" name="pnlStavke">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Аранжман:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbAranzman">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Ставке"/>
+          </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblBrojOsoba">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Број особа:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtBrojOsoba">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblDatumPolaska">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Датум поласка (dd.MM.yyyy):"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDatumPolaska">
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblDatumDolaska">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Датум доласка (dd.MM.yyyy):"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtDatumDolaska">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDodajStavku">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Додај ставку"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="scrollTabelaStavki">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="scrollTabelaStavki" pref="610" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblAranzman" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblBrojOsoba" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDatumPolaska" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDatumDolaska" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbAranzman" pref="390" max="32767" attributes="0"/>
+                              <Component id="txtBrojOsoba" max="32767" attributes="0"/>
+                              <Component id="txtDatumPolaska" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtDatumDolaska" pref="220" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnDodajStavku" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnUkloniStavku" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAranzman" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbAranzman" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblBrojOsoba" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtBrojOsoba" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDatumPolaska" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDatumPolaska" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDatumDolaska" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDatumDolaska" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDodajStavku" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="scrollTabelaStavki" pref="200" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnUkloniStavku" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblStavke">
+        <Component class="javax.swing.JLabel" name="lblAranzman">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Аранжман:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbAranzman">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblBrojOsoba">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Број особа:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtBrojOsoba">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDatumPolaska">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Датум поласка (dd.MM.yyyy):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDatumPolaska">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDatumDolaska">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Датум доласка (dd.MM.yyyy):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDatumDolaska">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDodajStavku">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Додај ставку"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="scrollTabelaStavki">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="tblStavke">
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="btnUkloniStavku">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Уклони ставку"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnUkloniStavku">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Уклони ставку"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="btnSacuvajRezervaciju">
       <Properties>
         <Property name="text" type="java.lang.String" value="Сачувај резервацију"/>

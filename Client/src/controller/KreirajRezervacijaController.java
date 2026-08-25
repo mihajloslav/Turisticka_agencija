@@ -36,8 +36,34 @@ public class KreirajRezervacijaController {
     public KreirajRezervacijaController(KreirajRezervacijaForm form) {
         this.form = form;
         form.getTblStavke().setModel(tableModel);
+        postaviRendererStatusa();
         ucitajListe();
         addActionListeners();
+    }
+
+    /**
+     * Only the displayed text is Cyrillic here; the underlying combo values
+     * ("Ceka"/"Placeno") are unchanged and keep flowing through
+     * Communication/Server/SO/repository exactly as before. Any other
+     * pre-existing statusPlacanja value (e.g. already-Cyrillic legacy data)
+     * simply falls back to being shown as-is, never as raw Latin text.
+     */
+    private void postaviRendererStatusa() {
+        form.getCmbStatusPlacanja().setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                    int index, boolean isSelected, boolean cellHasFocus) {
+                String text;
+                if ("Ceka".equals(value)) {
+                    text = "Чека се";
+                } else if ("Placeno".equals(value)) {
+                    text = "Плаћено";
+                } else {
+                    text = value == null ? "" : value.toString();
+                }
+                return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
+            }
+        });
     }
 
     public void otvoriFormu() {
@@ -122,11 +148,17 @@ public class KreirajRezervacijaController {
                 throw new validation.ValidationException("Датум доласка мора бити после датума поласка.");
             }
 
+            double popust = brojOsoba >= 3 ? 0.1 : 0.0;
+            double cena = brojOsoba * aranzman.getCenaPoOsobi() * (1 - popust);
+
             StavkaRezervacije stavka = new StavkaRezervacije();
+            stavka.setRb(tableModel.getStavke().size() + 1);
             stavka.setAranzman(aranzman);
             stavka.setBrojOsoba(brojOsoba);
             stavka.setDatumPolaska(datumPolaska);
             stavka.setDatumDolaska(datumDolaska);
+            stavka.setPopust(popust);
+            stavka.setCena(cena);
             tableModel.dodajStavku(stavka);
 
             form.getTxtBrojOsoba().setText("");
@@ -146,6 +178,15 @@ public class KreirajRezervacijaController {
             return;
         }
         tableModel.ukloniStavku(red);
+        renumerisiStavke();
+        tableModel.fireTableDataChanged();
+    }
+
+    private void renumerisiStavke() {
+        List<StavkaRezervacije> stavke = tableModel.getStavke();
+        for (int i = 0; i < stavke.size(); i++) {
+            stavke.get(i).setRb(i + 1);
+        }
     }
 
     private void sacuvajRezervaciju() {
