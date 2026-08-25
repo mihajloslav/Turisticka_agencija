@@ -32,7 +32,7 @@ public class UbaciRegionForm extends javax.swing.JFrame {
         lblOznaka = new javax.swing.JLabel();
         txtOznaka = new javax.swing.JTextField();
         lblKontinent = new javax.swing.JLabel();
-        cmbKontinent = new javax.swing.JComboBox<>(new String[]{"Африка", "Азија", "Европа", "Северна Америка", "Јужна Америка", "Аустралија и Океанија", "Антарктик"});
+        cmbKontinent = new javax.swing.JComboBox();
         lblOpis = new javax.swing.JLabel();
         txtOpis = new javax.swing.JTextField();
         btnSacuvaj = new javax.swing.JButton();
@@ -45,6 +45,8 @@ public class UbaciRegionForm extends javax.swing.JFrame {
         lblOznaka.setText("Ознака:");
 
         lblKontinent.setText("Континент:");
+
+        cmbKontinent.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Африка", "Азија", "Европа", "Северна Америка", "Јужна Америка", "Аустралија и Океанија", "Антарктик" }));
 
         lblOpis.setText("Опис:");
 
@@ -65,9 +67,9 @@ public class UbaciRegionForm extends javax.swing.JFrame {
                             .addComponent(lblOpis))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                            .addComponent(txtNaziv, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                             .addComponent(txtOznaka)
-                            .addComponent(cmbKontinent, 0, 260, Short.MAX_VALUE)
+                            .addComponent(cmbKontinent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtOpis)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -99,11 +101,12 @@ public class UbaciRegionForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSacuvaj;
-    private javax.swing.JComboBox<java.lang.String> cmbKontinent;
+    private javax.swing.JComboBox cmbKontinent;
     private javax.swing.JLabel lblKontinent;
     private javax.swing.JLabel lblNaziv;
     private javax.swing.JLabel lblOpis;

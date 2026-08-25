@@ -36,7 +36,36 @@
                       <Component id="lblPrezime" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtPrezimeKriterijum" pref="140" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtEmailKriterijum" pref="160" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblTelefon" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtTelefonKriterijum" pref="140" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblJmbg" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtJmbgKriterijum" pref="140" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblBrojPasosa" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtBrojPasosaKriterijum" pref="140" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblMesto" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmbMestoKriterijum" pref="200" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblDatumRodjenja" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtDatumRodjenjaKriterijum" pref="140" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="btnPretrazi" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -59,10 +88,32 @@
                   <Component id="txtImeKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrezime" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPrezimeKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPretrazi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="scrollTabela" pref="300" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEmailKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTelefon" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTelefonKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblJmbg" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtJmbgKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBrojPasosa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBrojPasosaKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblMesto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbMestoKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDatumRodjenja" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDatumRodjenjaKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnPretrazi" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="scrollTabela" pref="220" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnPromeni" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -87,6 +138,53 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPrezimeKriterijum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Е-пошта:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEmailKriterijum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTelefon">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Телефон:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTelefonKriterijum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblJmbg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ЈМБГ:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtJmbgKriterijum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblBrojPasosa">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Број пасоша:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtBrojPasosaKriterijum">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMesto">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Место:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbMestoKriterijum">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDatumRodjenja">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Датум рођења (dd.MM.yyyy):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDatumRodjenjaKriterijum">
     </Component>
     <Component class="javax.swing.JButton" name="btnPretrazi">
       <Properties>

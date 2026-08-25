@@ -6,6 +6,7 @@ package controller;
 
 import client.communication.Communication;
 import domain.Putnik;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import view.form.ObrisiPutnikForm;
 
@@ -17,6 +18,7 @@ public class ObrisiPutnikController {
 
     private final ObrisiPutnikForm form;
     private final Putnik putnik;
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public ObrisiPutnikController(ObrisiPutnikForm form, Putnik putnik) {
         this.form = form;
@@ -36,7 +38,8 @@ public class ObrisiPutnikController {
                 + "Имејл: " + putnik.getEmail() + "<br>"
                 + "Телефон: " + putnik.getTelefon() + "<br>"
                 + "ЈМБГ: " + putnik.getJmbg() + "<br>"
-                + "Број пасоша: " + putnik.getBrojPasosa()
+                + "Број пасоша: " + putnik.getBrojPasosa() + "<br>"
+                + "Датум рођења: " + (putnik.getDatumRodjenja() == null ? "" : putnik.getDatumRodjenja().format(dtf))
                 + "</html>";
         form.getLblPodaci().setText(html);
     }

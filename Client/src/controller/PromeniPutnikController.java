@@ -7,6 +7,9 @@ package controller;
 import client.communication.Communication;
 import domain.Mesto;
 import domain.Putnik;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -20,8 +23,11 @@ import view.form.PromeniPutnikForm;
  */
 public class PromeniPutnikController {
 
+    private static final String TELEFON_REGEX = "^\\+[0-9]{12}$";
+
     private final PromeniPutnikForm form;
     private final Putnik putnik;
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT);
 
     public PromeniPutnikController(PromeniPutnikForm form, Putnik putnik) {
         this.form = form;
@@ -65,6 +71,9 @@ public class PromeniPutnikController {
         form.getTxtTelefon().setText(putnik.getTelefon());
         form.getTxtJmbg().setText(putnik.getJmbg());
         form.getTxtBrojPasosa().setText(putnik.getBrojPasosa());
+        if (putnik.getDatumRodjenja() != null) {
+            form.getTxtDatumRodjenja().setText(putnik.getDatumRodjenja().format(dtf));
+        }
     }
 
     private void addActionListeners() {
@@ -80,6 +89,7 @@ public class PromeniPutnikController {
             String jmbg = form.getTxtJmbg().getText().trim();
             String brojPasosa = form.getTxtBrojPasosa().getText().trim();
             Mesto mesto = (Mesto) form.getCmbMesto().getSelectedItem();
+            String datumRodjenjaText = form.getTxtDatumRodjenja().getText().trim();
 
             Validator.startValidation()
                     .validateNotNullOrEmpty(ime, "Име је обавезно.")
@@ -89,6 +99,7 @@ public class PromeniPutnikController {
                     .validateNotNullOrEmpty(jmbg, "ЈМБГ је обавезан.")
                     .validateNotNullOrEmpty(brojPasosa, "Број пасоша је обавезан.")
                     .validateNotNull(mesto, "Место је обавезно.")
+                    .validateValueIsDate(datumRodjenjaText, "dd.MM.uuuu", "Датум рођења није исправан.")
                     .throwIfInvalide();
 
             if (!email.contains("@")) {
@@ -97,6 +108,10 @@ public class PromeniPutnikController {
             if (jmbg.length() != 13) {
                 throw new validation.ValidationException("ЈМБГ мора имати тачно 13 карактера.");
             }
+            if (!telefon.matches(TELEFON_REGEX)) {
+                throw new validation.ValidationException("Телефон мора бити у формату +381123456789 (+ и тачно 12 цифара).");
+            }
+            LocalDate datumRodjenja = LocalDate.parse(datumRodjenjaText, dtf);
 
             putnik.setIme(ime);
             putnik.setPrezime(prezime);
@@ -105,6 +120,7 @@ public class PromeniPutnikController {
             putnik.setJmbg(jmbg);
             putnik.setBrojPasosa(brojPasosa);
             putnik.setMesto(mesto);
+            putnik.setDatumRodjenja(datumRodjenja);
 
             Communication.getInstance().promeniPutnik(putnik);
             JOptionPane.showMessageDialog(form, "Систем је запамтио путника.", "Успех", JOptionPane.INFORMATION_MESSAGE);

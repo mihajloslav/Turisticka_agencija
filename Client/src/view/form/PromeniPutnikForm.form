@@ -36,6 +36,7 @@
                           <Component id="lblJmbg" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblBrojPasosa" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblMesto" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDatumRodjenja" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -46,6 +47,7 @@
                           <Component id="txtJmbg" max="32767" attributes="0"/>
                           <Component id="txtBrojPasosa" max="32767" attributes="0"/>
                           <Component id="cmbMesto" max="32767" attributes="0"/>
+                          <Component id="txtDatumRodjenja" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -94,6 +96,11 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblMesto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbMesto" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblDatumRodjenja" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDatumRodjenja" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnSacuvaj" min="-2" max="-2" attributes="0"/>
@@ -156,6 +163,13 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDatumRodjenja">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Датум рођења (dd.MM.yyyy):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDatumRodjenja">
     </Component>
     <Component class="javax.swing.JButton" name="btnSacuvaj">
       <Properties>

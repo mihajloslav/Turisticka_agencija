@@ -43,6 +43,8 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
         txtBrojPasosa = new javax.swing.JTextField();
         lblMesto = new javax.swing.JLabel();
         cmbMesto = new javax.swing.JComboBox<>();
+        lblDatumRodjenja = new javax.swing.JLabel();
+        txtDatumRodjenja = new javax.swing.JTextField();
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -62,6 +64,8 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
 
         lblMesto.setText("Место:");
 
+        lblDatumRodjenja.setText("Датум рођења (dd.MM.yyyy):");
+
         btnSacuvaj.setText("Сачувај");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -79,7 +83,8 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
                             .addComponent(lblTelefon)
                             .addComponent(lblJmbg)
                             .addComponent(lblBrojPasosa)
-                            .addComponent(lblMesto))
+                            .addComponent(lblMesto)
+                            .addComponent(lblDatumRodjenja))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtIme, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
@@ -88,7 +93,8 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
                             .addComponent(txtTelefon)
                             .addComponent(txtJmbg)
                             .addComponent(txtBrojPasosa)
-                            .addComponent(cmbMesto, 0, 260, Short.MAX_VALUE)))
+                            .addComponent(cmbMesto, 0, 260, Short.MAX_VALUE)
+                            .addComponent(txtDatumRodjenja)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnSacuvaj)))
@@ -125,6 +131,10 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMesto)
                     .addComponent(cmbMesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDatumRodjenja)
+                    .addComponent(txtDatumRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSacuvaj)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -137,6 +147,7 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
     private javax.swing.JButton btnSacuvaj;
     private javax.swing.JComboBox<domain.Mesto> cmbMesto;
     private javax.swing.JLabel lblBrojPasosa;
+    private javax.swing.JLabel lblDatumRodjenja;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblIme;
     private javax.swing.JLabel lblJmbg;
@@ -144,6 +155,7 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblPrezime;
     private javax.swing.JLabel lblTelefon;
     private javax.swing.JTextField txtBrojPasosa;
+    private javax.swing.JTextField txtDatumRodjenja;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtJmbg;
@@ -177,6 +189,10 @@ public class PromeniPutnikForm extends javax.swing.JFrame {
 
     public javax.swing.JComboBox<domain.Mesto> getCmbMesto() {
         return cmbMesto;
+    }
+
+    public javax.swing.JTextField getTxtDatumRodjenja() {
+        return txtDatumRodjenja;
     }
 
     public javax.swing.JButton getBtnSacuvaj() {

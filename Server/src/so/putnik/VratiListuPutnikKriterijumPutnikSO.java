@@ -39,6 +39,14 @@ public class VratiListuPutnikKriterijumPutnikSO extends AbstractSO {
                 where.append(where.length() == 0 ? "" : " AND ").append("prezime = ?");
                 params.add(criteria.getPrezime());
             }
+            if (criteria.getEmail() != null && !criteria.getEmail().isEmpty()) {
+                where.append(where.length() == 0 ? "" : " AND ").append("email = ?");
+                params.add(criteria.getEmail());
+            }
+            if (criteria.getTelefon() != null && !criteria.getTelefon().isEmpty()) {
+                where.append(where.length() == 0 ? "" : " AND ").append("telefon = ?");
+                params.add(criteria.getTelefon());
+            }
             if (criteria.getJmbg() != null && !criteria.getJmbg().isEmpty()) {
                 where.append(where.length() == 0 ? "" : " AND ").append("jmbg = ?");
                 params.add(criteria.getJmbg());
@@ -46,6 +54,14 @@ public class VratiListuPutnikKriterijumPutnikSO extends AbstractSO {
             if (criteria.getBrojPasosa() != null && !criteria.getBrojPasosa().isEmpty()) {
                 where.append(where.length() == 0 ? "" : " AND ").append("brojPasosa = ?");
                 params.add(criteria.getBrojPasosa());
+            }
+            if (criteria.getMesto() != null && criteria.getMesto().getIdMesto() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("idMesto = ?");
+                params.add(criteria.getMesto().getIdMesto());
+            }
+            if (criteria.getDatumRodjenja() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("datumRodjenja = ?");
+                params.add(java.sql.Date.valueOf(criteria.getDatumRodjenja()));
             }
         }
         List<GenericEntity> found = repository.getAll(new Putnik(), where.toString(), params.toArray());

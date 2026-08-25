@@ -24,10 +24,11 @@ public class KreirajPutnikSO extends AbstractSO {
         if (p.getIme() == null || p.getIme().isEmpty()
                 || p.getPrezime() == null || p.getPrezime().isEmpty()
                 || p.getEmail() == null || !p.getEmail().contains("@")
-                || p.getTelefon() == null || p.getTelefon().isEmpty()
+                || p.getTelefon() == null || !p.getTelefon().matches("^\\+[0-9]{12}$")
                 || p.getJmbg() == null || p.getJmbg().length() != 13
                 || p.getBrojPasosa() == null || p.getBrojPasosa().isEmpty()
-                || p.getMesto() == null || p.getMesto().getIdMesto() == null) {
+                || p.getMesto() == null || p.getMesto().getIdMesto() == null
+                || p.getDatumRodjenja() == null) {
             throw new Exception("Систем не може да креира путника");
         }
     }

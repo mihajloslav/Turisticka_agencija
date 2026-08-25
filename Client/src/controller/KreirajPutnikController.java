@@ -7,6 +7,9 @@ package controller;
 import client.communication.Communication;
 import domain.Mesto;
 import domain.Putnik;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -20,7 +23,10 @@ import view.form.KreirajPutnikForm;
  */
 public class KreirajPutnikController {
 
+    private static final String TELEFON_REGEX = "^\\+[0-9]{12}$";
+
     private final KreirajPutnikForm form;
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT);
 
     public KreirajPutnikController(KreirajPutnikForm form) {
         this.form = form;
@@ -62,6 +68,7 @@ public class KreirajPutnikController {
             String jmbg = form.getTxtJmbg().getText().trim();
             String brojPasosa = form.getTxtBrojPasosa().getText().trim();
             Mesto mesto = (Mesto) form.getCmbMesto().getSelectedItem();
+            String datumRodjenjaText = form.getTxtDatumRodjenja().getText().trim();
 
             Validator.startValidation()
                     .validateNotNullOrEmpty(ime, "Име је обавезно.")
@@ -71,6 +78,7 @@ public class KreirajPutnikController {
                     .validateNotNullOrEmpty(jmbg, "ЈМБГ је обавезан.")
                     .validateNotNullOrEmpty(brojPasosa, "Број пасоша је обавезан.")
                     .validateNotNull(mesto, "Место је обавезно.")
+                    .validateValueIsDate(datumRodjenjaText, "dd.MM.uuuu", "Датум рођења није исправан.")
                     .throwIfInvalide();
 
             if (!email.contains("@")) {
@@ -79,6 +87,10 @@ public class KreirajPutnikController {
             if (jmbg.length() != 13) {
                 throw new validation.ValidationException("ЈМБГ мора имати тачно 13 карактера.");
             }
+            if (!telefon.matches(TELEFON_REGEX)) {
+                throw new validation.ValidationException("Телефон мора бити у формату +381123456789 (+ и тачно 12 цифара).");
+            }
+            LocalDate datumRodjenja = LocalDate.parse(datumRodjenjaText, dtf);
 
             Putnik putnik = new Putnik();
             putnik.setIme(ime);
@@ -88,6 +100,7 @@ public class KreirajPutnikController {
             putnik.setJmbg(jmbg);
             putnik.setBrojPasosa(brojPasosa);
             putnik.setMesto(mesto);
+            putnik.setDatumRodjenja(datumRodjenja);
 
             Communication.getInstance().kreirajPutnik(putnik);
             JOptionPane.showMessageDialog(form, "Систем је креирао путника", "Успех", JOptionPane.INFORMATION_MESSAGE);

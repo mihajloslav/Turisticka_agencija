@@ -31,6 +31,18 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
         txtImeKriterijum = new javax.swing.JTextField();
         lblPrezime = new javax.swing.JLabel();
         txtPrezimeKriterijum = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        txtEmailKriterijum = new javax.swing.JTextField();
+        lblTelefon = new javax.swing.JLabel();
+        txtTelefonKriterijum = new javax.swing.JTextField();
+        lblJmbg = new javax.swing.JLabel();
+        txtJmbgKriterijum = new javax.swing.JTextField();
+        lblBrojPasosa = new javax.swing.JLabel();
+        txtBrojPasosaKriterijum = new javax.swing.JTextField();
+        lblMesto = new javax.swing.JLabel();
+        cmbMestoKriterijum = new javax.swing.JComboBox<>();
+        lblDatumRodjenja = new javax.swing.JLabel();
+        txtDatumRodjenjaKriterijum = new javax.swing.JTextField();
         btnPretrazi = new javax.swing.JButton();
         scrollTabela = new javax.swing.JScrollPane();
         tblPutnici = new javax.swing.JTable();
@@ -43,6 +55,18 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
         lblIme.setText("Име:");
 
         lblPrezime.setText("Презиме:");
+
+        lblEmail.setText("Е-пошта:");
+
+        lblTelefon.setText("Телефон:");
+
+        lblJmbg.setText("ЈМБГ:");
+
+        lblBrojPasosa.setText("Број пасоша:");
+
+        lblMesto.setText("Место:");
+
+        lblDatumRodjenja.setText("Датум рођења (dd.MM.yyyy):");
 
         btnPretrazi.setText("Претражи");
 
@@ -67,8 +91,33 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPrezime)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrezimeKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        .addComponent(txtPrezimeKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblEmail)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmailKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTelefon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTelefonKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblJmbg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtJmbgKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblBrojPasosa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBrojPasosaKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblMesto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbMestoKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblDatumRodjenja)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDatumRodjenjaKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPretrazi))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -85,10 +134,29 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
                     .addComponent(lblIme)
                     .addComponent(txtImeKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrezime)
-                    .addComponent(txtPrezimeKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPretrazi))
+                    .addComponent(txtPrezimeKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabela, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmailKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTelefon)
+                    .addComponent(txtTelefonKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblJmbg)
+                    .addComponent(txtJmbgKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblBrojPasosa)
+                    .addComponent(txtBrojPasosaKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMesto)
+                    .addComponent(cmbMestoKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDatumRodjenja)
+                    .addComponent(txtDatumRodjenjaKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPretrazi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollTabela, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPromeni)
@@ -103,12 +171,24 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPretrazi;
     private javax.swing.JButton btnPromeni;
+    private javax.swing.JComboBox<domain.Mesto> cmbMestoKriterijum;
+    private javax.swing.JLabel lblBrojPasosa;
+    private javax.swing.JLabel lblDatumRodjenja;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblIme;
+    private javax.swing.JLabel lblJmbg;
+    private javax.swing.JLabel lblMesto;
     private javax.swing.JLabel lblPrezime;
+    private javax.swing.JLabel lblTelefon;
     private javax.swing.JScrollPane scrollTabela;
     private javax.swing.JTable tblPutnici;
+    private javax.swing.JTextField txtBrojPasosaKriterijum;
+    private javax.swing.JTextField txtDatumRodjenjaKriterijum;
+    private javax.swing.JTextField txtEmailKriterijum;
     private javax.swing.JTextField txtImeKriterijum;
+    private javax.swing.JTextField txtJmbgKriterijum;
     private javax.swing.JTextField txtPrezimeKriterijum;
+    private javax.swing.JTextField txtTelefonKriterijum;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JTextField getTxtImeKriterijum() {
@@ -117,6 +197,30 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
 
     public javax.swing.JTextField getTxtPrezimeKriterijum() {
         return txtPrezimeKriterijum;
+    }
+
+    public javax.swing.JTextField getTxtEmailKriterijum() {
+        return txtEmailKriterijum;
+    }
+
+    public javax.swing.JTextField getTxtTelefonKriterijum() {
+        return txtTelefonKriterijum;
+    }
+
+    public javax.swing.JTextField getTxtJmbgKriterijum() {
+        return txtJmbgKriterijum;
+    }
+
+    public javax.swing.JTextField getTxtBrojPasosaKriterijum() {
+        return txtBrojPasosaKriterijum;
+    }
+
+    public javax.swing.JComboBox<domain.Mesto> getCmbMestoKriterijum() {
+        return cmbMestoKriterijum;
+    }
+
+    public javax.swing.JTextField getTxtDatumRodjenjaKriterijum() {
+        return txtDatumRodjenjaKriterijum;
     }
 
     public javax.swing.JButton getBtnPretrazi() {

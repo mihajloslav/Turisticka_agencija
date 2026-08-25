@@ -5,6 +5,7 @@
 package view.components;
 
 import domain.Putnik;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -15,8 +16,9 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelPutnik extends AbstractTableModel {
 
     private List<Putnik> putnici;
-    private String[] columnNames = new String[]{"Име", "Презиме", "Имејл", "Телефон", "ЈМБГ", "Број пасоша"};
-    private Class[] columnClass = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class};
+    private String[] columnNames = new String[]{"Име", "Презиме", "Имејл", "Телефон", "ЈМБГ", "Број пасоша", "Датум рођења"};
+    private Class[] columnClass = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class, String.class};
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public TableModelPutnik(List<Putnik> putnici) {
         this.putnici = putnici;
@@ -75,6 +77,8 @@ public class TableModelPutnik extends AbstractTableModel {
                 return putnik.getJmbg();
             case 5:
                 return putnik.getBrojPasosa();
+            case 6:
+                return putnik.getDatumRodjenja() == null ? "" : putnik.getDatumRodjenja().format(dtf);
             default:
                 return "н/д";
         }

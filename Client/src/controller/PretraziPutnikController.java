@@ -6,9 +6,16 @@ package controller;
 
 import client.communication.Communication;
 import coordinator.Coordinator;
+import domain.Mesto;
 import domain.Putnik;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.JOptionPane;
+import validation.Validator;
 import view.components.TableModelPutnik;
 import view.form.PretraziPutnikForm;
 
@@ -19,14 +26,38 @@ import view.form.PretraziPutnikForm;
 public class PretraziPutnikController {
 
     private final PretraziPutnikForm form;
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT);
 
     public PretraziPutnikController(PretraziPutnikForm form) {
         this.form = form;
+        ucitajMesta();
         addActionListeners();
     }
 
     public void otvoriFormu() {
         form.setVisible(true);
+    }
+
+    private void ucitajMesta() {
+        try {
+            List<Mesto> mesta = Communication.getInstance().vratiListuSviMesto();
+            DefaultComboBoxModel<Mesto> model = new DefaultComboBoxModel<>();
+            model.addElement(null);
+            for (Mesto m : mesta) {
+                model.addElement(m);
+            }
+            form.getCmbMestoKriterijum().setModel(model);
+            form.getCmbMestoKriterijum().setRenderer(new DefaultListCellRenderer() {
+                @Override
+                public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
+                        int index, boolean isSelected, boolean cellHasFocus) {
+                    String text = value instanceof Mesto ? ((Mesto) value).getNaziv() : "Сва места";
+                    return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
+                }
+            });
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void addActionListeners() {
@@ -39,10 +70,28 @@ public class PretraziPutnikController {
         try {
             String ime = form.getTxtImeKriterijum().getText().trim();
             String prezime = form.getTxtPrezimeKriterijum().getText().trim();
+            String email = form.getTxtEmailKriterijum().getText().trim();
+            String telefon = form.getTxtTelefonKriterijum().getText().trim();
+            String jmbg = form.getTxtJmbgKriterijum().getText().trim();
+            String brojPasosa = form.getTxtBrojPasosaKriterijum().getText().trim();
+            Mesto mesto = (Mesto) form.getCmbMestoKriterijum().getSelectedItem();
+            String datumRodjenjaText = form.getTxtDatumRodjenjaKriterijum().getText().trim();
+
+            if (!datumRodjenjaText.isEmpty()) {
+                Validator.startValidation()
+                        .validateValueIsDate(datumRodjenjaText, "dd.MM.uuuu", "Датум рођења није исправан.")
+                        .throwIfInvalide();
+            }
 
             Putnik kriterijum = new Putnik();
             kriterijum.setIme(ime.isEmpty() ? null : ime);
             kriterijum.setPrezime(prezime.isEmpty() ? null : prezime);
+            kriterijum.setEmail(email.isEmpty() ? null : email);
+            kriterijum.setTelefon(telefon.isEmpty() ? null : telefon);
+            kriterijum.setJmbg(jmbg.isEmpty() ? null : jmbg);
+            kriterijum.setBrojPasosa(brojPasosa.isEmpty() ? null : brojPasosa);
+            kriterijum.setMesto(mesto);
+            kriterijum.setDatumRodjenja(datumRodjenjaText.isEmpty() ? null : LocalDate.parse(datumRodjenjaText, dtf));
 
             List<Putnik> rezultat = Communication.getInstance().vratiListuPutnikKriterijumPutnik(kriterijum);
 
@@ -56,6 +105,8 @@ public class PretraziPutnikController {
                         "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             }
             form.getTblPutnici().setModel(new TableModelPutnik(rezultat));
+        } catch (validation.ValidationException vex) {
+            JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }

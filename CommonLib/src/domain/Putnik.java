@@ -6,6 +6,7 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -22,12 +23,13 @@ public class Putnik implements GenericEntity {
     private String jmbg;
     private String brojPasosa;
     private Mesto mesto;
+    private LocalDate datumRodjenja;
 
     public Putnik() {
     }
 
     public Putnik(Long idPutnik, String ime, String prezime, String email, String telefon,
-            String jmbg, String brojPasosa, Mesto mesto) {
+            String jmbg, String brojPasosa, Mesto mesto, LocalDate datumRodjenja) {
         this.idPutnik = idPutnik;
         this.ime = ime;
         this.prezime = prezime;
@@ -36,6 +38,7 @@ public class Putnik implements GenericEntity {
         this.jmbg = jmbg;
         this.brojPasosa = brojPasosa;
         this.mesto = mesto;
+        this.datumRodjenja = datumRodjenja;
     }
 
     public Long getIdPutnik() {
@@ -102,11 +105,19 @@ public class Putnik implements GenericEntity {
         this.mesto = mesto;
     }
 
+    public LocalDate getDatumRodjenja() {
+        return datumRodjenja;
+    }
+
+    public void setDatumRodjenja(LocalDate datumRodjenja) {
+        this.datumRodjenja = datumRodjenja;
+    }
+
     @Override
     public String toString() {
         return "Putnik{idPutnik=" + idPutnik + ", ime=" + ime + ", prezime=" + prezime
                 + ", email=" + email + ", telefon=" + telefon + ", jmbg=" + jmbg
-                + ", brojPasosa=" + brojPasosa
+                + ", brojPasosa=" + brojPasosa + ", datumRodjenja=" + datumRodjenja
                 + ", idMesto=" + (mesto == null ? null : mesto.getIdMesto()) + '}';
     }
 
@@ -133,14 +144,15 @@ public class Putnik implements GenericEntity {
 
     @Override
     public String getColumnNamesForInsert() {
-        return "ime, prezime, email, telefon, jmbg, brojPasosa, idMesto";
+        return "ime, prezime, email, telefon, jmbg, brojPasosa, idMesto, datumRodjenja";
     }
 
     @Override
     public Object[] getInsertValues() {
         return new Object[]{
             ime, prezime, email, telefon, jmbg, brojPasosa,
-            mesto == null ? null : mesto.getIdMesto()
+            mesto == null ? null : mesto.getIdMesto(),
+            datumRodjenja == null ? null : java.sql.Date.valueOf(datumRodjenja)
         };
     }
 
@@ -166,7 +178,7 @@ public class Putnik implements GenericEntity {
 
     @Override
     public String getUpdateSetClause() {
-        return "ime = ?, prezime = ?, email = ?, telefon = ?, jmbg = ?, brojPasosa = ?, idMesto = ?";
+        return "ime = ?, prezime = ?, email = ?, telefon = ?, jmbg = ?, brojPasosa = ?, idMesto = ?, datumRodjenja = ?";
     }
 
     @Override
@@ -187,6 +199,8 @@ public class Putnik implements GenericEntity {
         Mesto m = new Mesto();
         m.setIdMesto(rs.getLong("idMesto"));
         p.setMesto(m);
+        java.sql.Date datumRodjenjaSql = rs.getDate("datumRodjenja");
+        p.setDatumRodjenja(datumRodjenjaSql == null ? null : datumRodjenjaSql.toLocalDate());
         return p;
     }
 }
