@@ -42,7 +42,7 @@ public class MainController {
     private void prikaziPrijavljenogAgenta() {
         Agent agent = Coordinator.getInstance().getCurrentAgent();
         if (agent != null) {
-            form.getLblAgent().setText("Agent: " + agent.getIme() + " " + agent.getPrezime());
+            form.getLblAgent().setText("Агент: " + agent.getIme() + " " + agent.getPrezime());
         }
     }
 
@@ -68,7 +68,7 @@ public class MainController {
             FlatLaf.updateUI();
             oznaciIzabranuTemu(izabrana);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -83,7 +83,7 @@ public class MainController {
 
     private void oProgramu() {
         JOptionPane.showMessageDialog(form,
-                "Turistička agencija\nSeminarski rad - Projektovanje softvera",
-                "O programu", JOptionPane.INFORMATION_MESSAGE);
+                "Туристичка агенција\nСеминарски рад - Пројектовање софтвера",
+                "О програму", JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -68,7 +68,7 @@ public class Controller {
             serverThread = new ServerThread(port, listener);
             serverThread.start();
             if (listener != null) {
-                listener.onLog("Server pokrenut na portu " + port);
+                listener.onLog("Сервер покренут на порту " + port);
                 listener.onPromenaStatusa(true);
             }
         }
@@ -79,7 +79,7 @@ public class Controller {
                 && !serverThread.getServerSocket().isClosed()) {
             serverThread.getServerSocket().close();
             if (listener != null) {
-                listener.onLog("Server zaustavljen");
+                listener.onLog("Сервер заустављен");
                 listener.onPromenaStatusa(false);
             }
         }
@@ -120,7 +120,7 @@ public class Controller {
         so.execute(new String[]{korisnickoIme, sifra});
         Agent agent = so.getAgent();
         if (!aktivniAgenti.add(agent.getIdAgent())) {
-            throw new Exception("Agent je već prijavljen na sistemu.");
+            throw new Exception("Агент је већ пријављен на систему.");
         }
         return agent;
     }

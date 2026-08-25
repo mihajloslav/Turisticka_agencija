@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuTema">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tema"/>
+            <Property name="text" type="java.lang.String" value="Тема"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="miTemaLight">
@@ -46,7 +46,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Turisti&#x10d;ka agencija"/>
+    <Property name="title" type="java.lang.String" value="Туристичка агенција"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="menuBar"/>
@@ -133,7 +133,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="22" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Turisti&#x10d;ka agencija"/>
+            <Property name="text" type="java.lang.String" value="Туристичка агенција"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblAgent">
@@ -141,12 +141,12 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="13" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Agent: -"/>
+            <Property name="text" type="java.lang.String" value="Агент: -"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnOProgramu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="O programu"/>
+            <Property name="text" type="java.lang.String" value="О програму"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -155,7 +155,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Rezervacije"/>
+            <TitledBorder title="Резервације"/>
           </Border>
         </Property>
       </Properties>
@@ -191,7 +191,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="\ud83e\uddf3  Kreiraj rezervaciju" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="\ud83e\uddf3  \u041a\u0440\u0435\u0438\u0440\u0430\u0458 \u0440\u0435\u0437\u0435\u0440\u0432\u0430\u0446\u0438\u0458\u0443" containsInvalidXMLChars="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnPretraziRezervaciju">
@@ -199,7 +199,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="\ud83d\udd0d  Pretra&#x17e;i rezervaciju" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="\ud83d\udd0d  \u041f\u0440\u0435\u0442\u0440\u0430\u0436\u0438 \u0440\u0435\u0437\u0435\u0440\u0432\u0430\u0446\u0438\u0458\u0443" containsInvalidXMLChars="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -208,7 +208,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Putnici"/>
+            <TitledBorder title="Путници"/>
           </Border>
         </Property>
       </Properties>
@@ -244,7 +244,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="\ud83e\uddd1  Kreiraj putnika" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="\ud83e\uddd1  \u041a\u0440\u0435\u0438\u0440\u0430\u0458 \u043f\u0443\u0442\u043d\u0438\u043a\u0430" containsInvalidXMLChars="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnPretraziPutnika">
@@ -252,7 +252,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="\ud83d\udd0d  Pretra&#x17e;i putnika" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="\ud83d\udd0d  \u041f\u0440\u0435\u0442\u0440\u0430\u0436\u0438 \u043f\u0443\u0442\u043d\u0438\u043a\u0430" containsInvalidXMLChars="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -261,7 +261,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Regioni"/>
+            <TitledBorder title="Региони"/>
           </Border>
         </Property>
       </Properties>
@@ -292,7 +292,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="\ud83c\udf0d  Ubaci region" containsInvalidXMLChars="true"/>
+            <Property name="text" type="java.lang.String" value="\ud83c\udf0d  \u0423\u0431\u0430\u0446\u0438 \u0440\u0435\u0433\u0438\u043e\u043d" containsInvalidXMLChars="true"/>
           </Properties>
         </Component>
       </SubComponents>

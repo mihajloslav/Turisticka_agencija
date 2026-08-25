@@ -38,17 +38,17 @@ public class UbaciRegionForm extends javax.swing.JFrame {
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Ubaci region");
+        setTitle("Убаци регион");
 
-        lblNaziv.setText("Naziv:");
+        lblNaziv.setText("Назив:");
 
-        lblOznaka.setText("Oznaka:");
+        lblOznaka.setText("Ознака:");
 
-        lblKontinent.setText("Kontinent:");
+        lblKontinent.setText("Континент:");
 
-        lblOpis.setText("Opis:");
+        lblOpis.setText("Опис:");
 
-        btnSacuvaj.setText("Sačuvaj");
+        btnSacuvaj.setText("Сачувај");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

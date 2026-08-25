@@ -38,8 +38,8 @@ public class PrijaviAgentController {
             String sifra = String.valueOf(form.getTxtSifra().getPassword());
 
             Validator.startValidation()
-                    .validateNotNullOrEmpty(korisnickoIme, "Korisničko ime je obavezno.")
-                    .validateNotNullOrEmpty(sifra, "Šifra je obavezna.")
+                    .validateNotNullOrEmpty(korisnickoIme, "Корисничко име је обавезно.")
+                    .validateNotNullOrEmpty(sifra, "Шифра је обавезна.")
                     .throwIfInvalide();
 
             Agent agent = Communication.getInstance().prijaviAgent(korisnickoIme, sifra);
@@ -48,7 +48,7 @@ public class PrijaviAgentController {
             form.dispose();
             Coordinator.getInstance().otvoriGlavnuFormu();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

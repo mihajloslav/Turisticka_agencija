@@ -31,12 +31,12 @@ public class ObrisiPutnikController {
 
     private void prikaziPodatke() {
         String html = "<html>"
-                + "Ime: " + putnik.getIme() + "<br>"
-                + "Prezime: " + putnik.getPrezime() + "<br>"
-                + "Email: " + putnik.getEmail() + "<br>"
-                + "Telefon: " + putnik.getTelefon() + "<br>"
-                + "JMBG: " + putnik.getJmbg() + "<br>"
-                + "Broj pasoša: " + putnik.getBrojPasosa()
+                + "Име: " + putnik.getIme() + "<br>"
+                + "Презиме: " + putnik.getPrezime() + "<br>"
+                + "Имејл: " + putnik.getEmail() + "<br>"
+                + "Телефон: " + putnik.getTelefon() + "<br>"
+                + "ЈМБГ: " + putnik.getJmbg() + "<br>"
+                + "Број пасоша: " + putnik.getBrojPasosa()
                 + "</html>";
         form.getLblPodaci().setText(html);
     }
@@ -49,10 +49,10 @@ public class ObrisiPutnikController {
     private void obrisi() {
         try {
             Communication.getInstance().obrisiPutnik(putnik);
-            JOptionPane.showMessageDialog(form, "Putnik je obrisan.");
+            JOptionPane.showMessageDialog(form, "Путник је обрисан.");
             form.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

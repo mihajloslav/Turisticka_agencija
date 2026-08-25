@@ -16,9 +16,9 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelRezervacija extends AbstractTableModel {
 
     private List<Rezervacija> rezervacije;
-    private String[] columnNames = new String[]{"ID", "Datum kreiranja", "Status plaćanja", "Ukupan iznos"};
+    private String[] columnNames = new String[]{"ИД", "Датум креирања", "Статус плаћања", "Укупан износ"};
     private Class[] columnClass = new Class[]{Long.class, String.class, String.class, Double.class};
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public TableModelRezervacija(List<Rezervacija> rezervacije) {
         this.rezervacije = rezervacije;
@@ -41,7 +41,7 @@ public class TableModelRezervacija extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         if (column >= columnNames.length) {
-            return "n/a";
+            return "н/д";
         } else {
             return columnNames[column];
         }
@@ -74,7 +74,7 @@ public class TableModelRezervacija extends AbstractTableModel {
             case 3:
                 return rezervacija.getUkupanIznos();
             default:
-                return "n/a";
+                return "н/д";
         }
     }
 

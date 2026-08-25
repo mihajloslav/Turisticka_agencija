@@ -26,7 +26,7 @@ import view.form.PretraziRezervacijaForm;
 public class PretraziRezervacijaController {
 
     private final PretraziRezervacijaForm form;
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public PretraziRezervacijaController(PretraziRezervacijaForm form) {
         this.form = form;
@@ -73,7 +73,7 @@ public class PretraziRezervacijaController {
                 }
             });
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -89,8 +89,8 @@ public class PretraziRezervacijaController {
     private void prikaziRezultat(List<Rezervacija> rezultat) {
         if (rezultat.isEmpty()) {
             JOptionPane.showMessageDialog(form,
-                    "Sistem ne može da nađe rezervacije po zadatim kriterijumima",
-                    "Rezultat pretrage", JOptionPane.INFORMATION_MESSAGE);
+                    "Систем не може да нађе резервације по задатим критеријумима",
+                    "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
         }
         form.getTblRezervacije().setModel(new TableModelRezervacija(rezultat));
         form.getTxtAreaDetalji().setText("");
@@ -103,7 +103,7 @@ public class PretraziRezervacijaController {
             kriterijum.setStatusPlacanja(status.isEmpty() ? null : status);
             prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -115,7 +115,7 @@ public class PretraziRezervacijaController {
             }
             prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumAgent(agent));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -127,7 +127,7 @@ public class PretraziRezervacijaController {
             }
             prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumPutnik(putnik));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -139,14 +139,14 @@ public class PretraziRezervacijaController {
             }
             prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumAranzman(aranzman));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private Rezervacija selektovanaRezervacija() {
         int red = form.getTblRezervacije().getSelectedRow();
         if (red < 0) {
-            JOptionPane.showMessageDialog(form, "Izaberite rezervaciju iz liste.", "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Изаберите резервацију из листе.", "Грешка", JOptionPane.ERROR_MESSAGE);
             return null;
         }
         TableModelRezervacija model = (TableModelRezervacija) form.getTblRezervacije().getModel();
@@ -162,25 +162,25 @@ public class PretraziRezervacijaController {
             Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
             form.getTxtAreaDetalji().setText(formatirajDetalje(rezervacija));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private String formatirajDetalje(Rezervacija rezervacija) {
         StringBuilder sb = new StringBuilder();
-        sb.append("ID rezervacije: ").append(rezervacija.getIdRezervacija()).append("\n");
-        sb.append("Datum kreiranja: ").append(rezervacija.getDatumKreiranja() == null ? "" : rezervacija.getDatumKreiranja().format(dtf)).append("\n");
-        sb.append("Status plaćanja: ").append(rezervacija.getStatusPlacanja()).append("\n");
-        sb.append("Ukupan iznos: ").append(rezervacija.getUkupanIznos()).append("\n");
-        sb.append("Napomena: ").append(rezervacija.getNapomena() == null ? "" : rezervacija.getNapomena()).append("\n");
-        sb.append("Stavke:\n");
+        sb.append("ИД резервације: ").append(rezervacija.getIdRezervacija()).append("\n");
+        sb.append("Датум креирања: ").append(rezervacija.getDatumKreiranja() == null ? "" : rezervacija.getDatumKreiranja().format(dtf)).append("\n");
+        sb.append("Статус плаћања: ").append(rezervacija.getStatusPlacanja()).append("\n");
+        sb.append("Укупан износ: ").append(rezervacija.getUkupanIznos()).append("\n");
+        sb.append("Напомена: ").append(rezervacija.getNapomena() == null ? "" : rezervacija.getNapomena()).append("\n");
+        sb.append("Ставке:\n");
         for (StavkaRezervacije s : rezervacija.getStavke()) {
-            sb.append("  - rb ").append(s.getRb())
-                    .append(", broj osoba: ").append(s.getBrojOsoba())
-                    .append(", polazak: ").append(s.getDatumPolaska() == null ? "" : s.getDatumPolaska().format(dtf))
-                    .append(", dolazak: ").append(s.getDatumDolaska() == null ? "" : s.getDatumDolaska().format(dtf))
-                    .append(", popust: ").append(s.getPopust())
-                    .append(", cena: ").append(s.getCena())
+            sb.append("  - рб ").append(s.getRb())
+                    .append(", број особа: ").append(s.getBrojOsoba())
+                    .append(", полазак: ").append(s.getDatumPolaska() == null ? "" : s.getDatumPolaska().format(dtf))
+                    .append(", долазак: ").append(s.getDatumDolaska() == null ? "" : s.getDatumDolaska().format(dtf))
+                    .append(", попуст: ").append(s.getPopust())
+                    .append(", цена: ").append(s.getCena())
                     .append("\n");
         }
         return sb.toString();
@@ -195,7 +195,7 @@ public class PretraziRezervacijaController {
             Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
             Coordinator.getInstance().otvoriPromeniRezervacijaFormu(rezervacija);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

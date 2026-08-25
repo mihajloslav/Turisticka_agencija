@@ -50,31 +50,31 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
         btnSacuvajRezervaciju = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Kreiraj rezervaciju");
+        setTitle("Креирај резервацију");
 
-        lblAgent.setText("Agent:");
+        lblAgent.setText("Агент:");
 
-        lblPutnik.setText("Putnik:");
+        lblPutnik.setText("Путник:");
 
-        lblStatusPlacanja.setText("Status plaćanja:");
+        lblStatusPlacanja.setText("Статус плаћања:");
 
-        lblNapomena.setText("Napomena:");
+        lblNapomena.setText("Напомена:");
 
-        lblAranzman.setText("Aranžman:");
+        lblAranzman.setText("Аранжман:");
 
-        lblBrojOsoba.setText("Broj osoba:");
+        lblBrojOsoba.setText("Број особа:");
 
-        lblDatumPolaska.setText("Datum polaska (dd.MM.yyyy.):");
+        lblDatumPolaska.setText("Датум поласка (dd.MM.yyyy):");
 
-        lblDatumDolaska.setText("Datum dolaska (dd.MM.yyyy.):");
+        lblDatumDolaska.setText("Датум доласка (dd.MM.yyyy):");
 
-        btnDodajStavku.setText("Dodaj stavku");
+        btnDodajStavku.setText("Додај ставку");
 
         scrollTabelaStavki.setViewportView(tblStavke);
 
-        btnUkloniStavku.setText("Ukloni stavku");
+        btnUkloniStavku.setText("Уклони ставку");
 
-        btnSacuvajRezervaciju.setText("Sačuvaj rezervaciju");
+        btnSacuvajRezervaciju.setText("Сачувај резервацију");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

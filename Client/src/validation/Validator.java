@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -58,7 +59,7 @@ public class Validator {
     public Validator validateValueIsDate(String value, String pattern, String errorMessage) {
         try {
             if (value != null) {
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern).withResolverStyle(ResolverStyle.STRICT);
                 LocalDate.parse(value, dtf);
             } else {
                 this.validationErrors.add(errorMessage);

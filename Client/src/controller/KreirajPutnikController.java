@@ -45,7 +45,7 @@ public class KreirajPutnikController {
                 }
             });
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -64,20 +64,20 @@ public class KreirajPutnikController {
             Mesto mesto = (Mesto) form.getCmbMesto().getSelectedItem();
 
             Validator.startValidation()
-                    .validateNotNullOrEmpty(ime, "Ime je obavezno.")
-                    .validateNotNullOrEmpty(prezime, "Prezime je obavezno.")
-                    .validateNotNullOrEmpty(email, "Email je obavezan.")
-                    .validateNotNullOrEmpty(telefon, "Telefon je obavezan.")
-                    .validateNotNullOrEmpty(jmbg, "JMBG je obavezan.")
-                    .validateNotNullOrEmpty(brojPasosa, "Broj pasoša je obavezan.")
-                    .validateNotNull(mesto, "Mesto je obavezno.")
+                    .validateNotNullOrEmpty(ime, "Име је обавезно.")
+                    .validateNotNullOrEmpty(prezime, "Презиме је обавезно.")
+                    .validateNotNullOrEmpty(email, "Имејл је обавезан.")
+                    .validateNotNullOrEmpty(telefon, "Телефон је обавезан.")
+                    .validateNotNullOrEmpty(jmbg, "ЈМБГ је обавезан.")
+                    .validateNotNullOrEmpty(brojPasosa, "Број пасоша је обавезан.")
+                    .validateNotNull(mesto, "Место је обавезно.")
                     .throwIfInvalide();
 
             if (!email.contains("@")) {
-                throw new validation.ValidationException("Email mora sadržati znak '@'.");
+                throw new validation.ValidationException("Имејл мора садржати знак '@'.");
             }
             if (jmbg.length() != 13) {
-                throw new validation.ValidationException("JMBG mora imati tačno 13 karaktera.");
+                throw new validation.ValidationException("ЈМБГ мора имати тачно 13 карактера.");
             }
 
             Putnik putnik = new Putnik();
@@ -90,10 +90,10 @@ public class KreirajPutnikController {
             putnik.setMesto(mesto);
 
             Communication.getInstance().kreirajPutnik(putnik);
-            JOptionPane.showMessageDialog(form, "Sistem je zapamtio putnika.");
+            JOptionPane.showMessageDialog(form, "Систем је запамтио путника.");
             form.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

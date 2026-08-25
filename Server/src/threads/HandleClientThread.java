@@ -41,7 +41,7 @@ public class HandleClientThread extends Thread {
                 try {
                     Request request = (Request) new Receiver(socket).receive();
                     if (listener != null) {
-                        listener.onLog("Zahtev [" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort()
+                        listener.onLog("Захтев [" + socket.getInetAddress().getHostAddress() + ":" + socket.getPort()
                                 + "]: " + nazivOperacije(request.getOperation()));
                     }
                     Response response = handleRequest(request);
@@ -59,7 +59,7 @@ public class HandleClientThread extends Thread {
                 Controller.getInstance().odjaviAgenta(prijavljeniAgent.getIdAgent());
             }
             if (listener != null) {
-                listener.onLog("Klijent diskonektovan: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
+                listener.onLog("Клијент дисконектован: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
                 listener.onKlijentOdjavljen(this);
             }
         }
@@ -76,41 +76,41 @@ public class HandleClientThread extends Thread {
     private String nazivOperacije(int operacija) {
         switch (operacija) {
             case Operations.PRIJAVI_AGENT:
-                return "Prijavi agenta";
+                return "Пријави агента";
             case Operations.KREIRAJ_REZERVACIJA:
-                return "Kreiraj rezervaciju";
+                return "Креирај резервацију";
             case Operations.PROMENI_REZERVACIJA:
-                return "Promeni rezervaciju";
+                return "Промени резервацију";
             case Operations.PRETRAZI_REZERVACIJA:
-                return "Pretraži rezervaciju";
+                return "Претражи резервацију";
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_REZERVACIJA:
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT:
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK:
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN:
-                return "Vrati listu rezervacija";
+                return "Врати листу резервација";
             case Operations.VRATI_LISTU_SVI_AGENT:
-                return "Vrati listu svih agenata";
+                return "Врати листу свих агената";
             case Operations.VRATI_LISTU_SVI_PUTNIK:
-                return "Vrati listu svih putnika";
+                return "Врати листу свих путника";
             case Operations.VRATI_LISTU_SVI_ARANZMAN:
-                return "Vrati listu svih aranžmana";
+                return "Врати листу свих аранжмана";
             case Operations.VRATI_LISTU_SVI_MESTO:
-                return "Vrati listu svih mesta";
+                return "Врати листу свих места";
             case Operations.KREIRAJ_PUTNIK:
-                return "Kreiraj putnika";
+                return "Креирај путника";
             case Operations.PROMENI_PUTNIK:
-                return "Promeni putnika";
+                return "Промени путника";
             case Operations.OBRISI_PUTNIK:
-                return "Obriši putnika";
+                return "Обриши путника";
             case Operations.PRETRAZI_PUTNIK:
-                return "Pretraži putnika";
+                return "Претражи путника";
             case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK:
             case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO:
-                return "Vrati listu putnika";
+                return "Врати листу путника";
             case Operations.UBACI_REGION:
-                return "Ubaci region";
+                return "Убаци регион";
             default:
-                return "Nepoznata operacija (#" + operacija + ")";
+                return "Непозната операција (#" + operacija + ")";
         }
     }
 
@@ -168,14 +168,14 @@ public class HandleClientThread extends Thread {
             response.setResponseType(ResponseType.SUCCESS);
             response.setResult(agent);
             if (listener != null) {
-                listener.onLog("Uspešna prijava agenta: " + credentials[0]);
+                listener.onLog("Успешна пријава агента: " + credentials[0]);
                 listener.onKlijentAzuriran(this);
             }
         } catch (Exception ex) {
             response.setResponseType(ResponseType.ERROR);
             response.setException(ex);
             if (listener != null) {
-                listener.onLog("Odbijena prijava agenta: " + credentials[0] + " (" + ex.getMessage() + ")");
+                listener.onLog("Одбијена пријава агента: " + credentials[0] + " (" + ex.getMessage() + ")");
             }
         }
         return response;

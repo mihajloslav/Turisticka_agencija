@@ -34,13 +34,13 @@ public class ObrisiPutnikForm extends javax.swing.JFrame {
         btnPotvrdi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Obriši putnika");
+        setTitle("Обриши путника");
 
         lblPodaci.setText("<html></html>");
 
-        btnOtkazi.setText("Otkaži");
+        btnOtkazi.setText("Откажи");
 
-        btnPotvrdi.setText("Potvrdi brisanje");
+        btnPotvrdi.setText("Потврди брисање");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

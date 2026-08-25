@@ -38,19 +38,19 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
         btnObrisi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pretraži putnika");
+        setTitle("Претражи путника");
 
-        lblIme.setText("Ime:");
+        lblIme.setText("Име:");
 
-        lblPrezime.setText("Prezime:");
+        lblPrezime.setText("Презиме:");
 
-        btnPretrazi.setText("Pretraži");
+        btnPretrazi.setText("Претражи");
 
         scrollTabela.setViewportView(tblPutnici);
 
-        btnPromeni.setText("Promeni");
+        btnPromeni.setText("Промени");
 
-        btnObrisi.setText("Obriši");
+        btnObrisi.setText("Обриши");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

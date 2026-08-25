@@ -75,15 +75,15 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         miTemaMacDark = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Turistička agencija - Server");
+        setTitle("Туристичка агенција - Сервер");
 
         lblNaslov.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblNaslov.setText("Turistička agencija - Server");
+        lblNaslov.setText("Туристичка агенција - Сервер");
 
         lblStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblStatus.setText("Server je ugašen");
+        lblStatus.setText("Сервер је угашен");
 
-        btnPokreniServer.setText("Pokreni server");
+        btnPokreniServer.setText("Покрени сервер");
         btnPokreniServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPokreniServerActionPerformed(evt);
@@ -91,7 +91,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         });
 
         btnZaustaviServer.setEnabled(false);
-        btnZaustaviServer.setText("Zaustavi server");
+        btnZaustaviServer.setText("Заустави сервер");
         btnZaustaviServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZaustaviServerActionPerformed(evt);
@@ -125,7 +125,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
                 .addContainerGap())
         );
 
-        pnlLog.setBorder(javax.swing.BorderFactory.createTitledBorder("Log servera"));
+        pnlLog.setBorder(javax.swing.BorderFactory.createTitledBorder("Лог сервера"));
 
         txtLog.setEditable(false);
         txtLog.setRows(10);
@@ -148,7 +148,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
                 .addContainerGap())
         );
 
-        pnlKlijenti.setBorder(javax.swing.BorderFactory.createTitledBorder("Povezani klijenti"));
+        pnlKlijenti.setBorder(javax.swing.BorderFactory.createTitledBorder("Повезани клијенти"));
 
         scrollKlijenti.setViewportView(tblKlijenti);
 
@@ -169,9 +169,9 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        menuPodesavanja.setText("Podešavanja");
+        menuPodesavanja.setText("Подешавања");
 
-        miKonfiguracija.setText("Konfiguracija servera");
+        miKonfiguracija.setText("Конфигурација сервера");
         miKonfiguracija.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miKonfiguracijaActionPerformed(evt);
@@ -181,7 +181,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
 
         menuBar.add(menuPodesavanja);
 
-        menuTema.setText("Tema");
+        menuTema.setText("Тема");
 
         miTemaLight.setText("FlatLaf Light");
         miTemaLight.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +271,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         try {
             Controller.getInstance().startServer();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPokreniServerActionPerformed
 
@@ -279,7 +279,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         try {
             Controller.getInstance().stopServer();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnZaustaviServerActionPerformed
 
@@ -339,7 +339,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
             FlatLaf.updateUI();
             oznaciIzabranuTemu(izabrana);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -353,10 +353,10 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
 
     private void azurirajStatus(boolean pokrenut) {
         if (pokrenut) {
-            lblStatus.setText("Server je pokrenut");
+            lblStatus.setText("Сервер је покренут");
             lblStatus.setForeground(new java.awt.Color(0, 128, 0));
         } else {
-            lblStatus.setText("Server je ugašen");
+            lblStatus.setText("Сервер је угашен");
             lblStatus.setForeground(java.awt.Color.RED);
         }
         btnPokreniServer.setEnabled(!pokrenut);

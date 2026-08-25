@@ -50,7 +50,7 @@ public class MainForm extends javax.swing.JFrame {
         pnlRegioni = new javax.swing.JPanel();
         btnUbaciRegion = new javax.swing.JButton();
 
-        menuTema.setText("Tema");
+        menuTema.setText("Тема");
 
         miTemaLight.setText("FlatLaf Light");
         menuTema.add(miTemaLight);
@@ -75,15 +75,15 @@ public class MainForm extends javax.swing.JFrame {
         setJMenuBar(menuBar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Turistička agencija");
+        setTitle("Туристичка агенција");
 
         lblNaslov.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
-        lblNaslov.setText("Turistička agencija");
+        lblNaslov.setText("Туристичка агенција");
 
         lblAgent.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lblAgent.setText("Agent: -");
+        lblAgent.setText("Агент: -");
 
-        btnOProgramu.setText("O programu");
+        btnOProgramu.setText("О програму");
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
@@ -109,13 +109,13 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlRezervacije.setBorder(javax.swing.BorderFactory.createTitledBorder("Rezervacije"));
+        pnlRezervacije.setBorder(javax.swing.BorderFactory.createTitledBorder("Резервације"));
 
         btnKreirajRezervaciju.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnKreirajRezervaciju.setText("🧳  Kreiraj rezervaciju");
+        btnKreirajRezervaciju.setText("🧳  Креирај резервацију");
 
         btnPretraziRezervaciju.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnPretraziRezervaciju.setText("🔍  Pretraži rezervaciju");
+        btnPretraziRezervaciju.setText("🔍  Претражи резервацију");
 
         javax.swing.GroupLayout pnlRezervacijeLayout = new javax.swing.GroupLayout(pnlRezervacije);
         pnlRezervacije.setLayout(pnlRezervacijeLayout);
@@ -138,13 +138,13 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlPutnici.setBorder(javax.swing.BorderFactory.createTitledBorder("Putnici"));
+        pnlPutnici.setBorder(javax.swing.BorderFactory.createTitledBorder("Путници"));
 
         btnKreirajPutnika.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnKreirajPutnika.setText("🧑  Kreiraj putnika");
+        btnKreirajPutnika.setText("🧑  Креирај путника");
 
         btnPretraziPutnika.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnPretraziPutnika.setText("🔍  Pretraži putnika");
+        btnPretraziPutnika.setText("🔍  Претражи путника");
 
         javax.swing.GroupLayout pnlPutniciLayout = new javax.swing.GroupLayout(pnlPutnici);
         pnlPutnici.setLayout(pnlPutniciLayout);
@@ -167,10 +167,10 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlRegioni.setBorder(javax.swing.BorderFactory.createTitledBorder("Regioni"));
+        pnlRegioni.setBorder(javax.swing.BorderFactory.createTitledBorder("Региони"));
 
         btnUbaciRegion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnUbaciRegion.setText("🌍  Ubaci region");
+        btnUbaciRegion.setText("🌍  Убаци регион");
 
         javax.swing.GroupLayout pnlRegioniLayout = new javax.swing.GroupLayout(pnlRegioni);
         pnlRegioni.setLayout(pnlRegioniLayout);

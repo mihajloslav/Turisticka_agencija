@@ -39,12 +39,12 @@ public class UbaciRegionController {
             String opis = form.getTxtOpis().getText().trim();
 
             Validator.startValidation()
-                    .validateNotNullOrEmpty(naziv, "Naziv je obavezan.")
-                    .validateNotNullOrEmpty(kontinent, "Kontinent je obavezan.")
+                    .validateNotNullOrEmpty(naziv, "Назив је обавезан.")
+                    .validateNotNullOrEmpty(kontinent, "Континент је обавезан.")
                     .throwIfInvalide();
 
             if (!oznaka.isEmpty() && oznaka.length() > 6) {
-                throw new validation.ValidationException("Oznaka može imati najviše 6 karaktera.");
+                throw new validation.ValidationException("Ознака може имати највише 6 карактера.");
             }
 
             Region region = new Region();
@@ -54,10 +54,10 @@ public class UbaciRegionController {
             region.setOpis(opis.isEmpty() ? null : opis);
 
             Communication.getInstance().ubaciRegion(region);
-            JOptionPane.showMessageDialog(form, "Region je sačuvan.");
+            JOptionPane.showMessageDialog(form, "Регион је сачуван.");
             form.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -52,24 +52,24 @@ public class ServerConfigForm extends javax.swing.JDialog {
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Konfiguracija servera");
+        setTitle("Конфигурација сервера");
 
-        lblUrl.setText("URL baze:");
+        lblUrl.setText("УРЛ базе:");
 
-        lblUsername.setText("Korisničko ime:");
+        lblUsername.setText("Корисничко име:");
 
-        lblPassword.setText("Šifra:");
+        lblPassword.setText("Шифра:");
 
-        lblPort.setText("Port:");
+        lblPort.setText("Порт:");
 
-        btnOtkazi.setText("Otkaži");
+        btnOtkazi.setText("Откажи");
         btnOtkazi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOtkaziActionPerformed(evt);
             }
         });
 
-        btnSacuvaj.setText("Sačuvaj");
+        btnSacuvaj.setText("Сачувај");
         btnSacuvaj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSacuvajActionPerformed(evt);
@@ -142,10 +142,10 @@ public class ServerConfigForm extends javax.swing.JDialog {
             Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_PASSWORD, String.valueOf(txtPassword.getPassword()));
             Controller.getInstance().setServerProperty(MyServerConstants.SERVER_CONFIG_PORT, txtPort.getText().trim());
             Controller.getInstance().sacuvajKonfiguraciju();
-            JOptionPane.showMessageDialog(this, "Konfiguracija je sačuvana.");
+            JOptionPane.showMessageDialog(this, "Конфигурација је сачувана.");
             dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSacuvajActionPerformed
 

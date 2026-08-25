@@ -48,19 +48,19 @@ public class PretraziPutnikController {
 
             if (rezultat.isEmpty()) {
                 JOptionPane.showMessageDialog(form,
-                        "Sistem ne može da nađe putnike po zadatim kriterijumima",
-                        "Rezultat pretrage", JOptionPane.INFORMATION_MESSAGE);
+                        "Систем не може да нађе путнике по задатим критеријумима",
+                        "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             }
             form.getTblPutnici().setModel(new TableModelPutnik(rezultat));
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private Putnik selektovaniPutnik() {
         int red = form.getTblPutnici().getSelectedRow();
         if (red < 0) {
-            JOptionPane.showMessageDialog(form, "Izaberite putnika iz liste.", "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Изаберите путника из листе.", "Грешка", JOptionPane.ERROR_MESSAGE);
             return null;
         }
         TableModelPutnik model = (TableModelPutnik) form.getTblPutnici().getModel();
@@ -76,7 +76,7 @@ public class PretraziPutnikController {
             Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
             Coordinator.getInstance().otvoriPromeniPutnikFormu(putnik);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -89,7 +89,7 @@ public class PretraziPutnikController {
             Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
             Coordinator.getInstance().otvoriObrisiPutnikFormu(putnik);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

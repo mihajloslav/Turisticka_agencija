@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelPutnik extends AbstractTableModel {
 
     private List<Putnik> putnici;
-    private String[] columnNames = new String[]{"Ime", "Prezime", "Email", "Telefon", "JMBG", "Broj pasoša"};
+    private String[] columnNames = new String[]{"Име", "Презиме", "Имејл", "Телефон", "ЈМБГ", "Број пасоша"};
     private Class[] columnClass = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class};
 
     public TableModelPutnik(List<Putnik> putnici) {
@@ -39,7 +39,7 @@ public class TableModelPutnik extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         if (column >= columnNames.length) {
-            return "n/a";
+            return "н/д";
         } else {
             return columnNames[column];
         }
@@ -76,7 +76,7 @@ public class TableModelPutnik extends AbstractTableModel {
             case 5:
                 return putnik.getBrojPasosa();
             default:
-                return "n/a";
+                return "н/д";
         }
     }
 

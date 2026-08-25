@@ -17,7 +17,7 @@ import threads.HandleClientThread;
 public class TableModelKlijent extends AbstractTableModel {
 
     private List<HandleClientThread> klijenti = new ArrayList<>();
-    private String[] columnNames = new String[]{"IP adresa", "Port", "Prijavljeni agent"};
+    private String[] columnNames = new String[]{"ИП адреса", "Порт", "Пријављени агент"};
     private Class[] columnClass = new Class[]{String.class, String.class, String.class};
 
     @Override
@@ -33,7 +33,7 @@ public class TableModelKlijent extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         if (column >= columnNames.length) {
-            return "n/a";
+            return "н/д";
         } else {
             return columnNames[column];
         }
@@ -65,7 +65,7 @@ public class TableModelKlijent extends AbstractTableModel {
                 Agent agent = klijent.getPrijavljeniAgent();
                 return agent == null ? "-" : agent.getIme() + " " + agent.getPrezime();
             default:
-                return "n/a";
+                return "н/д";
         }
     }
 

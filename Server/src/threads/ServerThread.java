@@ -35,7 +35,7 @@ public class ServerThread extends Thread {
                 thread.start();
                 clients.add(thread);
                 if (listener != null) {
-                    listener.onLog("Klijent povezan: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
+                    listener.onLog("Клијент повезан: " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
                     listener.onKlijentPovezan(thread);
                 }
             } catch (IOException ex) {

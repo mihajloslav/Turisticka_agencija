@@ -34,13 +34,13 @@ public class PrijaviAgentForm extends javax.swing.JFrame {
         btnPrijaviSe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Turistička agencija - Prijava");
+        setTitle("Туристичка агенција - Пријава");
 
-        lblKorisnickoIme.setText("Korisničko ime:");
+        lblKorisnickoIme.setText("Корисничко име:");
 
-        lblSifra.setText("Šifra:");
+        lblSifra.setText("Шифра:");
 
-        btnPrijaviSe.setText("Prijavi se");
+        btnPrijaviSe.setText("Пријави се");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

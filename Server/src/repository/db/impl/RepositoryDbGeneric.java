@@ -22,7 +22,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
 
     @Override
     public List<GenericEntity> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Није подржано.");
     }
 
     @Override
@@ -110,7 +110,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
 
     @Override
     public GenericEntity getById(Long k) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        throw new UnsupportedOperationException("Није подржано.");
     }
 
     @Override

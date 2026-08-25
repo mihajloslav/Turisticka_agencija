@@ -44,23 +44,23 @@ public class KreirajPutnikForm extends javax.swing.JFrame {
         btnSacuvaj = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Kreiraj putnika");
+        setTitle("Креирај путника");
 
-        lblIme.setText("Ime:");
+        lblIme.setText("Име:");
 
-        lblPrezime.setText("Prezime:");
+        lblPrezime.setText("Презиме:");
 
-        lblEmail.setText("Email:");
+        lblEmail.setText("Имејл:");
 
-        lblTelefon.setText("Telefon:");
+        lblTelefon.setText("Телефон:");
 
-        lblJmbg.setText("JMBG:");
+        lblJmbg.setText("ЈМБГ:");
 
-        lblBrojPasosa.setText("Broj pasoša:");
+        lblBrojPasosa.setText("Број пасоша:");
 
-        lblMesto.setText("Mesto:");
+        lblMesto.setText("Место:");
 
-        btnSacuvaj.setText("Sačuvaj");
+        btnSacuvaj.setText("Сачувај");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

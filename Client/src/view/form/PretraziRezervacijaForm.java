@@ -47,29 +47,29 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
         txtAreaDetalji = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pretraži rezervaciju");
+        setTitle("Претражи резервацију");
 
-        lblStatus.setText("Status plaćanja:");
+        lblStatus.setText("Статус плаћања:");
 
-        btnPretraziStatus.setText("Pretraži po statusu");
+        btnPretraziStatus.setText("Претражи по статусу");
 
-        lblAgentKriterijum.setText("Agent:");
+        lblAgentKriterijum.setText("Агент:");
 
-        btnPretraziAgent.setText("Pretraži po agentu");
+        btnPretraziAgent.setText("Претражи по агенту");
 
-        lblPutnikKriterijum.setText("Putnik:");
+        lblPutnikKriterijum.setText("Путник:");
 
-        btnPretraziPutnik.setText("Pretraži po putniku");
+        btnPretraziPutnik.setText("Претражи по путнику");
 
-        lblAranzmanKriterijum.setText("Aranžman:");
+        lblAranzmanKriterijum.setText("Аранжман:");
 
-        btnPretraziAranzman.setText("Pretraži po aranžmanu");
+        btnPretraziAranzman.setText("Претражи по аранжману");
 
         scrollTabelaRezervacije.setViewportView(tblRezervacije);
 
-        btnPrikazi.setText("Prikaži detalje");
+        btnPrikazi.setText("Прикажи детаље");
 
-        btnPromeni.setText("Promeni");
+        btnPromeni.setText("Промени");
 
         txtAreaDetalji.setEditable(false);
         txtAreaDetalji.setColumns(20);

@@ -17,9 +17,9 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelStavkaRezervacije extends AbstractTableModel {
 
     private List<StavkaRezervacije> stavke;
-    private String[] columnNames = new String[]{"Aranžman", "Broj osoba", "Datum polaska", "Datum dolaska", "Popust", "Cena"};
+    private String[] columnNames = new String[]{"Аранжман", "Број особа", "Датум поласка", "Датум доласка", "Попуст", "Цена"};
     private Class[] columnClass = new Class[]{String.class, Integer.class, String.class, String.class, Double.class, Double.class};
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public TableModelStavkaRezervacije(List<StavkaRezervacije> stavke) {
         this.stavke = stavke != null ? stavke : new ArrayList<>();
@@ -38,7 +38,7 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
     @Override
     public String getColumnName(int column) {
         if (column >= columnNames.length) {
-            return "n/a";
+            return "н/д";
         } else {
             return columnNames[column];
         }
@@ -63,7 +63,7 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
         StavkaRezervacije stavka = stavke.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return stavka.getAranzman() == null ? "n/a" : stavka.getAranzman().getNaziv();
+                return stavka.getAranzman() == null ? "н/д" : stavka.getAranzman().getNaziv();
             case 1:
                 return stavka.getBrojOsoba();
             case 2:
@@ -75,7 +75,7 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
             case 5:
                 return stavka.getCena();
             default:
-                return "n/a";
+                return "н/д";
         }
     }
 

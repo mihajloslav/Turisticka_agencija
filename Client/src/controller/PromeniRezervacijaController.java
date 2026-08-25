@@ -12,6 +12,7 @@ import domain.Rezervacija;
 import domain.StavkaRezervacije;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
@@ -28,7 +29,7 @@ public class PromeniRezervacijaController {
 
     private final PromeniRezervacijaForm form;
     private final Rezervacija rezervacija;
-    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT);
     private TableModelStavkaRezervacije tableModel;
 
     public PromeniRezervacijaController(PromeniRezervacijaForm form, Rezervacija rezervacija) {
@@ -93,7 +94,7 @@ public class PromeniRezervacijaController {
                 }
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -116,20 +117,20 @@ public class PromeniRezervacijaController {
             String datumDolaskaText = form.getTxtDatumDolaska().getText().trim();
 
             Validator.startValidation()
-                    .validateNotNull(aranzman, "Aranžman je obavezan.")
-                    .validateValueIsNumber(brojOsobaText, "Broj osoba mora biti broj.")
-                    .validateValueIsDate(datumPolaskaText, "dd.MM.yyyy.", "Datum polaska nije ispravan.")
-                    .validateValueIsDate(datumDolaskaText, "dd.MM.yyyy.", "Datum dolaska nije ispravan.")
+                    .validateNotNull(aranzman, "Аранжман је обавезан.")
+                    .validateValueIsNumber(brojOsobaText, "Број особа мора бити број.")
+                    .validateValueIsDate(datumPolaskaText, "dd.MM.uuuu", "Датум поласка није исправан.")
+                    .validateValueIsDate(datumDolaskaText, "dd.MM.uuuu", "Датум доласка није исправан.")
                     .throwIfInvalide();
 
             int brojOsoba = Integer.parseInt(brojOsobaText);
             if (brojOsoba <= 0) {
-                throw new validation.ValidationException("Broj osoba mora biti veći od 0.");
+                throw new validation.ValidationException("Број особа мора бити већи од 0.");
             }
             LocalDate datumPolaska = LocalDate.parse(datumPolaskaText, dtf);
             LocalDate datumDolaska = LocalDate.parse(datumDolaskaText, dtf);
             if (!datumDolaska.isAfter(datumPolaska)) {
-                throw new validation.ValidationException("Datum dolaska mora biti posle datuma polaska.");
+                throw new validation.ValidationException("Датум доласка мора бити после датума поласка.");
             }
 
             StavkaRezervacije stavka = new StavkaRezervacije();
@@ -143,14 +144,14 @@ public class PromeniRezervacijaController {
             form.getTxtDatumPolaska().setText("");
             form.getTxtDatumDolaska().setText("");
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void ukloniStavku() {
         int red = form.getTblStavke().getSelectedRow();
         if (red < 0) {
-            JOptionPane.showMessageDialog(form, "Izaberite stavku iz liste.", "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Изаберите ставку из листе.", "Грешка", JOptionPane.ERROR_MESSAGE);
             return;
         }
         tableModel.ukloniStavku(red);
@@ -164,9 +165,9 @@ public class PromeniRezervacijaController {
             String napomena = form.getTxtNapomena().getText().trim();
 
             Validator.startValidation()
-                    .validateNotNull(agent, "Agent je obavezan.")
-                    .validateNotNull(putnik, "Putnik je obavezan.")
-                    .validateListIsNotEmpty(tableModel.getStavke(), "Rezervacija mora imati bar jednu stavku.")
+                    .validateNotNull(agent, "Агент је обавезан.")
+                    .validateNotNull(putnik, "Путник је обавезан.")
+                    .validateListIsNotEmpty(tableModel.getStavke(), "Резервација мора имати бар једну ставку.")
                     .throwIfInvalide();
 
             rezervacija.setAgent(agent);
@@ -176,10 +177,10 @@ public class PromeniRezervacijaController {
             rezervacija.setStavke(tableModel.getStavke());
 
             Communication.getInstance().promeniRezervacija(rezervacija);
-            JOptionPane.showMessageDialog(form, "Rezervacija je sačuvana.");
+            JOptionPane.showMessageDialog(form, "Резервација је сачувана.");
             form.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Greška", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
