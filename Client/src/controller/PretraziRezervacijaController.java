@@ -91,6 +91,10 @@ public class PretraziRezervacijaController {
             JOptionPane.showMessageDialog(form,
                     "Систем не може да нађе резервације по задатим критеријумима",
                     "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(form,
+                    "Систем је нашао резервације по задатим критеријумима",
+                    "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
         }
         form.getTblRezervacije().setModel(new TableModelRezervacija(rezultat));
         form.getTxtAreaDetalji().setText("");
@@ -147,7 +151,7 @@ public class PretraziRezervacijaController {
     private Rezervacija selektovanaRezervacija() {
         int red = form.getTblRezervacije().getSelectedRow();
         if (red < 0) {
-            JOptionPane.showMessageDialog(form, "Изаберите резервацију из листе.", "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Изаберите резервацију из листе.", "Упозорење", JOptionPane.WARNING_MESSAGE);
             return null;
         }
         TableModelRezervacija model = (TableModelRezervacija) form.getTblRezervacije().getModel();
@@ -163,6 +167,7 @@ public class PretraziRezervacijaController {
             Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
             form.getTxtAreaDetalji().setText(formatirajDetalje(rezervacija));
             form.getTblStavke().setModel(new TableModelStavkaRezervacije(rezervacija.getStavke()));
+            JOptionPane.showMessageDialog(form, "Систем је нашао резервацију", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
@@ -185,6 +190,7 @@ public class PretraziRezervacijaController {
         }
         try {
             Rezervacija rezervacija = Communication.getInstance().pretraziRezervacija(selektovana);
+            JOptionPane.showMessageDialog(form, "Систем је нашао резервацију", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             Coordinator.getInstance().otvoriPromeniRezervacijaFormu(rezervacija);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);

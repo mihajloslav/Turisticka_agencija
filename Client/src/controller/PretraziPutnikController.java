@@ -50,6 +50,10 @@ public class PretraziPutnikController {
                 JOptionPane.showMessageDialog(form,
                         "Систем не може да нађе путнике по задатим критеријумима",
                         "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(form,
+                        "Систем је нашао путнике по задатим критеријумима",
+                        "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             }
             form.getTblPutnici().setModel(new TableModelPutnik(rezultat));
         } catch (Exception ex) {
@@ -60,7 +64,7 @@ public class PretraziPutnikController {
     private Putnik selektovaniPutnik() {
         int red = form.getTblPutnici().getSelectedRow();
         if (red < 0) {
-            JOptionPane.showMessageDialog(form, "Изаберите путника из листе.", "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Изаберите путника из листе.", "Упозорење", JOptionPane.WARNING_MESSAGE);
             return null;
         }
         TableModelPutnik model = (TableModelPutnik) form.getTblPutnici().getModel();
@@ -74,6 +78,7 @@ public class PretraziPutnikController {
         }
         try {
             Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
+            JOptionPane.showMessageDialog(form, "Систем је нашао путника", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             Coordinator.getInstance().otvoriPromeniPutnikFormu(putnik);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
@@ -87,6 +92,7 @@ public class PretraziPutnikController {
         }
         try {
             Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
+            JOptionPane.showMessageDialog(form, "Систем је нашао путника", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             Coordinator.getInstance().otvoriObrisiPutnikFormu(putnik);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);

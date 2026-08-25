@@ -54,8 +54,10 @@ public class UbaciRegionController {
             region.setOpis(opis.isEmpty() ? null : opis);
 
             Communication.getInstance().ubaciRegion(region);
-            JOptionPane.showMessageDialog(form, "Регион је сачуван.");
+            JOptionPane.showMessageDialog(form, "Систем је запамтио регион.", "Успех", JOptionPane.INFORMATION_MESSAGE);
             form.dispose();
+        } catch (validation.ValidationException vex) {
+            JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }

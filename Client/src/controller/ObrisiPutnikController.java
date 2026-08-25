@@ -49,7 +49,7 @@ public class ObrisiPutnikController {
     private void obrisi() {
         try {
             Communication.getInstance().obrisiPutnik(putnik);
-            JOptionPane.showMessageDialog(form, "Путник је обрисан.");
+            JOptionPane.showMessageDialog(form, "Путник је обрисан.", "Успех", JOptionPane.INFORMATION_MESSAGE);
             form.dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);

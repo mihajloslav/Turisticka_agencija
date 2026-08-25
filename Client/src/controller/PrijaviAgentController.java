@@ -45,8 +45,16 @@ public class PrijaviAgentController {
             Agent agent = Communication.getInstance().prijaviAgent(korisnickoIme, sifra);
             Coordinator.getInstance().setCurrentAgent(agent);
 
-            form.dispose();
-            Coordinator.getInstance().otvoriGlavnuFormu();
+            JOptionPane.showMessageDialog(form, "Корисничко име и шифра су исправни.", "Успешна пријава", JOptionPane.INFORMATION_MESSAGE);
+
+            try {
+                Coordinator.getInstance().otvoriGlavnuFormu();
+                form.dispose();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(form, "Не може да се отвори главна форма и мени", "Грешка", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (validation.ValidationException vex) {
+            JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }

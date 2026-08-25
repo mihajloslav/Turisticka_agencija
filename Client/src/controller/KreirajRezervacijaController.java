@@ -132,6 +132,8 @@ public class KreirajRezervacijaController {
             form.getTxtBrojOsoba().setText("");
             form.getTxtDatumPolaska().setText("");
             form.getTxtDatumDolaska().setText("");
+        } catch (validation.ValidationException vex) {
+            JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
@@ -140,7 +142,7 @@ public class KreirajRezervacijaController {
     private void ukloniStavku() {
         int red = form.getTblStavke().getSelectedRow();
         if (red < 0) {
-            JOptionPane.showMessageDialog(form, "Изаберите ставку из листе.", "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Изаберите ставку из листе.", "Упозорење", JOptionPane.WARNING_MESSAGE);
             return;
         }
         tableModel.ukloniStavku(red);
@@ -167,8 +169,11 @@ public class KreirajRezervacijaController {
             rezervacija.setStavke(tableModel.getStavke());
 
             Communication.getInstance().kreirajRezervacija(rezervacija);
-            JOptionPane.showMessageDialog(form, "Резервација је сачувана.");
+            JOptionPane.showMessageDialog(form, "Систем је креирао резервацију", "Успех", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем је запамтио резервацију.", "Успех", JOptionPane.INFORMATION_MESSAGE);
             form.dispose();
+        } catch (validation.ValidationException vex) {
+            JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
