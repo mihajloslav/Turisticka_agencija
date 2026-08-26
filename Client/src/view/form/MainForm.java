@@ -37,10 +37,10 @@ public class MainForm extends javax.swing.JFrame {
         miTemaDarcula = new javax.swing.JMenuItem();
         miTemaMacLight = new javax.swing.JMenuItem();
         miTemaMacDark = new javax.swing.JMenuItem();
+        miOProgramu = new javax.swing.JMenuItem();
         pnlHeader = new javax.swing.JPanel();
         lblNaslov = new javax.swing.JLabel();
         lblAgent = new javax.swing.JLabel();
-        btnOProgramu = new javax.swing.JButton();
         pnlRezervacije = new javax.swing.JPanel();
         btnKreirajRezervaciju = new javax.swing.JButton();
         btnPretraziRezervaciju = new javax.swing.JButton();
@@ -72,6 +72,9 @@ public class MainForm extends javax.swing.JFrame {
 
         menuBar.add(menuTema);
 
+        miOProgramu.setText("О програму");
+        menuBar.add(miOProgramu);
+
         setJMenuBar(menuBar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,8 +86,6 @@ public class MainForm extends javax.swing.JFrame {
         lblAgent.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblAgent.setText("Агент: -");
 
-        btnOProgramu.setText("О програму");
-
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
@@ -94,8 +95,6 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(lblNaslov)
                 .addGap(0, 186, Short.MAX_VALUE)
                 .addComponent(lblAgent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOProgramu)
                 .addContainerGap())
         );
         pnlHeaderLayout.setVerticalGroup(
@@ -104,8 +103,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNaslov)
-                    .addComponent(lblAgent)
-                    .addComponent(btnOProgramu))
+                    .addComponent(lblAgent))
                 .addContainerGap())
         );
 
@@ -222,7 +220,6 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKreirajPutnika;
     private javax.swing.JButton btnKreirajRezervaciju;
-    private javax.swing.JButton btnOProgramu;
     private javax.swing.JButton btnPretraziPutnika;
     private javax.swing.JButton btnPretraziRezervaciju;
     private javax.swing.JButton btnUbaciRegion;
@@ -230,6 +227,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblNaslov;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuTema;
+    private javax.swing.JMenuItem miOProgramu;
     private javax.swing.JMenuItem miTemaDark;
     private javax.swing.JMenuItem miTemaDarcula;
     private javax.swing.JMenuItem miTemaIntelliJ;
@@ -262,8 +260,8 @@ public class MainForm extends javax.swing.JFrame {
         return btnUbaciRegion;
     }
 
-    public javax.swing.JButton getBtnOProgramu() {
-        return btnOProgramu;
+    public javax.swing.JMenuItem getMiOProgramu() {
+        return miOProgramu;
     }
 
     public javax.swing.JLabel getLblAgent() {

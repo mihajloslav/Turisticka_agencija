@@ -203,6 +203,8 @@ public class PretraziRezervacijaController {
         sb.append("Статус плаћања: ").append(rezervacija.getStatusPlacanja()).append("\n");
         sb.append("Укупан износ: ").append(rezervacija.getUkupanIznos()).append("\n");
         sb.append("Напомена: ").append(rezervacija.getNapomena() == null ? "" : rezervacija.getNapomena()).append("\n");
+        sb.append("Агент: ").append(rezervacija.getAgent() == null ? "" : rezervacija.getAgent().getIme() + " " + rezervacija.getAgent().getPrezime()).append("\n");
+        sb.append("Путник: ").append(rezervacija.getPutnik() == null ? "" : rezervacija.getPutnik().getIme() + " " + rezervacija.getPutnik().getPrezime()).append("\n");
         return sb.toString();
     }
 

@@ -41,6 +41,11 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <MenuItem class="javax.swing.JMenuItem" name="miOProgramu">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="О програму"/>
+          </Properties>
+        </MenuItem>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
@@ -108,8 +113,6 @@
                   <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
                   <Component id="lblAgent" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnOProgramu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -120,7 +123,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblNaslov" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnOProgramu" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -142,11 +144,6 @@
               <Font name="Tahoma" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Агент: -"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnOProgramu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="О програму"/>
           </Properties>
         </Component>
       </SubComponents>

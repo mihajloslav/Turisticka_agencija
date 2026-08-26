@@ -4,8 +4,10 @@
  */
 package so.rezervacija;
 
+import domain.Agent;
 import domain.Aranzman;
 import domain.GenericEntity;
+import domain.Putnik;
 import domain.Rezervacija;
 import domain.StavkaRezervacije;
 import java.util.ArrayList;
@@ -35,6 +37,12 @@ public class PretraziRezervacijaSO extends AbstractSO {
         Rezervacija found = (Rezervacija) repository.getById(new Rezervacija(), criteria.getIdRezervacija());
         if (found == null) {
             throw new Exception("Систем не може да нађе резервацију");
+        }
+        if (found.getAgent() != null && found.getAgent().getIdAgent() != null) {
+            found.setAgent((Agent) repository.getById(new Agent(), found.getAgent().getIdAgent()));
+        }
+        if (found.getPutnik() != null && found.getPutnik().getIdPutnik() != null) {
+            found.setPutnik((Putnik) repository.getById(new Putnik(), found.getPutnik().getIdPutnik()));
         }
         List<GenericEntity> stavkeRedovi = repository.getAll(new StavkaRezervacije(),
                 "idRezervacija = ?", new Object[]{found.getIdRezervacija()});

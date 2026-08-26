@@ -52,7 +52,7 @@ public class MainController {
         form.getBtnKreirajPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriKreirajPutnikFormu());
         form.getBtnPretraziPutnika().addActionListener(evt -> Coordinator.getInstance().otvoriPretraziPutnikFormu());
         form.getBtnUbaciRegion().addActionListener(evt -> Coordinator.getInstance().otvoriUbaciRegionFormu());
-        form.getBtnOProgramu().addActionListener(evt -> oProgramu());
+        form.getMiOProgramu().addActionListener(evt -> Coordinator.getInstance().otvoriOProgramuFormu());
 
         form.getMiTemaLight().addActionListener(evt -> primeniTemu(new FlatLightLaf(), form.getMiTemaLight()));
         form.getMiTemaDark().addActionListener(evt -> primeniTemu(new FlatDarkLaf(), form.getMiTemaDark()));
@@ -79,11 +79,5 @@ public class MainController {
             String tekst = stavka.getText().replace(OZNAKA, "");
             stavka.setText(stavka == izabrana ? OZNAKA + tekst : tekst);
         }
-    }
-
-    private void oProgramu() {
-        JOptionPane.showMessageDialog(form,
-                "Туристичка агенција\nСеминарски рад - Пројектовање софтвера",
-                "О програму", JOptionPane.INFORMATION_MESSAGE);
     }
 }

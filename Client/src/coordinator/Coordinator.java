@@ -8,6 +8,7 @@ import controller.KreirajPutnikController;
 import controller.KreirajRezervacijaController;
 import controller.MainController;
 import controller.ObrisiPutnikController;
+import controller.OProgramuController;
 import controller.PretraziPutnikController;
 import controller.PretraziRezervacijaController;
 import controller.PrijaviAgentController;
@@ -21,6 +22,7 @@ import view.form.KreirajPutnikForm;
 import view.form.KreirajRezervacijaForm;
 import view.form.MainForm;
 import view.form.ObrisiPutnikForm;
+import view.form.OProgramuForm;
 import view.form.PretraziPutnikForm;
 import view.form.PretraziRezervacijaForm;
 import view.form.PrijaviAgentForm;
@@ -47,6 +49,7 @@ public class Coordinator {
     private PromeniPutnikController promeniPutnikController;
     private ObrisiPutnikController obrisiPutnikController;
     private UbaciRegionController ubaciRegionController;
+    private OProgramuController oProgramuController;
 
     private Coordinator() {
     }
@@ -114,5 +117,10 @@ public class Coordinator {
     public void otvoriUbaciRegionFormu() {
         ubaciRegionController = new UbaciRegionController(new UbaciRegionForm());
         ubaciRegionController.otvoriFormu();
+    }
+
+    public void otvoriOProgramuFormu() {
+        oProgramuController = new OProgramuController(new OProgramuForm());
+        oProgramuController.otvoriFormu();
     }
 }
