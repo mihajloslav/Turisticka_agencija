@@ -27,18 +27,24 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlKriterijumi = new javax.swing.JPanel();
         lblStatus = new javax.swing.JLabel();
-        txtStatusKriterijum = new javax.swing.JTextField();
-        btnPretraziStatus = new javax.swing.JButton();
+        cmbStatusKriterijum = new javax.swing.JComboBox<>(new String[]{"", "Плаћено", "На чекању"});
         lblAgentKriterijum = new javax.swing.JLabel();
         cmbAgentKriterijum = new javax.swing.JComboBox<>();
-        btnPretraziAgent = new javax.swing.JButton();
         lblPutnikKriterijum = new javax.swing.JLabel();
         cmbPutnikKriterijum = new javax.swing.JComboBox<>();
-        btnPretraziPutnik = new javax.swing.JButton();
         lblAranzmanKriterijum = new javax.swing.JLabel();
         cmbAranzmanKriterijum = new javax.swing.JComboBox<>();
-        btnPretraziAranzman = new javax.swing.JButton();
+        lblIznosOd = new javax.swing.JLabel();
+        txtIznosOd = new javax.swing.JTextField();
+        lblIznosDo = new javax.swing.JLabel();
+        txtIznosDo = new javax.swing.JTextField();
+        lblDatumOd = new javax.swing.JLabel();
+        txtDatumOd = new javax.swing.JTextField();
+        lblDatumDo = new javax.swing.JLabel();
+        txtDatumDo = new javax.swing.JTextField();
+        btnPretrazi = new javax.swing.JButton();
         scrollTabelaRezervacije = new javax.swing.JScrollPane();
         tblRezervacije = new javax.swing.JTable();
         btnPrikazi = new javax.swing.JButton();
@@ -53,21 +59,97 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Туристичка агенција - Претражи резервацију");
 
-        lblStatus.setText("Статус плаћања:");
+        pnlKriterijumi.setBorder(javax.swing.BorderFactory.createTitledBorder("Критеријуми претраге"));
 
-        btnPretraziStatus.setText("Претражи по статусу");
+        lblStatus.setText("Статус плаћања:");
 
         lblAgentKriterijum.setText("Агент:");
 
-        btnPretraziAgent.setText("Претражи по агенту");
-
         lblPutnikKriterijum.setText("Путник:");
-
-        btnPretraziPutnik.setText("Претражи по путнику");
 
         lblAranzmanKriterijum.setText("Аранжман:");
 
-        btnPretraziAranzman.setText("Претражи по аранжману");
+        lblIznosOd.setText("Износ од:");
+
+        lblIznosDo.setText("Износ до:");
+
+        lblDatumOd.setText("Датум од (dd.MM.yyyy):");
+
+        lblDatumDo.setText("Датум до (dd.MM.yyyy):");
+
+        btnPretrazi.setText("Претражи");
+
+        javax.swing.GroupLayout pnlKriterijumiLayout = new javax.swing.GroupLayout(pnlKriterijumi);
+        pnlKriterijumi.setLayout(pnlKriterijumiLayout);
+        pnlKriterijumiLayout.setHorizontalGroup(
+            pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKriterijumiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlKriterijumiLayout.createSequentialGroup()
+                        .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStatus)
+                            .addComponent(lblAgentKriterijum)
+                            .addComponent(lblPutnikKriterijum)
+                            .addComponent(lblAranzmanKriterijum)
+                            .addComponent(lblIznosOd)
+                            .addComponent(lblIznosDo)
+                            .addComponent(lblDatumOd)
+                            .addComponent(lblDatumDo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbStatusKriterijum, 0, 300, Short.MAX_VALUE)
+                            .addComponent(cmbAgentKriterijum, 0, 300, Short.MAX_VALUE)
+                            .addComponent(cmbPutnikKriterijum, 0, 300, Short.MAX_VALUE)
+                            .addComponent(cmbAranzmanKriterijum, 0, 300, Short.MAX_VALUE)
+                            .addComponent(txtIznosOd)
+                            .addComponent(txtIznosDo)
+                            .addComponent(txtDatumOd)
+                            .addComponent(txtDatumDo)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKriterijumiLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnPretrazi)))
+                .addContainerGap())
+        );
+        pnlKriterijumiLayout.setVerticalGroup(
+            pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKriterijumiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStatus)
+                    .addComponent(cmbStatusKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAgentKriterijum)
+                    .addComponent(cmbAgentKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPutnikKriterijum)
+                    .addComponent(cmbPutnikKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAranzmanKriterijum)
+                    .addComponent(cmbAranzmanKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIznosOd)
+                    .addComponent(txtIznosOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblIznosDo)
+                    .addComponent(txtIznosDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDatumOd)
+                    .addComponent(txtDatumOd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlKriterijumiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDatumDo)
+                    .addComponent(txtDatumDo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPretrazi)
+                .addContainerGap())
+        );
 
         scrollTabelaRezervacije.setViewportView(tblRezervacije);
 
@@ -127,33 +209,10 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlKriterijumi, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addComponent(scrollTabelaRezervacije, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addComponent(pnlInformacije, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                     .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblStatus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtStatusKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPretraziStatus))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAgentKriterijum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbAgentKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPretraziAgent))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPutnikKriterijum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbPutnikKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPretraziPutnik))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAranzmanKriterijum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbAranzmanKriterijum, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnPretraziAranzman))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPrikazi)
@@ -165,25 +224,7 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus)
-                    .addComponent(txtStatusKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPretraziStatus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAgentKriterijum)
-                    .addComponent(cmbAgentKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPretraziAgent))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPutnikKriterijum)
-                    .addComponent(cmbPutnikKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPretraziPutnik))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAranzmanKriterijum)
-                    .addComponent(cmbAranzmanKriterijum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPretraziAranzman))
+                .addComponent(pnlKriterijumi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollTabelaRezervacije, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,20 +242,23 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPretraziAgent;
-    private javax.swing.JButton btnPretraziAranzman;
-    private javax.swing.JButton btnPretraziPutnik;
-    private javax.swing.JButton btnPretraziStatus;
+    private javax.swing.JButton btnPretrazi;
     private javax.swing.JButton btnPrikazi;
     private javax.swing.JButton btnPromeni;
     private javax.swing.JComboBox<domain.Agent> cmbAgentKriterijum;
     private javax.swing.JComboBox<domain.Aranzman> cmbAranzmanKriterijum;
     private javax.swing.JComboBox<domain.Putnik> cmbPutnikKriterijum;
+    private javax.swing.JComboBox<java.lang.String> cmbStatusKriterijum;
     private javax.swing.JLabel lblAgentKriterijum;
     private javax.swing.JLabel lblAranzmanKriterijum;
+    private javax.swing.JLabel lblDatumDo;
+    private javax.swing.JLabel lblDatumOd;
+    private javax.swing.JLabel lblIznosDo;
+    private javax.swing.JLabel lblIznosOd;
     private javax.swing.JLabel lblPutnikKriterijum;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JPanel pnlInformacije;
+    private javax.swing.JPanel pnlKriterijumi;
     private javax.swing.JPanel pnlStavke;
     private javax.swing.JScrollPane scrollDetalji;
     private javax.swing.JScrollPane scrollTabelaRezervacije;
@@ -222,39 +266,46 @@ public class PretraziRezervacijaForm extends javax.swing.JFrame {
     private javax.swing.JTable tblRezervacije;
     private javax.swing.JTable tblStavke;
     private javax.swing.JTextArea txtAreaDetalji;
-    private javax.swing.JTextField txtStatusKriterijum;
+    private javax.swing.JTextField txtDatumDo;
+    private javax.swing.JTextField txtDatumOd;
+    private javax.swing.JTextField txtIznosDo;
+    private javax.swing.JTextField txtIznosOd;
     // End of variables declaration//GEN-END:variables
 
-    public javax.swing.JTextField getTxtStatusKriterijum() {
-        return txtStatusKriterijum;
-    }
-
-    public javax.swing.JButton getBtnPretraziStatus() {
-        return btnPretraziStatus;
+    public javax.swing.JComboBox<java.lang.String> getCmbStatusKriterijum() {
+        return cmbStatusKriterijum;
     }
 
     public javax.swing.JComboBox<domain.Agent> getCmbAgentKriterijum() {
         return cmbAgentKriterijum;
     }
 
-    public javax.swing.JButton getBtnPretraziAgent() {
-        return btnPretraziAgent;
-    }
-
     public javax.swing.JComboBox<domain.Putnik> getCmbPutnikKriterijum() {
         return cmbPutnikKriterijum;
-    }
-
-    public javax.swing.JButton getBtnPretraziPutnik() {
-        return btnPretraziPutnik;
     }
 
     public javax.swing.JComboBox<domain.Aranzman> getCmbAranzmanKriterijum() {
         return cmbAranzmanKriterijum;
     }
 
-    public javax.swing.JButton getBtnPretraziAranzman() {
-        return btnPretraziAranzman;
+    public javax.swing.JTextField getTxtIznosOd() {
+        return txtIznosOd;
+    }
+
+    public javax.swing.JTextField getTxtIznosDo() {
+        return txtIznosDo;
+    }
+
+    public javax.swing.JTextField getTxtDatumOd() {
+        return txtDatumOd;
+    }
+
+    public javax.swing.JTextField getTxtDatumDo() {
+        return txtDatumDo;
+    }
+
+    public javax.swing.JButton getBtnPretrazi() {
+        return btnPretrazi;
     }
 
     public javax.swing.JTable getTblRezervacije() {

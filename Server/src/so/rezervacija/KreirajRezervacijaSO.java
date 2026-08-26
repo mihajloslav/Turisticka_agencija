@@ -25,7 +25,8 @@ public class KreirajRezervacijaSO extends AbstractSO {
         Rezervacija r = (Rezervacija) param;
         if (r.getAgent() == null || r.getAgent().getIdAgent() == null
                 || r.getPutnik() == null || r.getPutnik().getIdPutnik() == null
-                || r.getStatusPlacanja() == null || r.getStatusPlacanja().isEmpty()
+                || r.getStatusPlacanja() == null
+                || (!"Плаћено".equals(r.getStatusPlacanja()) && !"На чекању".equals(r.getStatusPlacanja()))
                 || r.getStavke() == null || r.getStavke().isEmpty()) {
             throw new Exception("Систем не може да креира резервацију");
         }

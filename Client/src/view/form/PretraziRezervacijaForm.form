@@ -27,37 +27,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnlKriterijumi" pref="650" max="32767" attributes="0"/>
                   <Component id="scrollTabelaRezervacije" pref="650" max="32767" attributes="0"/>
                   <Component id="pnlInformacije" pref="650" max="32767" attributes="0"/>
                   <Component id="pnlStavke" pref="650" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="lblStatus" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtStatusKriterijum" pref="120" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPretraziStatus" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="lblAgentKriterijum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cmbAgentKriterijum" pref="200" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPretraziAgent" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="lblPutnikKriterijum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cmbPutnikKriterijum" pref="200" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPretraziPutnik" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="lblAranzmanKriterijum" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cmbAranzmanKriterijum" pref="200" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnPretraziAranzman" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="btnPrikazi" min="-2" max="-2" attributes="0"/>
@@ -73,29 +46,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtStatusKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPretraziStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblAgentKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbAgentKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPretraziAgent" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblPutnikKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbPutnikKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPretraziPutnik" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblAranzmanKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbAranzmanKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPretraziAranzman" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="pnlKriterijumi" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="scrollTabelaRezervacije" pref="180" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -113,69 +64,191 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblStatus">
+    <Container class="javax.swing.JPanel" name="pnlKriterijumi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Статус плаћања:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtStatusKriterijum">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPretraziStatus">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Претражи по статусу"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblAgentKriterijum">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Агент:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbAgentKriterijum">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+            <TitledBorder title="Критеријуми претраге"/>
+          </Border>
         </Property>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPretraziAgent">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Претражи по агенту"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPutnikKriterijum">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Путник:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbPutnikKriterijum">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPretraziPutnik">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Претражи по путнику"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblAranzmanKriterijum">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Аранжман:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbAranzmanKriterijum">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPretraziAranzman">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Претражи по аранжману"/>
-      </Properties>
-    </Component>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblStatus" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAgentKriterijum" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPutnikKriterijum" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblAranzmanKriterijum" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblIznosOd" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblIznosDo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDatumOd" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDatumDo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbStatusKriterijum" pref="300" max="32767" attributes="0"/>
+                              <Component id="cmbAgentKriterijum" pref="300" max="32767" attributes="0"/>
+                              <Component id="cmbPutnikKriterijum" pref="300" max="32767" attributes="0"/>
+                              <Component id="cmbAranzmanKriterijum" pref="300" max="32767" attributes="0"/>
+                              <Component id="txtIznosOd" max="32767" attributes="0"/>
+                              <Component id="txtIznosDo" max="32767" attributes="0"/>
+                              <Component id="txtDatumOd" max="32767" attributes="0"/>
+                              <Component id="txtDatumDo" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="btnPretrazi" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbStatusKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAgentKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbAgentKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblPutnikKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbPutnikKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblAranzmanKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbAranzmanKriterijum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblIznosOd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIznosOd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblIznosDo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtIznosDo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDatumOd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDatumOd" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblDatumDo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDatumDo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnPretrazi" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblStatus">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Статус плаћања:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbStatusKriterijum">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value=""/>
+                <StringItem index="1" value="Плаћено"/>
+                <StringItem index="2" value="На чекању"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAgentKriterijum">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Агент:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbAgentKriterijum">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPutnikKriterijum">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Путник:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbPutnikKriterijum">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblAranzmanKriterijum">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Аранжман:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbAranzmanKriterijum">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblIznosOd">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Износ од:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtIznosOd">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblIznosDo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Износ до:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtIznosDo">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDatumOd">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Датум од (dd.MM.yyyy):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDatumOd">
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblDatumDo">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Датум до (dd.MM.yyyy):"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtDatumDo">
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPretrazi">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Претражи"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JScrollPane" name="scrollTabelaRezervacije">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>

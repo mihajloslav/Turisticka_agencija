@@ -39,6 +39,35 @@ public class VratiListuRezervacijaKriterijumRezervacijaSO extends AbstractSO {
                 where.append(where.length() == 0 ? "" : " AND ").append("datumKreiranja = ?");
                 params.add(java.sql.Date.valueOf(criteria.getDatumKreiranja()));
             }
+            if (criteria.getDatumKreiranjaOd() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("datumKreiranja >= ?");
+                params.add(java.sql.Date.valueOf(criteria.getDatumKreiranjaOd()));
+            }
+            if (criteria.getDatumKreiranjaDo() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("datumKreiranja <= ?");
+                params.add(java.sql.Date.valueOf(criteria.getDatumKreiranjaDo()));
+            }
+            if (criteria.getUkupanIznosOd() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("ukupanIznos >= ?");
+                params.add(criteria.getUkupanIznosOd());
+            }
+            if (criteria.getUkupanIznosDo() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("ukupanIznos <= ?");
+                params.add(criteria.getUkupanIznosDo());
+            }
+            if (criteria.getAgent() != null && criteria.getAgent().getIdAgent() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("idAgent = ?");
+                params.add(criteria.getAgent().getIdAgent());
+            }
+            if (criteria.getPutnik() != null && criteria.getPutnik().getIdPutnik() != null) {
+                where.append(where.length() == 0 ? "" : " AND ").append("idPutnik = ?");
+                params.add(criteria.getPutnik().getIdPutnik());
+            }
+            if (criteria.getAranzman() != null && criteria.getAranzman().getIdAranzman() != null) {
+                where.append(where.length() == 0 ? "" : " AND ")
+                        .append("idRezervacija IN (SELECT idRezervacija FROM StavkaRezervacije WHERE idAranzman = ?)");
+                params.add(criteria.getAranzman().getIdAranzman());
+            }
         }
         List<GenericEntity> found = repository.getAll(new Rezervacija(), where.toString(), params.toArray());
         listaRezervacija = new ArrayList<>();

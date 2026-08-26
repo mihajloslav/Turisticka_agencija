@@ -32,7 +32,7 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
         lblPutnik = new javax.swing.JLabel();
         cmbPutnik = new javax.swing.JComboBox<>();
         lblStatusPlacanja = new javax.swing.JLabel();
-        cmbStatusPlacanja = new javax.swing.JComboBox<>(new String[]{"Ceka", "Placeno"});
+        cmbStatusPlacanja = new javax.swing.JComboBox<>(new String[]{"Плаћено", "На чекању"});
         lblNapomena = new javax.swing.JLabel();
         txtNapomena = new javax.swing.JTextField();
         pnlStavke = new javax.swing.JPanel();

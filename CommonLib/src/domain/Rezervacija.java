@@ -26,6 +26,19 @@ public class Rezervacija implements GenericEntity {
     private Putnik putnik;
     private List<StavkaRezervacije> stavke = new ArrayList<>();
 
+    /*
+     * Search-criteria-only fields, used exclusively as an in-memory "prototype"
+     * when this object is passed to vratiListuRezervacijaKriterijumRezervacija.
+     * They are intentionally excluded from getColumnNamesForInsert/getInsertValues/
+     * getUpdateSetClause/getUpdateSetParams/fromResultSet, so they never affect
+     * persistence.
+     */
+    private Aranzman aranzman;
+    private Double ukupanIznosOd;
+    private Double ukupanIznosDo;
+    private LocalDate datumKreiranjaOd;
+    private LocalDate datumKreiranjaDo;
+
     public Rezervacija() {
     }
 
@@ -102,6 +115,46 @@ public class Rezervacija implements GenericEntity {
 
     public void setStavke(List<StavkaRezervacije> stavke) {
         this.stavke = stavke;
+    }
+
+    public Aranzman getAranzman() {
+        return aranzman;
+    }
+
+    public void setAranzman(Aranzman aranzman) {
+        this.aranzman = aranzman;
+    }
+
+    public Double getUkupanIznosOd() {
+        return ukupanIznosOd;
+    }
+
+    public void setUkupanIznosOd(Double ukupanIznosOd) {
+        this.ukupanIznosOd = ukupanIznosOd;
+    }
+
+    public Double getUkupanIznosDo() {
+        return ukupanIznosDo;
+    }
+
+    public void setUkupanIznosDo(Double ukupanIznosDo) {
+        this.ukupanIznosDo = ukupanIznosDo;
+    }
+
+    public LocalDate getDatumKreiranjaOd() {
+        return datumKreiranjaOd;
+    }
+
+    public void setDatumKreiranjaOd(LocalDate datumKreiranjaOd) {
+        this.datumKreiranjaOd = datumKreiranjaOd;
+    }
+
+    public LocalDate getDatumKreiranjaDo() {
+        return datumKreiranjaDo;
+    }
+
+    public void setDatumKreiranjaDo(LocalDate datumKreiranjaDo) {
+        this.datumKreiranjaDo = datumKreiranjaDo;
     }
 
     @Override

@@ -37,35 +37,9 @@ public class PromeniRezervacijaController {
         this.rezervacija = rezervacija;
         tableModel = new TableModelStavkaRezervacije(rezervacija.getStavke());
         form.getTblStavke().setModel(tableModel);
-        postaviRendererStatusa();
         ucitajListe();
         popuniPolja();
         addActionListeners();
-    }
-
-    /**
-     * Only the displayed text is Cyrillic here; the underlying combo values
-     * ("Ceka"/"Placeno") are unchanged and keep flowing through
-     * Communication/Server/SO/repository exactly as before. Any other
-     * pre-existing statusPlacanja value (e.g. already-Cyrillic legacy data)
-     * simply falls back to being shown as-is, never as raw Latin text.
-     */
-    private void postaviRendererStatusa() {
-        form.getCmbStatusPlacanja().setRenderer(new DefaultListCellRenderer() {
-            @Override
-            public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
-                    int index, boolean isSelected, boolean cellHasFocus) {
-                String text;
-                if ("Ceka".equals(value)) {
-                    text = "Чека се";
-                } else if ("Placeno".equals(value)) {
-                    text = "Плаћено";
-                } else {
-                    text = value == null ? "" : value.toString();
-                }
-                return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
-            }
-        });
     }
 
     public void otvoriFormu() {

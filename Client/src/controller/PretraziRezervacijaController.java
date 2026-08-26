@@ -10,11 +10,13 @@ import domain.Agent;
 import domain.Aranzman;
 import domain.Putnik;
 import domain.Rezervacija;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JOptionPane;
+import validation.Validator;
 import view.components.TableModelRezervacija;
 import view.components.TableModelStavkaRezervacije;
 import view.form.PretraziRezervacijaForm;
@@ -41,7 +43,12 @@ public class PretraziRezervacijaController {
     private void ucitajListe() {
         try {
             List<Agent> agenti = Communication.getInstance().vratiListuSviAgent();
-            form.getCmbAgentKriterijum().setModel(new DefaultComboBoxModel<>(agenti.toArray(new Agent[0])));
+            DefaultComboBoxModel<Agent> agentModel = new DefaultComboBoxModel<>();
+            agentModel.addElement(null);
+            for (Agent a : agenti) {
+                agentModel.addElement(a);
+            }
+            form.getCmbAgentKriterijum().setModel(agentModel);
             form.getCmbAgentKriterijum().setRenderer(new DefaultListCellRenderer() {
                 @Override
                 public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
@@ -52,7 +59,12 @@ public class PretraziRezervacijaController {
             });
 
             List<Putnik> putnici = Communication.getInstance().vratiListuSviPutnik();
-            form.getCmbPutnikKriterijum().setModel(new DefaultComboBoxModel<>(putnici.toArray(new Putnik[0])));
+            DefaultComboBoxModel<Putnik> putnikModel = new DefaultComboBoxModel<>();
+            putnikModel.addElement(null);
+            for (Putnik p : putnici) {
+                putnikModel.addElement(p);
+            }
+            form.getCmbPutnikKriterijum().setModel(putnikModel);
             form.getCmbPutnikKriterijum().setRenderer(new DefaultListCellRenderer() {
                 @Override
                 public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
@@ -63,7 +75,12 @@ public class PretraziRezervacijaController {
             });
 
             List<Aranzman> aranzmani = Communication.getInstance().vratiListuSviAranzman();
-            form.getCmbAranzmanKriterijum().setModel(new DefaultComboBoxModel<>(aranzmani.toArray(new Aranzman[0])));
+            DefaultComboBoxModel<Aranzman> aranzmanModel = new DefaultComboBoxModel<>();
+            aranzmanModel.addElement(null);
+            for (Aranzman a : aranzmani) {
+                aranzmanModel.addElement(a);
+            }
+            form.getCmbAranzmanKriterijum().setModel(aranzmanModel);
             form.getCmbAranzmanKriterijum().setRenderer(new DefaultListCellRenderer() {
                 @Override
                 public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
@@ -78,10 +95,7 @@ public class PretraziRezervacijaController {
     }
 
     private void addActionListeners() {
-        form.getBtnPretraziStatus().addActionListener(evt -> pretraziPoStatusu());
-        form.getBtnPretraziAgent().addActionListener(evt -> pretraziPoAgentu());
-        form.getBtnPretraziPutnik().addActionListener(evt -> pretraziPoPutniku());
-        form.getBtnPretraziAranzman().addActionListener(evt -> pretraziPoAranzmanu());
+        form.getBtnPretrazi().addActionListener(evt -> pretrazi());
         form.getBtnPrikazi().addActionListener(evt -> prikaziDetalje());
         form.getBtnPromeni().addActionListener(evt -> promeni());
     }
@@ -101,48 +115,57 @@ public class PretraziRezervacijaController {
         form.getTblStavke().setModel(new TableModelStavkaRezervacije(null));
     }
 
-    private void pretraziPoStatusu() {
+    private void pretrazi() {
         try {
-            String status = form.getTxtStatusKriterijum().getText().trim();
-            Rezervacija kriterijum = new Rezervacija();
-            kriterijum.setStatusPlacanja(status.isEmpty() ? null : status);
-            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void pretraziPoAgentu() {
-        try {
+            String statusDisplay = (String) form.getCmbStatusKriterijum().getSelectedItem();
             Agent agent = (Agent) form.getCmbAgentKriterijum().getSelectedItem();
-            if (agent == null) {
-                return;
-            }
-            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumAgent(agent));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void pretraziPoPutniku() {
-        try {
             Putnik putnik = (Putnik) form.getCmbPutnikKriterijum().getSelectedItem();
-            if (putnik == null) {
-                return;
-            }
-            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumPutnik(putnik));
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void pretraziPoAranzmanu() {
-        try {
             Aranzman aranzman = (Aranzman) form.getCmbAranzmanKriterijum().getSelectedItem();
-            if (aranzman == null) {
-                return;
+            String iznosOdText = form.getTxtIznosOd().getText().trim();
+            String iznosDoText = form.getTxtIznosDo().getText().trim();
+            String datumOdText = form.getTxtDatumOd().getText().trim();
+            String datumDoText = form.getTxtDatumDo().getText().trim();
+
+            Validator validator = Validator.startValidation();
+            if (!iznosOdText.isEmpty()) {
+                validator.validateValueIsNumber(iznosOdText, "Износ од мора бити исправан број.");
             }
-            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumAranzman(aranzman));
+            if (!iznosDoText.isEmpty()) {
+                validator.validateValueIsNumber(iznosDoText, "Износ до мора бити исправан број.");
+            }
+            if (!datumOdText.isEmpty()) {
+                validator.validateValueIsDate(datumOdText, "dd.MM.uuuu", "Датум од није исправан.");
+            }
+            if (!datumDoText.isEmpty()) {
+                validator.validateValueIsDate(datumDoText, "dd.MM.uuuu", "Датум до није исправан.");
+            }
+            validator.throwIfInvalide();
+
+            Double iznosOd = iznosOdText.isEmpty() ? null : Double.parseDouble(iznosOdText);
+            Double iznosDo = iznosDoText.isEmpty() ? null : Double.parseDouble(iznosDoText);
+            if (iznosOd != null && iznosDo != null && iznosOd > iznosDo) {
+                throw new validation.ValidationException("Износ од не сме бити већи од износа до.");
+            }
+
+            LocalDate datumOd = datumOdText.isEmpty() ? null : LocalDate.parse(datumOdText, dtf);
+            LocalDate datumDo = datumDoText.isEmpty() ? null : LocalDate.parse(datumDoText, dtf);
+            if (datumOd != null && datumDo != null && datumOd.isAfter(datumDo)) {
+                throw new validation.ValidationException("Датум од не сме бити после датума до.");
+            }
+
+            Rezervacija kriterijum = new Rezervacija();
+            kriterijum.setStatusPlacanja(statusDisplay == null || statusDisplay.isEmpty() ? null : statusDisplay);
+            kriterijum.setAgent(agent);
+            kriterijum.setPutnik(putnik);
+            kriterijum.setAranzman(aranzman);
+            kriterijum.setUkupanIznosOd(iznosOd);
+            kriterijum.setUkupanIznosDo(iznosDo);
+            kriterijum.setDatumKreiranjaOd(datumOd);
+            kriterijum.setDatumKreiranjaDo(datumDo);
+
+            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
+        } catch (validation.ValidationException vex) {
+            JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
