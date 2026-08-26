@@ -133,11 +133,17 @@ public class PromeniRezervacijaController {
                 throw new validation.ValidationException("Датум доласка мора бити после датума поласка.");
             }
 
+            double popust = brojOsoba >= 3 ? 0.1 : 0.0;
+            double cena = brojOsoba * aranzman.getCenaPoOsobi() * (1 - popust);
+
             StavkaRezervacije stavka = new StavkaRezervacije();
+            stavka.setRb(tableModel.getStavke().size() + 1);
             stavka.setAranzman(aranzman);
             stavka.setBrojOsoba(brojOsoba);
             stavka.setDatumPolaska(datumPolaska);
             stavka.setDatumDolaska(datumDolaska);
+            stavka.setPopust(popust);
+            stavka.setCena(cena);
             tableModel.dodajStavku(stavka);
 
             form.getTxtBrojOsoba().setText("");
@@ -157,6 +163,15 @@ public class PromeniRezervacijaController {
             return;
         }
         tableModel.ukloniStavku(red);
+        renumerisiStavke();
+        tableModel.fireTableDataChanged();
+    }
+
+    private void renumerisiStavke() {
+        List<StavkaRezervacije> stavke = tableModel.getStavke();
+        for (int i = 0; i < stavke.size(); i++) {
+            stavke.get(i).setRb(i + 1);
+        }
     }
 
     private void sacuvajRezervaciju() {
