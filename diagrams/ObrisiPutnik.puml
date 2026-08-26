@@ -1,0 +1,38 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam monochrome true
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "k:Controller" as K
+participant "so:ObrisiPutnikSO" as SO
+participant "r:RepositoryDbGeneric" as R
+
+K -> SO : execute(Putnik)
+activate SO
+
+SO -> SO : precondition(Putnik)
+
+alt idPutnik postoji
+    SO -> R : connect()
+    R --> SO : signal
+
+    SO -> SO : executeOperation(Putnik)
+
+    SO -> R : delete(Putnik)
+    R --> SO : signal
+
+    SO -> R : commit()
+    R --> SO : signal
+
+    SO --> K : signal
+else idPutnik ne postoji
+    SO -> R : rollback()
+    R --> SO : signal
+    SO --> K : Exception("Систем не може да обрише путника")
+end
+
+deactivate SO
+
+@enduml

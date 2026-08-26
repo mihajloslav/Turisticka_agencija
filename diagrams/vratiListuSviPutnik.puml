@@ -1,0 +1,37 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam monochrome true
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "k:Controller" as K
+participant "so:VratiListuSviPutnikSO" as SO
+participant "r:RepositoryDbGeneric" as R
+
+K -> SO : execute(null)
+activate SO
+
+SO -> SO : precondition(null)
+
+SO -> R : connect()
+R --> SO : signal
+
+SO -> SO : executeOperation(null)
+
+SO -> R : getAll(Putnik, null, null)
+R --> SO : List<GenericEntity>
+
+SO -> SO : putnici = new ArrayList<>()
+loop za svaki pronađeni red
+    SO -> SO : putnici.add((Putnik) e)
+end
+
+SO -> R : commit()
+R --> SO : signal
+
+SO --> K : List<Putnik>
+
+deactivate SO
+
+@enduml

@@ -15,7 +15,7 @@ public class Operations {
     public static final int KREIRAJ_REZERVACIJA = 2;
     public static final int PROMENI_REZERVACIJA = 3;
     public static final int PRETRAZI_REZERVACIJA = 4;
-    public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_REZERVACIJA = 5;
+    public static final int VRATI_LISTU_REZERVACIJA = 5;
     public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT = 6;
     public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK = 7;
     public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN = 8;

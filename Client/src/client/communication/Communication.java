@@ -83,8 +83,8 @@ public class Communication {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Rezervacija> vratiListuRezervacijaKriterijumRezervacija(Rezervacija kriterijum) throws Exception {
-        Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_REZERVACIJA, kriterijum);
+    public List<Rezervacija> vratiListuRezervacija(Rezervacija kriterijum) throws Exception {
+        Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA, kriterijum);
         new Sender(socket).send(request);
         Response response = (Response) new Receiver(socket).receive();
         if (response.getResponseType().equals(ResponseType.SUCCESS)) {

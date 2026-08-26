@@ -90,8 +90,8 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
             }
         });
 
-        btnZaustaviServer.setEnabled(false);
         btnZaustaviServer.setText("Заустави сервер");
+        btnZaustaviServer.setEnabled(false);
         btnZaustaviServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnZaustaviServerActionPerformed(evt);
@@ -125,7 +125,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
                 .addContainerGap())
         );
 
-        pnlLog.setBorder(javax.swing.BorderFactory.createTitledBorder("Лог сервера"));
+        pnlLog.setBorder(javax.swing.BorderFactory.createTitledBorder("Системске поруке"));
 
         txtLog.setEditable(false);
         txtLog.setRows(10);
@@ -316,8 +316,8 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
     private javax.swing.JMenu menuPodesavanja;
     private javax.swing.JMenu menuTema;
     private javax.swing.JMenuItem miKonfiguracija;
-    private javax.swing.JMenuItem miTemaDark;
     private javax.swing.JMenuItem miTemaDarcula;
+    private javax.swing.JMenuItem miTemaDark;
     private javax.swing.JMenuItem miTemaIntelliJ;
     private javax.swing.JMenuItem miTemaLight;
     private javax.swing.JMenuItem miTemaMacDark;

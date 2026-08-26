@@ -83,7 +83,7 @@ public class HandleClientThread extends Thread {
                 return "Промени резервацију";
             case Operations.PRETRAZI_REZERVACIJA:
                 return "Претражи резервацију";
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_REZERVACIJA:
+            case Operations.VRATI_LISTU_REZERVACIJA:
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT:
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK:
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN:
@@ -124,8 +124,8 @@ public class HandleClientThread extends Thread {
                 return promeniRezervacija(request);
             case Operations.PRETRAZI_REZERVACIJA:
                 return pretraziRezervacija(request);
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_REZERVACIJA:
-                return vratiListuRezervacijaKriterijumRezervacija(request);
+            case Operations.VRATI_LISTU_REZERVACIJA:
+                return vratiListuRezervacija(request);
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT:
                 return vratiListuRezervacijaKriterijumAgent(request);
             case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK:
@@ -223,12 +223,12 @@ public class HandleClientThread extends Thread {
         return response;
     }
 
-    private Response vratiListuRezervacijaKriterijumRezervacija(Request request) {
+    private Response vratiListuRezervacija(Request request) {
         Response response = new Response();
         Rezervacija kriterijum = (Rezervacija) request.getArgument();
         try {
             response.setResponseType(ResponseType.SUCCESS);
-            response.setResult(Controller.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
+            response.setResult(Controller.getInstance().vratiListuRezervacija(kriterijum));
         } catch (Exception ex) {
             response.setResponseType(ResponseType.ERROR);
             response.setException(ex);

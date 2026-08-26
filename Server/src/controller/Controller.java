@@ -12,9 +12,8 @@ import domain.Mesto;
 import domain.Putnik;
 import domain.Region;
 import domain.Rezervacija;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import threads.ServerListener;
 import threads.ServerThread;
 import so.agent.PrijaviAgentSO;
@@ -46,7 +45,7 @@ public class Controller {
     private static Controller instance;
     private ServerThread serverThread;
     private ServerListener listener;
-    private final Set<Long> aktivniAgenti = ConcurrentHashMap.newKeySet();
+    private final List<Long> aktivniAgenti = new ArrayList<>();
 
     private Controller() {
     }
@@ -91,7 +90,9 @@ public class Controller {
 
     public void odjaviAgenta(Long idAgent) {
         if (idAgent != null) {
-            aktivniAgenti.remove(idAgent);
+            synchronized (aktivniAgenti) {
+                aktivniAgenti.remove(idAgent);
+            }
         }
     }
 
@@ -119,8 +120,11 @@ public class Controller {
         PrijaviAgentSO so = new PrijaviAgentSO();
         so.execute(new String[]{korisnickoIme, sifra});
         Agent agent = so.getAgent();
-        if (!aktivniAgenti.add(agent.getIdAgent())) {
-            throw new Exception("Агент је већ пријављен на систему.");
+        synchronized (aktivniAgenti) {
+            if (aktivniAgenti.contains(agent.getIdAgent())) {
+                throw new Exception("Агент је већ пријављен на систему.");
+            }
+            aktivniAgenti.add(agent.getIdAgent());
         }
         return agent;
     }
@@ -143,7 +147,7 @@ public class Controller {
         return so.getRezervacija();
     }
 
-    public List<Rezervacija> vratiListuRezervacijaKriterijumRezervacija(Rezervacija kriterijum) throws Exception {
+    public List<Rezervacija> vratiListuRezervacija(Rezervacija kriterijum) throws Exception {
         VratiListuRezervacijaKriterijumRezervacijaSO so = new VratiListuRezervacijaKriterijumRezervacijaSO();
         so.execute(kriterijum);
         return so.getListaRezervacija();

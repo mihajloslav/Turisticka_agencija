@@ -1,0 +1,45 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam monochrome true
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "k:Controller" as K
+participant "so:VratiListuRezervacijaKriterijumRezervacijaSO" as SO
+participant "r:RepositoryDbGeneric" as R
+
+K -> SO : execute(Rezervacija kriterijum)
+activate SO
+
+SO -> SO : precondition(Rezervacija)
+
+alt kriterijum je null ili tipa Rezervacija
+    SO -> R : connect()
+    R --> SO : signal
+
+    SO -> SO : executeOperation(Rezervacija)
+
+    SO -> SO : izgradi WHERE klauzu i listu parametara na osnovu\nstatusPlacanja, datumKreiranja/Od/Do, ukupanIznosOd/Do,\nAgent.idAgent, Putnik.idPutnik, Aranzman.idAranzman (samo popunjeni kriterijumi)
+
+    SO -> R : getAll(Rezervacija, whereClause, params)
+    R --> SO : List<GenericEntity>
+
+    SO -> SO : listaRezervacija = new ArrayList<>()
+    loop za svaki pronađeni red
+        SO -> SO : listaRezervacija.add((Rezervacija) e)
+    end
+
+    SO -> R : commit()
+    R --> SO : signal
+
+    SO --> K : List<Rezervacija>
+else kriterijum nije tipa Rezervacija
+    SO -> R : rollback()
+    R --> SO : signal
+    SO --> K : Exception("Неисправан критеријум претраге")
+end
+
+deactivate SO
+
+@enduml

@@ -163,7 +163,7 @@ public class PretraziRezervacijaController {
             kriterijum.setDatumKreiranjaOd(datumOd);
             kriterijum.setDatumKreiranjaDo(datumDo);
 
-            prikaziRezultat(Communication.getInstance().vratiListuRezervacijaKriterijumRezervacija(kriterijum));
+            prikaziRezultat(Communication.getInstance().vratiListuRezervacija(kriterijum));
         } catch (validation.ValidationException vex) {
             JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {

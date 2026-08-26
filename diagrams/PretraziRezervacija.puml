@@ -1,0 +1,70 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam monochrome true
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "k:Controller" as K
+participant "so:PretraziRezervacijaSO" as SO
+participant "r:RepositoryDbGeneric" as R
+
+K -> SO : execute(Rezervacija)
+activate SO
+
+SO -> SO : precondition(Rezervacija)
+
+alt idRezervacija postoji
+    SO -> R : connect()
+    R --> SO : signal
+
+    SO -> SO : executeOperation(Rezervacija)
+
+    SO -> R : getById(Rezervacija, idRezervacija)
+    R --> SO : Rezervacija
+
+    alt rezervacija pronađena
+        opt agent postoji
+            SO -> R : getById(Agent, idAgent)
+            R --> SO : Agent
+            SO -> SO : setAgent(agent)
+        end
+
+        opt putnik postoji
+            SO -> R : getById(Putnik, idPutnik)
+            R --> SO : Putnik
+            SO -> SO : setPutnik(putnik)
+        end
+
+        SO -> R : getAll(StavkaRezervacije, "idRezervacija = ?", [idRezervacija])
+        R --> SO : List<GenericEntity>
+
+        loop za svaku stavku rezervacije
+            SO -> SO : setRezervacija(found)
+            opt aranžman još nije učitan u kešu (ucitaniAranzmani)
+                SO -> R : getById(Aranzman, idAranzman)
+                R --> SO : Aranzman
+            end
+            SO -> SO : setAranzman(aranzman)
+        end
+
+        SO -> SO : setStavke(stavke)
+
+        SO -> R : commit()
+        R --> SO : signal
+
+        SO --> K : Rezervacija
+    else rezervacija nije pronađena
+        SO -> R : rollback()
+        R --> SO : signal
+        SO --> K : Exception("Систем не може да нађе резервацију")
+    end
+else idRezervacija ne postoji
+    SO -> R : rollback()
+    R --> SO : signal
+    SO --> K : Exception("Систем не може да нађе резервацију")
+end
+
+deactivate SO
+
+@enduml

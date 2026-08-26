@@ -1,0 +1,49 @@
+@startuml
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam monochrome true
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "k:Controller" as K
+participant "so:PrijaviAgentSO" as SO
+participant "r:RepositoryDbGeneric" as R
+
+K -> SO : execute(String[]{korisnickoIme, sifra})
+activate SO
+
+SO -> SO : precondition(String[])
+
+alt korisnicko ime i sifra su popunjeni
+    SO -> R : connect()
+    R --> SO : signal
+
+    SO -> SO : executeOperation(String[])
+
+    SO -> R : getAll(Agent, "korisnickoIme = ? AND sifra = ?", params)
+    R --> SO : List<GenericEntity>
+
+    alt agent pronađen
+        SO -> SO : agent = found.get(0)
+        SO -> R : commit()
+        R --> SO : signal
+        SO --> K : Agent
+    else agent nije pronađen
+        SO -> R : rollback()
+        R --> SO : signal
+        SO --> K : Exception("Корисничко име и шифра нису исправни")
+    end
+else korisnicko ime ili sifra nisu popunjeni
+    SO -> R : rollback()
+    R --> SO : signal
+    SO --> K : Exception("Корисничко име и шифра нису исправни")
+end
+
+deactivate SO
+
+opt agent je već prijavljen (aktivniAgenti.add(idAgent) == false)
+    K -> K : aktivniAgenti.add(agent.getIdAgent())
+    K --> K : throw Exception("Агент је већ пријављен на систему.")
+end
+
+@enduml

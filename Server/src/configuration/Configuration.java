@@ -42,7 +42,7 @@ public class Configuration {
     }
 
     public String getDbProperty(String key) {
-        return dbConfig.getProperty(key, "н/д");
+        return dbConfig.getProperty(key);
     }
 
     public void setDbProperty(String key, String value) {
@@ -50,7 +50,7 @@ public class Configuration {
     }
 
     public String getServerProperty(String key) {
-        return serverConfig.getProperty(key, "н/д");
+        return serverConfig.getProperty(key);
     }
 
     public void setServerProperty(String key, String value) {

@@ -54,7 +54,7 @@ public class ServerConfigForm extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Конфигурација сервера");
 
-        lblUrl.setText("УРЛ базе:");
+        lblUrl.setText("URL базе:");
 
         lblUsername.setText("Корисничко име:");
 
@@ -129,6 +129,7 @@ public class ServerConfigForm extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOtkaziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOtkaziActionPerformed
