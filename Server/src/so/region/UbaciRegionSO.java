@@ -22,8 +22,8 @@ public class UbaciRegionSO extends AbstractSO {
         }
         Region r = (Region) param;
         if (r.getNaziv() == null || r.getNaziv().isEmpty()
-                || r.getKontinent() == null || r.getKontinent().isEmpty()
-                || (r.getOznaka() != null && r.getOznaka().length() > 6)) {
+                || r.getOznaka() == null || r.getOznaka().isEmpty() || r.getOznaka().length() > 6
+                || r.getKontinent() == null || r.getKontinent().isEmpty()) {
             throw new Exception("Систем не може да запамти регион");
         }
     }
