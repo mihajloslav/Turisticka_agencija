@@ -73,6 +73,8 @@ public class HandleClientThread extends Thread {
         return prijavljeniAgent;
     }
 
+    
+    /*za Log Servera*/
     private String nazivOperacije(int operacija) {
         switch (operacija) {
             case Operations.PRIJAVI_AGENT:
@@ -84,9 +86,6 @@ public class HandleClientThread extends Thread {
             case Operations.PRETRAZI_REZERVACIJA:
                 return "Претражи резервацију";
             case Operations.VRATI_LISTU_REZERVACIJA:
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT:
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK:
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN:
                 return "Врати листу резервација";
             case Operations.VRATI_LISTU_SVI_AGENT:
                 return "Врати листу свих агената";
@@ -126,12 +125,6 @@ public class HandleClientThread extends Thread {
                 return pretraziRezervacija(request);
             case Operations.VRATI_LISTU_REZERVACIJA:
                 return vratiListuRezervacija(request);
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT:
-                return vratiListuRezervacijaKriterijumAgent(request);
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK:
-                return vratiListuRezervacijaKriterijumPutnik(request);
-            case Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN:
-                return vratiListuRezervacijaKriterijumAranzman(request);
             case Operations.VRATI_LISTU_SVI_AGENT:
                 return vratiListuSviAgent(request);
             case Operations.VRATI_LISTU_SVI_PUTNIK:
@@ -236,7 +229,7 @@ public class HandleClientThread extends Thread {
         return response;
     }
 
-    private Response vratiListuRezervacijaKriterijumAgent(Request request) {
+    /*private Response vratiListuRezervacijaKriterijumAgent(Request request) {
         Response response = new Response();
         Agent kriterijum = (Agent) request.getArgument();
         try {
@@ -273,7 +266,7 @@ public class HandleClientThread extends Thread {
             response.setException(ex);
         }
         return response;
-    }
+    }*/
 
     private Response vratiListuSviAgent(Request request) {
         Response response = new Response();

@@ -93,7 +93,7 @@ public class Communication {
         throw response.getException();
     }
 
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
     public List<Rezervacija> vratiListuRezervacijaKriterijumAgent(Agent kriterijum) throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT, kriterijum);
         new Sender(socket).send(request);
@@ -124,7 +124,7 @@ public class Communication {
             return (List<Rezervacija>) response.getResult();
         }
         throw response.getException();
-    }
+    }*/
 
     @SuppressWarnings("unchecked")
     public List<Agent> vratiListuSviAgent() throws Exception {
