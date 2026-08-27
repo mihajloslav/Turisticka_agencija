@@ -14,6 +14,7 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import controller.Controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.LookAndFeel;
@@ -41,6 +42,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
         Controller.getInstance().setListener(this);
         azurirajStatus(Controller.getInstance().isServerRunning());
         setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**

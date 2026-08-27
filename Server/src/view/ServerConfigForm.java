@@ -137,11 +137,33 @@ public class ServerConfigForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btnOtkaziActionPerformed
 
     private void btnSacuvajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacuvajActionPerformed
+        String url = txtUrl.getText().trim();
+        String username = txtUsername.getText().trim();
+        String password = String.valueOf(txtPassword.getPassword());
+        String portText = txtPort.getText().trim();
+
+        if (url.isEmpty() || username.isEmpty() || portText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "URL, корисничко име и порт су обавезни.", "Упозорење", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int port;
         try {
-            Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_URL, txtUrl.getText().trim());
-            Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_USERNAME, txtUsername.getText().trim());
-            Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_PASSWORD, String.valueOf(txtPassword.getPassword()));
-            Controller.getInstance().setServerProperty(MyServerConstants.SERVER_CONFIG_PORT, txtPort.getText().trim());
+            port = Integer.parseInt(portText);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Порт мора бити цео број.", "Упозорење", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if (port < 0 || port > 65535) {
+            JOptionPane.showMessageDialog(this, "Порт мора бити у опсегу од 0 до 65535.", "Упозорење", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_URL, url);
+            Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_USERNAME, username);
+            Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_PASSWORD, password);
+            Controller.getInstance().setServerProperty(MyServerConstants.SERVER_CONFIG_PORT, portText);
             Controller.getInstance().sacuvajKonfiguraciju();
             JOptionPane.showMessageDialog(this, "Конфигурација је сачувана.");
             dispose();
