@@ -26,13 +26,8 @@ public class Rezervacija implements GenericEntity {
     private Putnik putnik;
     private List<StavkaRezervacije> stavke = new ArrayList<>();
 
-    /*
-     * Search-criteria-only fields, used exclusively as an in-memory "prototype"
-     * when this object is passed to vratiListuRezervacijaKriterijumRezervacija.
-     * They are intentionally excluded from getColumnNamesForInsert/getInsertValues/
-     * getUpdateSetClause/getUpdateSetParams/fromResultSet, so they never affect
-     * persistence.
-     */
+
+    /*Za pretraživanje*/
     private Aranzman aranzman;
     private Double ukupanIznosOd;
     private Double ukupanIznosDo;

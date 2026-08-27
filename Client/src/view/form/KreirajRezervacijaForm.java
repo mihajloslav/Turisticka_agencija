@@ -28,16 +28,16 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
     private void initComponents() {
 
         lblAgent = new javax.swing.JLabel();
-        cmbAgent = new javax.swing.JComboBox<>();
+        cmbAgent = new javax.swing.JComboBox();
         lblPutnik = new javax.swing.JLabel();
-        cmbPutnik = new javax.swing.JComboBox<>();
+        cmbPutnik = new javax.swing.JComboBox();
         lblStatusPlacanja = new javax.swing.JLabel();
-        cmbStatusPlacanja = new javax.swing.JComboBox<>(new String[]{"Плаћено", "На чекању"});
+        cmbStatusPlacanja = new javax.swing.JComboBox();
         lblNapomena = new javax.swing.JLabel();
         txtNapomena = new javax.swing.JTextField();
         pnlStavke = new javax.swing.JPanel();
         lblAranzman = new javax.swing.JLabel();
-        cmbAranzman = new javax.swing.JComboBox<>();
+        cmbAranzman = new javax.swing.JComboBox();
         lblBrojOsoba = new javax.swing.JLabel();
         txtBrojOsoba = new javax.swing.JTextField();
         lblDatumPolaska = new javax.swing.JLabel();
@@ -47,6 +47,8 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
         btnDodajStavku = new javax.swing.JButton();
         scrollTabelaStavki = new javax.swing.JScrollPane();
         tblStavke = new javax.swing.JTable();
+        lblUkupanIznos = new javax.swing.JLabel();
+        txtUkupanIznos = new javax.swing.JTextField();
         btnUkloniStavku = new javax.swing.JButton();
         btnSacuvajRezervaciju = new javax.swing.JButton();
 
@@ -55,9 +57,13 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
 
         lblAgent.setText("Агент:");
 
+        cmbAgent.setEnabled(false);
+
         lblPutnik.setText("Путник:");
 
         lblStatusPlacanja.setText("Статус плаћања:");
+
+        cmbStatusPlacanja.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Плаћено", "На чекању" }));
 
         lblNapomena.setText("Напомена:");
 
@@ -75,6 +81,11 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
 
         scrollTabelaStavki.setViewportView(tblStavke);
 
+        lblUkupanIznos.setText("Укупан износ:");
+
+        txtUkupanIznos.setEditable(false);
+        txtUkupanIznos.setText("0.00");
+
         btnUkloniStavku.setText("Уклони ставку");
 
         javax.swing.GroupLayout pnlStavkeLayout = new javax.swing.GroupLayout(pnlStavke);
@@ -84,7 +95,7 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
             .addGroup(pnlStavkeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                    .addComponent(scrollTabelaStavki)
                     .addGroup(pnlStavkeLayout.createSequentialGroup()
                         .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAranzman)
@@ -93,17 +104,19 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
                             .addComponent(lblDatumDolaska))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbAranzman, 0, 390, Short.MAX_VALUE)
                             .addComponent(txtBrojOsoba)
                             .addComponent(txtDatumPolaska)
                             .addGroup(pnlStavkeLayout.createSequentialGroup()
-                                .addComponent(txtDatumDolaska, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                .addComponent(txtDatumDolaska)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnDodajStavku))))
+                                .addComponent(btnDodajStavku))
+                            .addComponent(cmbAranzman, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStavkeLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnUkloniStavku)))
-                .addContainerGap())
+                        .addComponent(lblUkupanIznos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtUkupanIznos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUkloniStavku))))
         );
         pnlStavkeLayout.setVerticalGroup(
             pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,10 +139,12 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
                     .addComponent(txtDatumDolaska, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDodajStavku))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUkloniStavku)
-                .addContainerGap())
+                .addComponent(scrollTabelaStavki, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addGroup(pnlStavkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUkupanIznos)
+                    .addComponent(txtUkupanIznos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUkloniStavku)))
         );
 
         btnSacuvajRezervaciju.setText("Сачувај резервацију");
@@ -141,7 +156,9 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlStavke, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAgent)
@@ -150,14 +167,13 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
                             .addComponent(lblNapomena))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbAgent, 0, 400, Short.MAX_VALUE)
-                            .addComponent(cmbPutnik, 0, 400, Short.MAX_VALUE)
-                            .addComponent(cmbStatusPlacanja, 0, 400, Short.MAX_VALUE)
+                            .addComponent(cmbAgent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbPutnik, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbStatusPlacanja, 0, 616, Short.MAX_VALUE)
                             .addComponent(txtNapomena)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnSacuvajRezervaciju)))
-                .addContainerGap())
+                        .addComponent(btnSacuvajRezervaciju))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,16 +202,17 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodajStavku;
     private javax.swing.JButton btnSacuvajRezervaciju;
     private javax.swing.JButton btnUkloniStavku;
-    private javax.swing.JComboBox<domain.Agent> cmbAgent;
-    private javax.swing.JComboBox<domain.Aranzman> cmbAranzman;
-    private javax.swing.JComboBox<domain.Putnik> cmbPutnik;
-    private javax.swing.JComboBox<java.lang.String> cmbStatusPlacanja;
+    private javax.swing.JComboBox cmbAgent;
+    private javax.swing.JComboBox cmbAranzman;
+    private javax.swing.JComboBox cmbPutnik;
+    private javax.swing.JComboBox cmbStatusPlacanja;
     private javax.swing.JLabel lblAgent;
     private javax.swing.JLabel lblAranzman;
     private javax.swing.JLabel lblBrojOsoba;
@@ -204,6 +221,7 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblNapomena;
     private javax.swing.JLabel lblPutnik;
     private javax.swing.JLabel lblStatusPlacanja;
+    private javax.swing.JLabel lblUkupanIznos;
     private javax.swing.JPanel pnlStavke;
     private javax.swing.JScrollPane scrollTabelaStavki;
     private javax.swing.JTable tblStavke;
@@ -211,6 +229,7 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtDatumDolaska;
     private javax.swing.JTextField txtDatumPolaska;
     private javax.swing.JTextField txtNapomena;
+    private javax.swing.JTextField txtUkupanIznos;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JComboBox<domain.Agent> getCmbAgent() {
@@ -255,6 +274,10 @@ public class KreirajRezervacijaForm extends javax.swing.JFrame {
 
     public javax.swing.JButton getBtnUkloniStavku() {
         return btnUkloniStavku;
+    }
+
+    public javax.swing.JTextField getTxtUkupanIznos() {
+        return txtUkupanIznos;
     }
 
     public javax.swing.JButton getBtnSacuvajRezervaciju() {

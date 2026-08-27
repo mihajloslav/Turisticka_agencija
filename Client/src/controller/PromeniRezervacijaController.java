@@ -40,6 +40,7 @@ public class PromeniRezervacijaController {
         ucitajListe();
         popuniPolja();
         addActionListeners();
+        azurirajUkupanIznos();
     }
 
     public void otvoriFormu() {
@@ -145,6 +146,7 @@ public class PromeniRezervacijaController {
             stavka.setPopust(popust);
             stavka.setCena(cena);
             tableModel.dodajStavku(stavka);
+            azurirajUkupanIznos();
 
             form.getTxtBrojOsoba().setText("");
             form.getTxtDatumPolaska().setText("");
@@ -165,6 +167,7 @@ public class PromeniRezervacijaController {
         tableModel.ukloniStavku(red);
         renumerisiStavke();
         tableModel.fireTableDataChanged();
+        azurirajUkupanIznos();
     }
 
     private void renumerisiStavke() {
@@ -172,6 +175,16 @@ public class PromeniRezervacijaController {
         for (int i = 0; i < stavke.size(); i++) {
             stavke.get(i).setRb(i + 1);
         }
+    }
+
+    private void azurirajUkupanIznos() {
+        double ukupno = 0;
+        for (StavkaRezervacije s : tableModel.getStavke()) {
+            if (s.getCena() != null) {
+                ukupno += s.getCena();
+            }
+        }
+        form.getTxtUkupanIznos().setText(String.format(java.util.Locale.US, "%.2f", ukupno));
     }
 
     private void sacuvajRezervaciju() {

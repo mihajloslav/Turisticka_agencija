@@ -38,6 +38,7 @@ public class KreirajRezervacijaController {
         form.getTblStavke().setModel(tableModel);
         ucitajListe();
         addActionListeners();
+        azurirajUkupanIznos();
     }
 
     public void otvoriFormu() {
@@ -46,8 +47,8 @@ public class KreirajRezervacijaController {
 
     private void ucitajListe() {
         try {
-            List<Agent> agenti = Communication.getInstance().vratiListuSviAgent();
-            form.getCmbAgent().setModel(new DefaultComboBoxModel<>(agenti.toArray(new Agent[0])));
+            Agent trenutni = Coordinator.getInstance().getCurrentAgent();
+            form.getCmbAgent().setModel(new DefaultComboBoxModel<>(new Agent[]{trenutni}));
             form.getCmbAgent().setRenderer(new DefaultListCellRenderer() {
                 @Override
                 public java.awt.Component getListCellRendererComponent(javax.swing.JList<?> list, Object value,
@@ -56,15 +57,7 @@ public class KreirajRezervacijaController {
                     return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
                 }
             });
-            Agent trenutni = Coordinator.getInstance().getCurrentAgent();
-            if (trenutni != null) {
-                for (Agent a : agenti) {
-                    if (a.getIdAgent().equals(trenutni.getIdAgent())) {
-                        form.getCmbAgent().setSelectedItem(a);
-                        break;
-                    }
-                }
-            }
+            form.getCmbAgent().setSelectedItem(trenutni);
 
             List<Putnik> putnici = Communication.getInstance().vratiListuSviPutnik();
             form.getCmbPutnik().setModel(new DefaultComboBoxModel<>(putnici.toArray(new Putnik[0])));
@@ -134,6 +127,7 @@ public class KreirajRezervacijaController {
             stavka.setPopust(popust);
             stavka.setCena(cena);
             tableModel.dodajStavku(stavka);
+            azurirajUkupanIznos();
 
             form.getTxtBrojOsoba().setText("");
             form.getTxtDatumPolaska().setText("");
@@ -154,6 +148,7 @@ public class KreirajRezervacijaController {
         tableModel.ukloniStavku(red);
         renumerisiStavke();
         tableModel.fireTableDataChanged();
+        azurirajUkupanIznos();
     }
 
     private void renumerisiStavke() {
@@ -161,6 +156,16 @@ public class KreirajRezervacijaController {
         for (int i = 0; i < stavke.size(); i++) {
             stavke.get(i).setRb(i + 1);
         }
+    }
+
+    private void azurirajUkupanIznos() {
+        double ukupno = 0;
+        for (StavkaRezervacije s : tableModel.getStavke()) {
+            if (s.getCena() != null) {
+                ukupno += s.getCena();
+            }
+        }
+        form.getTxtUkupanIznos().setText(String.format(java.util.Locale.US, "%.2f", ukupno));
     }
 
     private void sacuvajRezervaciju() {

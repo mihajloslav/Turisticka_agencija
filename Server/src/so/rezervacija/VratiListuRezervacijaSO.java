@@ -14,7 +14,7 @@ import so.AbstractSO;
  *
  * @author mihajlo
  */
-public class VratiListuRezervacijaKriterijumRezervacijaSO extends AbstractSO {
+public class VratiListuRezervacijaSO extends AbstractSO {
 
     private List<Rezervacija> listaRezervacija;
 

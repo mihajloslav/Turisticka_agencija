@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view.form;
 
@@ -10,14 +10,12 @@ import javax.swing.JFrame;
  *
  * @author mihajlo
  */
-public class MainForm extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainForm.class.getName());
+public class MainForm_old extends javax.swing.JFrame {
 
     /**
      * Creates new form MainForm
      */
-    public MainForm() {
+    public MainForm_old() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -31,7 +29,6 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         pnlHeader = new javax.swing.JPanel();
         lblNaslov = new javax.swing.JLabel();
         lblAgent = new javax.swing.JLabel();
@@ -43,7 +40,7 @@ public class MainForm extends javax.swing.JFrame {
         btnPretraziPutnika = new javax.swing.JButton();
         pnlRegioni = new javax.swing.JPanel();
         btnUbaciRegion = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenuBar();
         menuTema = new javax.swing.JMenu();
         miTemaLight = new javax.swing.JMenuItem();
         miTemaDark = new javax.swing.JMenuItem();
@@ -51,12 +48,10 @@ public class MainForm extends javax.swing.JFrame {
         miTemaDarcula = new javax.swing.JMenuItem();
         miTemaMacLight = new javax.swing.JMenuItem();
         miTemaMacDark = new javax.swing.JMenuItem();
-        menuOProgramu = new javax.swing.JMenu();
         miOProgramu = new javax.swing.JMenuItem();
 
-        jMenuItem1.setText("jMenuItem1");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Туристичка агенција");
 
         lblNaslov.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         lblNaslov.setText("Туристичка агенција");
@@ -71,7 +66,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblNaslov)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 186, Short.MAX_VALUE)
                 .addComponent(lblAgent)
                 .addContainerGap())
         );
@@ -88,7 +83,7 @@ public class MainForm extends javax.swing.JFrame {
         pnlRezervacije.setBorder(javax.swing.BorderFactory.createTitledBorder("Резервације"));
 
         btnKreirajRezervaciju.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnKreirajRezervaciju.setText("Креирај резервацију");
+        btnKreirajRezervaciju.setText("🧳  Креирај резервацију");
 
         btnPretraziRezervaciju.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPretraziRezervaciju.setText("🔍  Претражи резервацију");
@@ -117,7 +112,7 @@ public class MainForm extends javax.swing.JFrame {
         pnlPutnici.setBorder(javax.swing.BorderFactory.createTitledBorder("Путници"));
 
         btnKreirajPutnika.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnKreirajPutnika.setText("Креирај путника");
+        btnKreirajPutnika.setText("🧑  Креирај путника");
 
         btnPretraziPutnika.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnPretraziPutnika.setText("🔍  Претражи путника");
@@ -185,16 +180,12 @@ public class MainForm extends javax.swing.JFrame {
         miTemaMacDark.setText("FlatLaf macOS Dark");
         menuTema.add(miTemaMacDark);
 
-        jMenuBar1.add(menuTema);
+        menuBar.add(menuTema);
 
-        menuOProgramu.setText("О Програму");
+        miOProgramu.setText("О програму");
+        menuBar.add(miOProgramu);
 
-        miOProgramu.setText("Сазнај више");
-        menuOProgramu.add(miOProgramu);
-
-        jMenuBar1.add(menuOProgramu);
-
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,37 +211,35 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(pnlPutnici, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlRegioni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addGap(0, 51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnKreirajPutnika;
+    private javax.swing.JButton btnKreirajRezervaciju;
+    private javax.swing.JButton btnPretraziPutnika;
+    private javax.swing.JButton btnPretraziRezervaciju;
+    private javax.swing.JButton btnUbaciRegion;
+    private javax.swing.JLabel lblAgent;
+    private javax.swing.JLabel lblNaslov;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuTema;
+    private javax.swing.JMenuItem miOProgramu;
+    private javax.swing.JMenuItem miTemaDarcula;
+    private javax.swing.JMenuItem miTemaDark;
+    private javax.swing.JMenuItem miTemaIntelliJ;
+    private javax.swing.JMenuItem miTemaLight;
+    private javax.swing.JMenuItem miTemaMacDark;
+    private javax.swing.JMenuItem miTemaMacLight;
+    private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlPutnici;
+    private javax.swing.JPanel pnlRegioni;
+    private javax.swing.JPanel pnlRezervacije;
+    // End of variables declaration//GEN-END:variables
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new MainForm().setVisible(true));
-    }
-    
     public javax.swing.JButton getBtnKreirajRezervaciju() {
         return btnKreirajRezervaciju;
     }
@@ -302,30 +291,4 @@ public class MainForm extends javax.swing.JFrame {
     public javax.swing.JMenuItem getMiTemaMacDark() {
         return miTemaMacDark;
     }
-    
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnKreirajPutnika;
-    private javax.swing.JButton btnKreirajRezervaciju;
-    private javax.swing.JButton btnPretraziPutnika;
-    private javax.swing.JButton btnPretraziRezervaciju;
-    private javax.swing.JButton btnUbaciRegion;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JLabel lblAgent;
-    private javax.swing.JLabel lblNaslov;
-    private javax.swing.JMenu menuOProgramu;
-    private javax.swing.JMenu menuTema;
-    private javax.swing.JMenuItem miOProgramu;
-    private javax.swing.JMenuItem miTemaDarcula;
-    private javax.swing.JMenuItem miTemaDark;
-    private javax.swing.JMenuItem miTemaIntelliJ;
-    private javax.swing.JMenuItem miTemaLight;
-    private javax.swing.JMenuItem miTemaMacDark;
-    private javax.swing.JMenuItem miTemaMacLight;
-    private javax.swing.JPanel pnlHeader;
-    private javax.swing.JPanel pnlPutnici;
-    private javax.swing.JPanel pnlRegioni;
-    private javax.swing.JPanel pnlRezervacije;
-    // End of variables declaration//GEN-END:variables
 }

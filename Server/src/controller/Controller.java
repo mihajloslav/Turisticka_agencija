@@ -34,7 +34,7 @@ import so.rezervacija.PromeniRezervacijaSO;
 import so.rezervacija.VratiListuRezervacijaKriterijumAgentSO;
 import so.rezervacija.VratiListuRezervacijaKriterijumAranzmanSO;
 import so.rezervacija.VratiListuRezervacijaKriterijumPutnikSO;
-import so.rezervacija.VratiListuRezervacijaKriterijumRezervacijaSO;
+import so.rezervacija.VratiListuRezervacijaSO;
 
 /**
  *
@@ -148,7 +148,7 @@ public class Controller {
     }
 
     public List<Rezervacija> vratiListuRezervacija(Rezervacija kriterijum) throws Exception {
-        VratiListuRezervacijaKriterijumRezervacijaSO so = new VratiListuRezervacijaKriterijumRezervacijaSO();
+        VratiListuRezervacijaSO so = new VratiListuRezervacijaSO();
         so.execute(kriterijum);
         return so.getListaRezervacija();
     }
