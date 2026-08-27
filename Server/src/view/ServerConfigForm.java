@@ -25,6 +25,7 @@ public class ServerConfigForm extends javax.swing.JDialog {
     }
 
     private void ucitajPodatke() {
+        Controller.getInstance().ucitajKonfiguraciju();
         txtUrl.setText(Controller.getInstance().getDbProperty(MyServerConstants.DB_CONFIG_URL));
         txtUsername.setText(Controller.getInstance().getDbProperty(MyServerConstants.DB_CONFIG_USERNAME));
         txtPassword.setText(Controller.getInstance().getDbProperty(MyServerConstants.DB_CONFIG_PASSWORD));
@@ -165,7 +166,13 @@ public class ServerConfigForm extends javax.swing.JDialog {
             Controller.getInstance().setDbProperty(MyServerConstants.DB_CONFIG_PASSWORD, password);
             Controller.getInstance().setServerProperty(MyServerConstants.SERVER_CONFIG_PORT, portText);
             Controller.getInstance().sacuvajKonfiguraciju();
-            JOptionPane.showMessageDialog(this, "Конфигурација је сачувана.");
+            if (Controller.getInstance().isConfigurationValid()) {
+                JOptionPane.showMessageDialog(this, "Конфигурација је сачувана.");
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Конфигурација је сачувана, али и даље недостају потребни подаци за покретање сервера.",
+                        "Упозорење", JOptionPane.WARNING_MESSAGE);
+            }
             dispose();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);

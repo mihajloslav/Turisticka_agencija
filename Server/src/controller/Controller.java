@@ -62,6 +62,9 @@ public class Controller {
     }
 
     public void startServer() throws Exception {
+        if (!isConfigurationValid()) {
+            throw new Exception("Конфигурација сервера није потпуна. Молимо подесите URL, корисничко име и исправан порт кроз Конфигурација.");
+        }
         if (serverThread == null || !serverThread.isAlive()) {
             int port = Integer.parseInt(Configuration.getInstance().getServerProperty(MyServerConstants.SERVER_CONFIG_PORT));
             serverThread = new ServerThread(port, listener);
@@ -71,6 +74,10 @@ public class Controller {
                 listener.onPromenaStatusa(true);
             }
         }
+    }
+
+    public boolean isConfigurationValid() {
+        return Configuration.getInstance().isConfigurationValid();
     }
 
     public void stopServer() throws Exception {
@@ -113,7 +120,11 @@ public class Controller {
     }
 
     public void sacuvajKonfiguraciju() throws Exception {
-        Configuration.getInstance().sacuvajIzmene();
+        Configuration.getInstance().saveChanges();
+    }
+
+    public void ucitajKonfiguraciju() {
+        Configuration.getInstance().reloadConfiguration();
     }
 
     public Agent prijaviAgent(String korisnickoIme, String sifra) throws Exception {

@@ -267,9 +267,16 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
 
     private void miKonfiguracijaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miKonfiguracijaActionPerformed
         new ServerConfigForm(this, true).setVisible(true);
+        azurirajStatus(Controller.getInstance().isServerRunning());
     }//GEN-LAST:event_miKonfiguracijaActionPerformed
 
     private void btnPokreniServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokreniServerActionPerformed
+        if (!Controller.getInstance().isConfigurationValid()) {
+            JOptionPane.showMessageDialog(this,
+                    "Конфигурација сервера није потпуна. Молимо унесите URL, корисничко име и исправан порт кроз Конфигурација.",
+                    "Упозорење", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         try {
             Controller.getInstance().startServer();
         } catch (Exception ex) {
@@ -361,7 +368,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
             lblStatus.setText("Сервер је угашен");
             lblStatus.setForeground(java.awt.Color.RED);
         }
-        btnPokreniServer.setEnabled(!pokrenut);
+        btnPokreniServer.setEnabled(!pokrenut && Controller.getInstance().isConfigurationValid());
         btnZaustaviServer.setEnabled(pokrenut);
     }
 
