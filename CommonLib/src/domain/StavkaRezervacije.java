@@ -7,6 +7,8 @@ package domain;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -174,19 +176,41 @@ public class StavkaRezervacije implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "brojOsoba = ?, datumPolaska = ?, datumDolaska = ?, popust = ?, cena = ?, idAranzman = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return new Object[]{
-            brojOsoba,
-            datumPolaska == null ? null : java.sql.Date.valueOf(datumPolaska),
-            datumDolaska == null ? null : java.sql.Date.valueOf(datumDolaska),
-            popust, cena,
-            aranzman == null ? null : aranzman.getIdAranzman()
-        };
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        StavkaRezervacije o = (original instanceof StavkaRezervacije) ? (StavkaRezervacije) original : null;
+        Long idAranzman = aranzman == null ? null : aranzman.getIdAranzman();
+        java.sql.Date datumPolaskaSql = datumPolaska == null ? null : java.sql.Date.valueOf(datumPolaska);
+        java.sql.Date datumDolaskaSql = datumDolaska == null ? null : java.sql.Date.valueOf(datumDolaska);
+        if (o == null) {
+            changes.put("brojOsoba", brojOsoba);
+            changes.put("datumPolaska", datumPolaskaSql);
+            changes.put("datumDolaska", datumDolaskaSql);
+            changes.put("popust", popust);
+            changes.put("cena", cena);
+            changes.put("idAranzman", idAranzman);
+            return changes;
+        }
+        Long oldIdAranzman = o.aranzman == null ? null : o.aranzman.getIdAranzman();
+        if (!Objects.equals(brojOsoba, o.brojOsoba)) {
+            changes.put("brojOsoba", brojOsoba);
+        }
+        if (!Objects.equals(datumPolaska, o.datumPolaska)) {
+            changes.put("datumPolaska", datumPolaskaSql);
+        }
+        if (!Objects.equals(datumDolaska, o.datumDolaska)) {
+            changes.put("datumDolaska", datumDolaskaSql);
+        }
+        if (!Objects.equals(popust, o.popust)) {
+            changes.put("popust", popust);
+        }
+        if (!Objects.equals(cena, o.cena)) {
+            changes.put("cena", cena);
+        }
+        if (!Objects.equals(idAranzman, oldIdAranzman)) {
+            changes.put("idAranzman", idAranzman);
+        }
+        return changes;
     }
 
     @Override

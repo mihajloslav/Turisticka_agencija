@@ -6,6 +6,8 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -151,13 +153,37 @@ public class Agent implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "ime = ?, prezime = ?, email = ?, telefon = ?, korisnickoIme = ?, sifra = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return new Object[]{ime, prezime, email, telefon, korisnickoIme, sifra};
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        Agent o = (original instanceof Agent) ? (Agent) original : null;
+        if (o == null) {
+            changes.put("ime", ime);
+            changes.put("prezime", prezime);
+            changes.put("email", email);
+            changes.put("telefon", telefon);
+            changes.put("korisnickoIme", korisnickoIme);
+            changes.put("sifra", sifra);
+            return changes;
+        }
+        if (!Objects.equals(ime, o.ime)) {
+            changes.put("ime", ime);
+        }
+        if (!Objects.equals(prezime, o.prezime)) {
+            changes.put("prezime", prezime);
+        }
+        if (!Objects.equals(email, o.email)) {
+            changes.put("email", email);
+        }
+        if (!Objects.equals(telefon, o.telefon)) {
+            changes.put("telefon", telefon);
+        }
+        if (!Objects.equals(korisnickoIme, o.korisnickoIme)) {
+            changes.put("korisnickoIme", korisnickoIme);
+        }
+        if (!Objects.equals(sifra, o.sifra)) {
+            changes.put("sifra", sifra);
+        }
+        return changes;
     }
 
     @Override

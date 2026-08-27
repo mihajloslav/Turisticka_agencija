@@ -6,6 +6,8 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -129,13 +131,29 @@ public class Aranzman implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "naziv = ?, opis = ?, tipAranzmana = ?, cenaPoOsobi = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return new Object[]{naziv, opis, tipAranzmana, cenaPoOsobi};
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        Aranzman o = (original instanceof Aranzman) ? (Aranzman) original : null;
+        if (o == null) {
+            changes.put("naziv", naziv);
+            changes.put("opis", opis);
+            changes.put("tipAranzmana", tipAranzmana);
+            changes.put("cenaPoOsobi", cenaPoOsobi);
+            return changes;
+        }
+        if (!Objects.equals(naziv, o.naziv)) {
+            changes.put("naziv", naziv);
+        }
+        if (!Objects.equals(opis, o.opis)) {
+            changes.put("opis", opis);
+        }
+        if (!Objects.equals(tipAranzmana, o.tipAranzmana)) {
+            changes.put("tipAranzmana", tipAranzmana);
+        }
+        if (!Objects.equals(cenaPoOsobi, o.cenaPoOsobi)) {
+            changes.put("cenaPoOsobi", cenaPoOsobi);
+        }
+        return changes;
     }
 
     @Override

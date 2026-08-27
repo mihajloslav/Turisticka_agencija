@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -159,16 +161,26 @@ public class Zaduzenje implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "datumDo = ?, mesecnaKvota = ?, napomena = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return new Object[]{
-            datumDo == null ? null : java.sql.Date.valueOf(datumDo),
-            mesecnaKvota, napomena
-        };
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        Zaduzenje o = (original instanceof Zaduzenje) ? (Zaduzenje) original : null;
+        java.sql.Date datumDoSql = datumDo == null ? null : java.sql.Date.valueOf(datumDo);
+        if (o == null) {
+            changes.put("datumDo", datumDoSql);
+            changes.put("mesecnaKvota", mesecnaKvota);
+            changes.put("napomena", napomena);
+            return changes;
+        }
+        if (!Objects.equals(datumDo, o.datumDo)) {
+            changes.put("datumDo", datumDoSql);
+        }
+        if (!Objects.equals(mesecnaKvota, o.mesecnaKvota)) {
+            changes.put("mesecnaKvota", mesecnaKvota);
+        }
+        if (!Objects.equals(napomena, o.napomena)) {
+            changes.put("napomena", napomena);
+        }
+        return changes;
     }
 
     @Override

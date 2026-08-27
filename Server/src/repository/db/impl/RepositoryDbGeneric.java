@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import repository.db.DbConnectionFactory;
 import repository.db.DbRepository;
 
@@ -79,18 +80,54 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
     @Override
     public void edit(GenericEntity entity) throws Exception {
         Connection connection = DbConnectionFactory.getInstance().getConnection();
+
+        // Read the row's current state from the database so we can compute
+        // exactly which columns were actually changed, and update only those.
+        GenericEntity original = fetchByPrimaryKey(entity, connection);
+        Map<String, Object> changedValues = entity.getChangedValues(original);
+        if (changedValues.isEmpty()) {
+            // Nothing changed - no UPDATE needs to be executed.
+            return;
+        }
+
+        StringBuilder setClause = new StringBuilder();
+        for (String column : changedValues.keySet()) {
+            if (setClause.length() > 0) {
+                setClause.append(", ");
+            }
+            setClause.append(column).append(" = ?");
+        }
+
         String query = "UPDATE " + entity.getTableName()
-                + " SET " + entity.getUpdateSetClause()
+                + " SET " + setClause
                 + " WHERE " + entity.getPrimaryKeyClause();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             int index = 1;
-            for (Object value : entity.getUpdateSetParams()) {
+            for (Object value : changedValues.values()) {
                 statement.setObject(index++, value);
             }
             for (Object value : entity.getPrimaryKeyParams()) {
                 statement.setObject(index++, value);
             }
             statement.executeUpdate();
+        }
+    }
+
+    /**
+     * Reads the row currently in the database matching entity's primary key
+     * (which may be a single column or a composite key), reconstructed via
+     * entity.fromResultSet(...). Returns null if no such row exists.
+     */
+    private GenericEntity fetchByPrimaryKey(GenericEntity entity, Connection connection) throws Exception {
+        String query = "SELECT * FROM " + entity.getTableName() + " WHERE " + entity.getPrimaryKeyClause();
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            int index = 1;
+            for (Object value : entity.getPrimaryKeyParams()) {
+                statement.setObject(index++, value);
+            }
+            try (ResultSet rs = statement.executeQuery()) {
+                return rs.next() ? entity.fromResultSet(rs) : null;
+            }
         }
     }
 

@@ -6,6 +6,8 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -129,13 +131,29 @@ public class Region implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "naziv = ?, oznaka = ?, kontinent = ?, opis = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return new Object[]{naziv, oznaka, kontinent, opis};
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        Region o = (original instanceof Region) ? (Region) original : null;
+        if (o == null) {
+            changes.put("naziv", naziv);
+            changes.put("oznaka", oznaka);
+            changes.put("kontinent", kontinent);
+            changes.put("opis", opis);
+            return changes;
+        }
+        if (!Objects.equals(naziv, o.naziv)) {
+            changes.put("naziv", naziv);
+        }
+        if (!Objects.equals(oznaka, o.oznaka)) {
+            changes.put("oznaka", oznaka);
+        }
+        if (!Objects.equals(kontinent, o.kontinent)) {
+            changes.put("kontinent", kontinent);
+        }
+        if (!Objects.equals(opis, o.opis)) {
+            changes.put("opis", opis);
+        }
+        return changes;
     }
 
     @Override

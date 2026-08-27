@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -217,13 +219,42 @@ public class Rezervacija implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "datumKreiranja = ?, ukupanIznos = ?, statusPlacanja = ?, napomena = ?, idAgent = ?, idPutnik = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return getInsertValues();
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        Rezervacija o = (original instanceof Rezervacija) ? (Rezervacija) original : null;
+        Long idAgent = agent == null ? null : agent.getIdAgent();
+        Long idPutnik = putnik == null ? null : putnik.getIdPutnik();
+        java.sql.Date datumKreiranjaSql = datumKreiranja == null ? null : java.sql.Date.valueOf(datumKreiranja);
+        if (o == null) {
+            changes.put("datumKreiranja", datumKreiranjaSql);
+            changes.put("ukupanIznos", ukupanIznos);
+            changes.put("statusPlacanja", statusPlacanja);
+            changes.put("napomena", napomena);
+            changes.put("idAgent", idAgent);
+            changes.put("idPutnik", idPutnik);
+            return changes;
+        }
+        Long oldIdAgent = o.agent == null ? null : o.agent.getIdAgent();
+        Long oldIdPutnik = o.putnik == null ? null : o.putnik.getIdPutnik();
+        if (!Objects.equals(datumKreiranja, o.datumKreiranja)) {
+            changes.put("datumKreiranja", datumKreiranjaSql);
+        }
+        if (!Objects.equals(ukupanIznos, o.ukupanIznos)) {
+            changes.put("ukupanIznos", ukupanIznos);
+        }
+        if (!Objects.equals(statusPlacanja, o.statusPlacanja)) {
+            changes.put("statusPlacanja", statusPlacanja);
+        }
+        if (!Objects.equals(napomena, o.napomena)) {
+            changes.put("napomena", napomena);
+        }
+        if (!Objects.equals(idAgent, oldIdAgent)) {
+            changes.put("idAgent", idAgent);
+        }
+        if (!Objects.equals(idPutnik, oldIdPutnik)) {
+            changes.put("idPutnik", idPutnik);
+        }
+        return changes;
     }
 
     @Override

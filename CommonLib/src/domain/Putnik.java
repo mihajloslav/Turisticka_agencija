@@ -7,6 +7,8 @@ package domain;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -177,13 +179,48 @@ public class Putnik implements GenericEntity {
     }
 
     @Override
-    public String getUpdateSetClause() {
-        return "ime = ?, prezime = ?, email = ?, telefon = ?, jmbg = ?, brojPasosa = ?, idMesto = ?, datumRodjenja = ?";
-    }
-
-    @Override
-    public Object[] getUpdateSetParams() {
-        return getInsertValues();
+    public Map<String, Object> getChangedValues(GenericEntity original) {
+        Map<String, Object> changes = new LinkedHashMap<>();
+        Putnik o = (original instanceof Putnik) ? (Putnik) original : null;
+        Long idMesto = mesto == null ? null : mesto.getIdMesto();
+        java.sql.Date datumRodjenjaSql = datumRodjenja == null ? null : java.sql.Date.valueOf(datumRodjenja);
+        if (o == null) {
+            changes.put("ime", ime);
+            changes.put("prezime", prezime);
+            changes.put("email", email);
+            changes.put("telefon", telefon);
+            changes.put("jmbg", jmbg);
+            changes.put("brojPasosa", brojPasosa);
+            changes.put("idMesto", idMesto);
+            changes.put("datumRodjenja", datumRodjenjaSql);
+            return changes;
+        }
+        Long oldIdMesto = o.mesto == null ? null : o.mesto.getIdMesto();
+        if (!Objects.equals(ime, o.ime)) {
+            changes.put("ime", ime);
+        }
+        if (!Objects.equals(prezime, o.prezime)) {
+            changes.put("prezime", prezime);
+        }
+        if (!Objects.equals(email, o.email)) {
+            changes.put("email", email);
+        }
+        if (!Objects.equals(telefon, o.telefon)) {
+            changes.put("telefon", telefon);
+        }
+        if (!Objects.equals(jmbg, o.jmbg)) {
+            changes.put("jmbg", jmbg);
+        }
+        if (!Objects.equals(brojPasosa, o.brojPasosa)) {
+            changes.put("brojPasosa", brojPasosa);
+        }
+        if (!Objects.equals(idMesto, oldIdMesto)) {
+            changes.put("idMesto", idMesto);
+        }
+        if (!Objects.equals(datumRodjenja, o.datumRodjenja)) {
+            changes.put("datumRodjenja", datumRodjenjaSql);
+        }
+        return changes;
     }
 
     @Override
