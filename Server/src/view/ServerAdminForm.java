@@ -21,7 +21,7 @@ import javax.swing.LookAndFeel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import threads.HandleClientThread;
-import threads.ServerListener;
+import listeners.ServerListener;
 import view.components.TableModelKlijent;
 
 /**

@@ -14,7 +14,7 @@ import domain.Region;
 import domain.Rezervacija;
 import java.util.ArrayList;
 import java.util.List;
-import threads.ServerListener;
+import listeners.ServerListener;
 import threads.ServerThread;
 import so.agent.PrijaviAgentSO;
 import so.agent.VratiListuSviAgentSO;
