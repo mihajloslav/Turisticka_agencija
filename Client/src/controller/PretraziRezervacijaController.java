@@ -192,7 +192,7 @@ public class PretraziRezervacijaController {
             form.getTblStavke().setModel(new TableModelStavkaRezervacije(rezervacija.getStavke()));
             JOptionPane.showMessageDialog(form, "Систем је нашао резервацију", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да нађе резервацију", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
