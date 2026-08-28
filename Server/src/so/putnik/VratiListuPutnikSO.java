@@ -14,7 +14,7 @@ import so.AbstractSO;
  *
  * @author mihajlo
  */
-public class VratiListuPutnikKriterijumPutnikSO extends AbstractSO {
+public class VratiListuPutnikSO extends AbstractSO {
 
     private List<Putnik> listaPutnika;
 

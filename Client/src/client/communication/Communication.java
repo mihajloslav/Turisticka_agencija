@@ -210,8 +210,8 @@ public class Communication {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Putnik> vratiListuPutnikKriterijumPutnik(Putnik kriterijum) throws Exception {
-        Request request = new Request(Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK, kriterijum);
+    public List<Putnik> vratiListuPutnik(Putnik kriterijum) throws Exception {
+        Request request = new Request(Operations.VRATI_LISTU_PUTNIK, kriterijum);
         new Sender(socket).send(request);
         Response response = (Response) new Receiver(socket).receive();
         if (response.getResponseType().equals(ResponseType.SUCCESS)) {
@@ -220,7 +220,7 @@ public class Communication {
         throw response.getException();
     }
 
-    @SuppressWarnings("unchecked")
+    /*@SuppressWarnings("unchecked")
     public List<Putnik> vratiListuPutnikKriterijumMesto(Mesto kriterijum) throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO, kriterijum);
         new Sender(socket).send(request);
@@ -229,7 +229,7 @@ public class Communication {
             return (List<Putnik>) response.getResult();
         }
         throw response.getException();
-    }
+    }*/
 
     public Region ubaciRegion(Region region) throws Exception {
         Request request = new Request(Operations.UBACI_REGION, region);

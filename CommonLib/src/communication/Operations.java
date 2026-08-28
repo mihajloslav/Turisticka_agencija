@@ -32,8 +32,10 @@ public class Operations {
     public static final int PROMENI_PUTNIK = 11;
     public static final int OBRISI_PUTNIK = 12;
     public static final int PRETRAZI_PUTNIK = 13;
-    public static final int VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK = 14;
-    public static final int VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO = 15;
+    /*public static final int VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK = 14;
+    public static final int VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO = 15;*/
+    
+    public static final int VRATI_LISTU_PUTNIK = 14;
 
-    public static final int UBACI_REGION = 16;
+    public static final int UBACI_REGION = 15;
 }

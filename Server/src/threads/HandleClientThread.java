@@ -103,8 +103,7 @@ public class HandleClientThread extends Thread {
                 return "Обриши путника";
             case Operations.PRETRAZI_PUTNIK:
                 return "Претражи путника";
-            case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK:
-            case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO:
+            case Operations.VRATI_LISTU_PUTNIK:
                 return "Врати листу путника";
             case Operations.UBACI_REGION:
                 return "Убаци регион";
@@ -141,10 +140,8 @@ public class HandleClientThread extends Thread {
                 return obrisiPutnik(request);
             case Operations.PRETRAZI_PUTNIK:
                 return pretraziPutnik(request);
-            case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK:
-                return vratiListuPutnikKriterijumPutnik(request);
-            case Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO:
-                return vratiListuPutnikKriterijumMesto(request);
+            case Operations.VRATI_LISTU_PUTNIK:
+                return vratiListuPutnik(request);
             case Operations.UBACI_REGION:
                 return ubaciRegion(request);
             default:
@@ -372,25 +369,12 @@ public class HandleClientThread extends Thread {
         return response;
     }
 
-    private Response vratiListuPutnikKriterijumPutnik(Request request) {
+    private Response vratiListuPutnik(Request request) {
         Response response = new Response();
         Putnik kriterijum = (Putnik) request.getArgument();
         try {
             response.setResponseType(ResponseType.SUCCESS);
-            response.setResult(Controller.getInstance().vratiListuPutnikKriterijumPutnik(kriterijum));
-        } catch (Exception ex) {
-            response.setResponseType(ResponseType.ERROR);
-            response.setException(ex);
-        }
-        return response;
-    }
-
-    private Response vratiListuPutnikKriterijumMesto(Request request) {
-        Response response = new Response();
-        Mesto kriterijum = (Mesto) request.getArgument();
-        try {
-            response.setResponseType(ResponseType.SUCCESS);
-            response.setResult(Controller.getInstance().vratiListuPutnikKriterijumMesto(kriterijum));
+            response.setResult(Controller.getInstance().vratiListuPutnik(kriterijum));
         } catch (Exception ex) {
             response.setResponseType(ResponseType.ERROR);
             response.setException(ex);

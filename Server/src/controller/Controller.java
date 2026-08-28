@@ -24,8 +24,7 @@ import so.putnik.KreirajPutnikSO;
 import so.putnik.ObrisiPutnikSO;
 import so.putnik.PretraziPutnikSO;
 import so.putnik.PromeniPutnikSO;
-import so.putnik.VratiListuPutnikKriterijumMestoSO;
-import so.putnik.VratiListuPutnikKriterijumPutnikSO;
+import so.putnik.VratiListuPutnikSO;
 import so.putnik.VratiListuSviPutnikSO;
 import so.region.UbaciRegionSO;
 import so.rezervacija.KreirajRezervacijaSO;
@@ -229,17 +228,12 @@ public class Controller {
         return so.getPutnik();
     }
 
-    public List<Putnik> vratiListuPutnikKriterijumPutnik(Putnik kriterijum) throws Exception {
-        VratiListuPutnikKriterijumPutnikSO so = new VratiListuPutnikKriterijumPutnikSO();
+    public List<Putnik> vratiListuPutnik(Putnik kriterijum) throws Exception {
+        VratiListuPutnikSO so = new VratiListuPutnikSO();
         so.execute(kriterijum);
         return so.getListaPutnika();
     }
 
-    public List<Putnik> vratiListuPutnikKriterijumMesto(Mesto kriterijum) throws Exception {
-        VratiListuPutnikKriterijumMestoSO so = new VratiListuPutnikKriterijumMestoSO();
-        so.execute(kriterijum);
-        return so.getListaPutnika();
-    }
 
     public Region ubaciRegion(Region region) throws Exception {
         UbaciRegionSO so = new UbaciRegionSO();

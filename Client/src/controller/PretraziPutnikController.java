@@ -93,7 +93,7 @@ public class PretraziPutnikController {
             kriterijum.setMesto(mesto);
             kriterijum.setDatumRodjenja(datumRodjenjaText.isEmpty() ? null : LocalDate.parse(datumRodjenjaText, dtf));
 
-            List<Putnik> rezultat = Communication.getInstance().vratiListuPutnikKriterijumPutnik(kriterijum);
+            List<Putnik> rezultat = Communication.getInstance().vratiListuPutnik(kriterijum);
 
             if (rezultat.isEmpty()) {
                 JOptionPane.showMessageDialog(form,
