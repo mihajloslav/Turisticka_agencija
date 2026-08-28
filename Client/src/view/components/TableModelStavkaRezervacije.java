@@ -18,7 +18,7 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
 
     private List<StavkaRezervacije> stavke;
     private String[] columnNames = new String[]{"РБ", "Број особа", "Датум поласка", "Датум доласка", "Попуст", "Цена", "Аранжман"};
-    private Class[] columnClass = new Class[]{Integer.class, Integer.class, String.class, String.class, Double.class, Double.class, String.class};
+    private Class[] columnClass = new Class[]{Integer.class, Integer.class, String.class, String.class, String.class, Double.class, String.class};
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public TableModelStavkaRezervacije(List<StavkaRezervacije> stavke) {
@@ -71,7 +71,8 @@ public class TableModelStavkaRezervacije extends AbstractTableModel {
             case 3:
                 return stavka.getDatumDolaska() == null ? "" : stavka.getDatumDolaska().format(dtf);
             case 4:
-                return stavka.getPopust();
+                Double popust = stavka.getPopust();
+                return popust == null ? "" : Math.round(popust * 100) + "%";
             case 5:
                 return stavka.getCena();
             case 6:

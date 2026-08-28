@@ -189,13 +189,13 @@ public class KreirajRezervacijaController {
             rezervacija.setStavke(tableModel.getStavke());
 
             Communication.getInstance().kreirajRezervacija(rezervacija);
-            JOptionPane.showMessageDialog(form, "Систем је креирао резервацију", "Успех", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(form, "Систем је креирао резервацију", "Успех", JOptionPane.INFORMATION_MESSAGE);
             JOptionPane.showMessageDialog(form, "Систем је запамтио резервацију.", "Успех", JOptionPane.INFORMATION_MESSAGE);
             form.dispose();
         } catch (validation.ValidationException vex) {
             JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да запамти резервацију", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
