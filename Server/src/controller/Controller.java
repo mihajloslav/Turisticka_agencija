@@ -30,9 +30,6 @@ import so.region.UbaciRegionSO;
 import so.rezervacija.KreirajRezervacijaSO;
 import so.rezervacija.PretraziRezervacijaSO;
 import so.rezervacija.PromeniRezervacijaSO;
-import so.rezervacija.VratiListuRezervacijaKriterijumAgentSO;
-import so.rezervacija.VratiListuRezervacijaKriterijumAranzmanSO;
-import so.rezervacija.VratiListuRezervacijaKriterijumPutnikSO;
 import so.rezervacija.VratiListuRezervacijaSO;
 
 /**
@@ -163,7 +160,7 @@ public class Controller {
         return so.getListaRezervacija();
     }
 
-    public List<Rezervacija> vratiListuRezervacijaKriterijumAgent(Agent kriterijum) throws Exception {
+    /*public List<Rezervacija> vratiListuRezervacijaKriterijumAgent(Agent kriterijum) throws Exception {
         VratiListuRezervacijaKriterijumAgentSO so = new VratiListuRezervacijaKriterijumAgentSO();
         so.execute(kriterijum);
         return so.getListaRezervacija();
@@ -179,7 +176,7 @@ public class Controller {
         VratiListuRezervacijaKriterijumAranzmanSO so = new VratiListuRezervacijaKriterijumAranzmanSO();
         so.execute(kriterijum);
         return so.getListaRezervacija();
-    }
+    }*/
 
     public List<Agent> vratiListuSviAgent() throws Exception {
         VratiListuSviAgentSO so = new VratiListuSviAgentSO();
