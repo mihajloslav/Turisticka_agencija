@@ -4,9 +4,12 @@
  */
 package view.components;
 
+import domain.Mesto;
 import domain.Putnik;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -16,12 +19,22 @@ import javax.swing.table.AbstractTableModel;
 public class TableModelPutnik extends AbstractTableModel {
 
     private List<Putnik> putnici;
-    private String[] columnNames = new String[]{"Име", "Презиме", "Имејл", "Телефон", "ЈМБГ", "Број пасоша", "Датум рођења"};
-    private Class[] columnClass = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class, String.class};
+    private final Map<Long, String> nazivMesta = new HashMap<>();
+    private String[] columnNames = new String[]{"Име", "Презиме", "Имејл", "Телефон", "ЈМБГ", "Број пасоша", "Датум рођења", "Место"};
+    private Class[] columnClass = new Class[]{String.class, String.class, String.class, String.class, String.class, String.class, String.class, String.class};
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu");
 
     public TableModelPutnik(List<Putnik> putnici) {
+        this(putnici, null);
+    }
+
+    public TableModelPutnik(List<Putnik> putnici, List<Mesto> mesta) {
         this.putnici = putnici;
+        if (mesta != null) {
+            for (Mesto m : mesta) {
+                nazivMesta.put(m.getIdMesto(), m.getNaziv());
+            }
+        }
     }
 
     @Override
@@ -79,6 +92,8 @@ public class TableModelPutnik extends AbstractTableModel {
                 return putnik.getBrojPasosa();
             case 6:
                 return putnik.getDatumRodjenja() == null ? "" : putnik.getDatumRodjenja().format(dtf);
+            case 7:
+                return putnik.getMesto() == null ? "" : nazivMesta.getOrDefault(putnik.getMesto().getIdMesto(), "н/д");
             default:
                 return "н/д";
         }

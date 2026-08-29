@@ -27,6 +27,7 @@ public class PretraziPutnikController {
 
     private final PretraziPutnikForm form;
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.uuuu").withResolverStyle(ResolverStyle.STRICT);
+    private List<Mesto> mesta;
 
     public PretraziPutnikController(PretraziPutnikForm form) {
         this.form = form;
@@ -40,7 +41,7 @@ public class PretraziPutnikController {
 
     private void ucitajMesta() {
         try {
-            List<Mesto> mesta = Communication.getInstance().vratiListuSviMesto();
+            mesta = Communication.getInstance().vratiListuSviMesto();
             DefaultComboBoxModel<Mesto> model = new DefaultComboBoxModel<>();
             model.addElement(null);
             for (Mesto m : mesta) {
@@ -104,7 +105,7 @@ public class PretraziPutnikController {
                         "Систем је нашао путнике по задатим критеријумима",
                         "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             }
-            form.getTblPutnici().setModel(new TableModelPutnik(rezultat));
+            form.getTblPutnici().setModel(new TableModelPutnik(rezultat, mesta));
         } catch (validation.ValidationException vex) {
             JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {

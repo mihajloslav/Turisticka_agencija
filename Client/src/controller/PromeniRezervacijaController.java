@@ -212,7 +212,7 @@ public class PromeniRezervacijaController {
         } catch (validation.ValidationException vex) {
             JOptionPane.showMessageDialog(form, vex.getMessage(), "Упозорење", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да запамти резервацију", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
