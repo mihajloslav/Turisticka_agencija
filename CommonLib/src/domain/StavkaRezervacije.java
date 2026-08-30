@@ -15,6 +15,7 @@ import java.util.Objects;
  *
  * @author mihajlo
  */
+
 public class StavkaRezervacije implements GenericEntity {
 
     private Rezervacija rezervacija;
