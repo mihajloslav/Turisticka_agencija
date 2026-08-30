@@ -28,14 +28,6 @@ public class Rezervacija implements GenericEntity {
     private Putnik putnik;
     private List<StavkaRezervacije> stavke = new ArrayList<>();
 
-
-    /*Za pretraživanje*/
-    private Aranzman aranzman;
-    private Double ukupanIznosOd;
-    private Double ukupanIznosDo;
-    private LocalDate datumKreiranjaOd;
-    private LocalDate datumKreiranjaDo;
-
     public Rezervacija() {
     }
 
@@ -49,6 +41,13 @@ public class Rezervacija implements GenericEntity {
         this.agent = agent;
         this.putnik = putnik;
     }
+
+    /*Za pretraživanje*/
+    private Aranzman aranzman;
+    private Double ukupanIznosOd;
+    private Double ukupanIznosDo;
+    private LocalDate datumKreiranjaOd;
+    private LocalDate datumKreiranjaDo;
 
     public Long getIdRezervacija() {
         return idRezervacija;
