@@ -16,6 +16,7 @@ import java.util.Objects;
  *
  * @author mihajlo
  */
+
 public class Zaduzenje implements GenericEntity {
 
     private Agent agent;
