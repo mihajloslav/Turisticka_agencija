@@ -55,7 +55,6 @@ public class ObrisiPutnikController {
             JOptionPane.showMessageDialog(form, "Путник је обрисан.", "Успех", JOptionPane.INFORMATION_MESSAGE);
             form.dispose();
         } catch (Exception ex) {
-            //"Систем не може да обрише путника"
             JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
