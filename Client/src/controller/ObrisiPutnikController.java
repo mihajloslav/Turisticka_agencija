@@ -52,10 +52,10 @@ public class ObrisiPutnikController {
     private void obrisi() {
         try {
             Communication.getInstance().obrisiPutnik(putnik);
-            JOptionPane.showMessageDialog(form, "Путник је обрисан.", "Успех", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем је обрисао путника.", "Успех", JOptionPane.INFORMATION_MESSAGE);
             form.dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да обрише путника", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

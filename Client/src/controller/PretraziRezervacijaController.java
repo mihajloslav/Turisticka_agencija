@@ -218,7 +218,7 @@ public class PretraziRezervacijaController {
             JOptionPane.showMessageDialog(form, "Систем је нашао резервацију", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             Coordinator.getInstance().otvoriPromeniRezervacijaFormu(rezervacija);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да нађе резервацију", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
