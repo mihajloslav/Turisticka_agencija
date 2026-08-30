@@ -154,7 +154,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
     public GenericEntity getById(GenericEntity entity, Long k) throws Exception {
         Connection connection = DbConnectionFactory.getInstance().getConnection();
         String query = "SELECT * FROM " + entity.getTableName()
-                + " WHERE " + entity.getPrimaryKeyColumnName() + " = ?";
+                + " WHERE " + entity.getPrimaryKeyClause();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setObject(1, k);
             try (ResultSet rs = statement.executeQuery()) {

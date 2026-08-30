@@ -116,8 +116,8 @@ public class Mesto implements GenericEntity {
     }
 
     @Override
-    public String getPrimaryKeyColumnName() {
-        return "idMesto";
+    public boolean hasGeneratedKey() {
+        return true;
     }
 
     @Override

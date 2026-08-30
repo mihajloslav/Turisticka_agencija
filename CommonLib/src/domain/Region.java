@@ -116,8 +116,8 @@ public class Region implements GenericEntity {
     }
 
     @Override
-    public String getPrimaryKeyColumnName() {
-        return "idRegion";
+    public boolean hasGeneratedKey() {
+        return true;
     }
 
     @Override

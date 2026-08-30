@@ -203,8 +203,8 @@ public class Rezervacija implements GenericEntity {
     }
 
     @Override
-    public String getPrimaryKeyColumnName() {
-        return "idRezervacija";
+    public boolean hasGeneratedKey() {
+        return true;
     }
 
     @Override

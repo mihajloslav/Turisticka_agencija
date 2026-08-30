@@ -116,8 +116,8 @@ public class Aranzman implements GenericEntity {
     }
 
     @Override
-    public String getPrimaryKeyColumnName() {
-        return "idAranzman";
+    public boolean hasGeneratedKey() {
+        return true;
     }
 
     @Override

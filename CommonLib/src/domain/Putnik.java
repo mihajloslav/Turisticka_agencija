@@ -164,8 +164,8 @@ public class Putnik implements GenericEntity {
     }
 
     @Override
-    public String getPrimaryKeyColumnName() {
-        return "idPutnik";
+    public boolean hasGeneratedKey() {
+        return true;
     }
 
     @Override

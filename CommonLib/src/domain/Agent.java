@@ -138,8 +138,8 @@ public class Agent implements GenericEntity {
     }
 
     @Override
-    public String getPrimaryKeyColumnName() {
-        return "idAgent";
+    public boolean hasGeneratedKey() {
+        return true;
     }
 
     @Override
