@@ -12,8 +12,6 @@ import java.util.List;
  */
 public interface Repository<T, K> {
 
-    List<T> getAll() throws Exception;
-
     List<T> getAll(T entity, String whereClause, Object[] params) throws Exception;
 
     void add(T t) throws Exception;
@@ -21,8 +19,6 @@ public interface Repository<T, K> {
     void edit(T t) throws Exception;
 
     void delete(T t) throws Exception;
-
-    T getById(K k) throws Exception;
 
     T getById(T entity, K k) throws Exception;
 }

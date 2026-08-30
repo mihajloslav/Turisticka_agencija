@@ -22,11 +22,6 @@ import repository.db.DbRepository;
 public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
 
     @Override
-    public List<GenericEntity> getAll() throws Exception {
-        throw new UnsupportedOperationException("Није подржано.");
-    }
-
-    @Override
     public List<GenericEntity> getAll(GenericEntity entity, String whereClause, Object[] params) throws Exception {
         List<GenericEntity> result = new ArrayList<>();
         Connection connection = DbConnectionFactory.getInstance().getConnection();
@@ -143,11 +138,6 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
             }
             statement.executeUpdate();
         }
-    }
-
-    @Override
-    public GenericEntity getById(Long k) throws Exception {
-        throw new UnsupportedOperationException("Није подржано.");
     }
 
     @Override
