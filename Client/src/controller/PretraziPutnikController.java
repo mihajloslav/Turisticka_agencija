@@ -64,6 +64,7 @@ public class PretraziPutnikController {
     private void addActionListeners() {
         form.getBtnPretrazi().addActionListener(evt -> pretrazi());
         form.getBtnPromeni().addActionListener(evt -> promeni());
+        form.getBtnPrikazi().addActionListener(evt -> prikazi());
         form.getBtnObrisi().addActionListener(evt -> obrisi());
     }
 
@@ -133,7 +134,21 @@ public class PretraziPutnikController {
             JOptionPane.showMessageDialog(form, "Систем је нашао путника", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             Coordinator.getInstance().otvoriPromeniPutnikFormu(putnik);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да нађе путника", "Грешка", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void prikazi() {
+        Putnik selektovan = selektovaniPutnik();
+        if (selektovan == null) {
+            return;
+        }
+        try {
+            Putnik putnik = Communication.getInstance().pretraziPutnik(selektovan);
+            JOptionPane.showMessageDialog(form, "Систем је нашао путника", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
+            Coordinator.getInstance().otvoriPrikaziPutnikFormu(putnik);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(form, "Систем не може да нађе путника", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -147,7 +162,7 @@ public class PretraziPutnikController {
             JOptionPane.showMessageDialog(form, "Систем је нашао путника", "Резултат претраге", JOptionPane.INFORMATION_MESSAGE);
             Coordinator.getInstance().otvoriObrisiPutnikFormu(putnik);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(form, ex.getMessage(), "Грешка", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(form, "Систем не може да нађе путника", "Грешка", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

@@ -3,7 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Туристичка агенција - Претражи путника"/>
+    <Property name="title" type="java.lang.String" value="&#x422;&#x443;&#x440;&#x438;&#x441;&#x442;&#x438;&#x447;&#x43a;&#x430; &#x430;&#x433;&#x435;&#x43d;&#x446;&#x438;&#x458;&#x430; - &#x41f;&#x440;&#x435;&#x442;&#x440;&#x430;&#x436;&#x438; &#x43f;&#x443;&#x442;&#x43d;&#x438;&#x43a;&#x430;"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -72,6 +72,8 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Component id="btnPromeni" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnPrikazi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnObrisi" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -117,6 +119,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnPromeni" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnPrikazi" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnObrisi" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -127,49 +130,49 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblIme">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Име:"/>
+        <Property name="text" type="java.lang.String" value="&#x418;&#x43c;&#x435;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtImeKriterijum">
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrezime">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Презиме:"/>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x437;&#x438;&#x43c;&#x435;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtPrezimeKriterijum">
     </Component>
     <Component class="javax.swing.JLabel" name="lblEmail">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Е-пошта:"/>
+        <Property name="text" type="java.lang.String" value="&#x415;-&#x43f;&#x43e;&#x448;&#x442;&#x430;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmailKriterijum">
     </Component>
     <Component class="javax.swing.JLabel" name="lblTelefon">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Телефон:"/>
+        <Property name="text" type="java.lang.String" value="&#x422;&#x435;&#x43b;&#x435;&#x444;&#x43e;&#x43d;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtTelefonKriterijum">
     </Component>
     <Component class="javax.swing.JLabel" name="lblJmbg">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ЈМБГ:"/>
+        <Property name="text" type="java.lang.String" value="&#x408;&#x41c;&#x411;&#x413;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtJmbgKriterijum">
     </Component>
     <Component class="javax.swing.JLabel" name="lblBrojPasosa">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Број пасоша:"/>
+        <Property name="text" type="java.lang.String" value="&#x411;&#x440;&#x43e;&#x458; &#x43f;&#x430;&#x441;&#x43e;&#x448;&#x430;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBrojPasosaKriterijum">
     </Component>
     <Component class="javax.swing.JLabel" name="lblMesto">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Место:"/>
+        <Property name="text" type="java.lang.String" value="&#x41c;&#x435;&#x441;&#x442;&#x43e;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbMestoKriterijum">
@@ -181,14 +184,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblDatumRodjenja">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Датум рођења (dd.MM.yyyy):"/>
+        <Property name="text" type="java.lang.String" value="&#x414;&#x430;&#x442;&#x443;&#x43c; &#x440;&#x43e;&#x452;&#x435;&#x45a;&#x430; (dd.MM.yyyy):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtDatumRodjenjaKriterijum">
     </Component>
     <Component class="javax.swing.JButton" name="btnPretrazi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Претражи"/>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x435;&#x442;&#x440;&#x430;&#x436;&#x438;"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="scrollTabela">
@@ -204,12 +207,17 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnPromeni">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Промени"/>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x43c;&#x435;&#x43d;&#x438;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnPrikazi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x438;&#x43a;&#x430;&#x436;&#x438;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnObrisi">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Обриши"/>
+        <Property name="text" type="java.lang.String" value="&#x41e;&#x431;&#x440;&#x438;&#x448;&#x438;"/>
       </Properties>
     </Component>
   </SubComponents>

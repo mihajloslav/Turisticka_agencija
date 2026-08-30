@@ -12,6 +12,7 @@ import controller.OProgramuController;
 import controller.PretraziPutnikController;
 import controller.PretraziRezervacijaController;
 import controller.PrijaviAgentController;
+import controller.PrikaziPutnikController;
 import controller.PromeniPutnikController;
 import controller.PromeniRezervacijaController;
 import controller.UbaciRegionController;
@@ -26,6 +27,7 @@ import view.form.OProgramuForm;
 import view.form.PretraziPutnikForm;
 import view.form.PretraziRezervacijaForm;
 import view.form.PrijaviAgentForm;
+import view.form.PrikaziPutnikForm;
 import view.form.PromeniPutnikForm;
 import view.form.PromeniRezervacijaForm;
 import view.form.UbaciRegionForm;
@@ -48,6 +50,7 @@ public class Coordinator {
     private PretraziPutnikController pretraziPutnikController;
     private PromeniPutnikController promeniPutnikController;
     private ObrisiPutnikController obrisiPutnikController;
+    private PrikaziPutnikController prikaziPutnikController;
     private UbaciRegionController ubaciRegionController;
     private OProgramuController oProgramuController;
 
@@ -112,6 +115,11 @@ public class Coordinator {
     public void otvoriObrisiPutnikFormu(Putnik putnik) {
         obrisiPutnikController = new ObrisiPutnikController(new ObrisiPutnikForm(putnik), putnik);
         obrisiPutnikController.otvoriFormu();
+    }
+
+    public void otvoriPrikaziPutnikFormu(Putnik putnik) {
+        prikaziPutnikController = new PrikaziPutnikController(new PrikaziPutnikForm(putnik), putnik);
+        prikaziPutnikController.otvoriFormu();
     }
 
     public void otvoriUbaciRegionFormu() {

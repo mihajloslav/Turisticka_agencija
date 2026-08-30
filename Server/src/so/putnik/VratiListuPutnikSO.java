@@ -32,28 +32,28 @@ public class VratiListuPutnikSO extends AbstractSO {
         List<Object> params = new ArrayList<>();
         if (criteria != null) {
             if (criteria.getIme() != null && !criteria.getIme().isEmpty()) {
-                where.append(where.length() == 0 ? "" : " AND ").append("ime = ?");
-                params.add(criteria.getIme());
+                where.append(where.length() == 0 ? "" : " AND ").append("ime LIKE ?");
+                params.add(criteria.getIme() + "%");
             }
             if (criteria.getPrezime() != null && !criteria.getPrezime().isEmpty()) {
-                where.append(where.length() == 0 ? "" : " AND ").append("prezime = ?");
-                params.add(criteria.getPrezime());
+                where.append(where.length() == 0 ? "" : " AND ").append("prezime LIKE ?");
+                params.add(criteria.getPrezime() + "%");
             }
             if (criteria.getEmail() != null && !criteria.getEmail().isEmpty()) {
-                where.append(where.length() == 0 ? "" : " AND ").append("email = ?");
-                params.add(criteria.getEmail());
+                where.append(where.length() == 0 ? "" : " AND ").append("email LIKE ?");
+                params.add(criteria.getEmail() + "%");
             }
             if (criteria.getTelefon() != null && !criteria.getTelefon().isEmpty()) {
-                where.append(where.length() == 0 ? "" : " AND ").append("telefon = ?");
-                params.add(criteria.getTelefon());
+                where.append(where.length() == 0 ? "" : " AND ").append("telefon LIKE ?");
+                params.add(criteria.getTelefon() + "%");
             }
             if (criteria.getJmbg() != null && !criteria.getJmbg().isEmpty()) {
-                where.append(where.length() == 0 ? "" : " AND ").append("jmbg = ?");
-                params.add(criteria.getJmbg());
+                where.append(where.length() == 0 ? "" : " AND ").append("jmbg LIKE ?");
+                params.add(criteria.getJmbg() + "%");
             }
             if (criteria.getBrojPasosa() != null && !criteria.getBrojPasosa().isEmpty()) {
-                where.append(where.length() == 0 ? "" : " AND ").append("brojPasosa = ?");
-                params.add(criteria.getBrojPasosa());
+                where.append(where.length() == 0 ? "" : " AND ").append("brojPasosa LIKE ?");
+                params.add(criteria.getBrojPasosa() + "%");
             }
             if (criteria.getMesto() != null && criteria.getMesto().getIdMesto() != null) {
                 where.append(where.length() == 0 ? "" : " AND ").append("idMesto = ?");

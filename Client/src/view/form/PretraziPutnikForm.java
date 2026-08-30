@@ -47,6 +47,7 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
         scrollTabela = new javax.swing.JScrollPane();
         tblPutnici = new javax.swing.JTable();
         btnPromeni = new javax.swing.JButton();
+        btnPrikazi = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -73,6 +74,8 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
         scrollTabela.setViewportView(tblPutnici);
 
         btnPromeni.setText("Промени");
+
+        btnPrikazi.setText("Прикажи");
 
         btnObrisi.setText("Обриши");
 
@@ -123,6 +126,8 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnPromeni)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPrikazi)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnObrisi)))
                 .addContainerGap())
         );
@@ -160,6 +165,7 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPromeni)
+                    .addComponent(btnPrikazi)
                     .addComponent(btnObrisi))
                 .addContainerGap())
         );
@@ -170,6 +176,7 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPretrazi;
+    private javax.swing.JButton btnPrikazi;
     private javax.swing.JButton btnPromeni;
     private javax.swing.JComboBox<domain.Mesto> cmbMestoKriterijum;
     private javax.swing.JLabel lblBrojPasosa;
@@ -237,5 +244,9 @@ public class PretraziPutnikForm extends javax.swing.JFrame {
 
     public javax.swing.JButton getBtnObrisi() {
         return btnObrisi;
+    }
+
+    public javax.swing.JButton getBtnPrikazi() {
+        return btnPrikazi;
     }
 }
