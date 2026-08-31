@@ -82,7 +82,6 @@ public class Communication {
         throw response.getException();
     }
 
-    @SuppressWarnings("unchecked")
     public List<Rezervacija> vratiListuRezervacija(Rezervacija kriterijum) throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA, kriterijum);
         new Sender(socket).send(request);
@@ -93,40 +92,6 @@ public class Communication {
         throw response.getException();
     }
 
-    /*@SuppressWarnings("unchecked")
-    public List<Rezervacija> vratiListuRezervacijaKriterijumAgent(Agent kriterijum) throws Exception {
-        Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT, kriterijum);
-        new Sender(socket).send(request);
-        Response response = (Response) new Receiver(socket).receive();
-        if (response.getResponseType().equals(ResponseType.SUCCESS)) {
-            return (List<Rezervacija>) response.getResult();
-        }
-        throw response.getException();
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<Rezervacija> vratiListuRezervacijaKriterijumPutnik(Putnik kriterijum) throws Exception {
-        Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK, kriterijum);
-        new Sender(socket).send(request);
-        Response response = (Response) new Receiver(socket).receive();
-        if (response.getResponseType().equals(ResponseType.SUCCESS)) {
-            return (List<Rezervacija>) response.getResult();
-        }
-        throw response.getException();
-    }
-
-    @SuppressWarnings("unchecked")
-    public List<Rezervacija> vratiListuRezervacijaKriterijumAranzman(Aranzman kriterijum) throws Exception {
-        Request request = new Request(Operations.VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN, kriterijum);
-        new Sender(socket).send(request);
-        Response response = (Response) new Receiver(socket).receive();
-        if (response.getResponseType().equals(ResponseType.SUCCESS)) {
-            return (List<Rezervacija>) response.getResult();
-        }
-        throw response.getException();
-    }*/
-
-    @SuppressWarnings("unchecked")
     public List<Agent> vratiListuSviAgent() throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_SVI_AGENT, null);
         new Sender(socket).send(request);
@@ -137,7 +102,6 @@ public class Communication {
         throw response.getException();
     }
 
-    @SuppressWarnings("unchecked")
     public List<Putnik> vratiListuSviPutnik() throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_SVI_PUTNIK, null);
         new Sender(socket).send(request);
@@ -148,7 +112,6 @@ public class Communication {
         throw response.getException();
     }
 
-    @SuppressWarnings("unchecked")
     public List<Aranzman> vratiListuSviAranzman() throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_SVI_ARANZMAN, null);
         new Sender(socket).send(request);
@@ -159,7 +122,6 @@ public class Communication {
         throw response.getException();
     }
 
-    @SuppressWarnings("unchecked")
     public List<Mesto> vratiListuSviMesto() throws Exception {
         Request request = new Request(Operations.VRATI_LISTU_SVI_MESTO, null);
         new Sender(socket).send(request);
@@ -220,16 +182,6 @@ public class Communication {
         throw response.getException();
     }
 
-    /*@SuppressWarnings("unchecked")
-    public List<Putnik> vratiListuPutnikKriterijumMesto(Mesto kriterijum) throws Exception {
-        Request request = new Request(Operations.VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO, kriterijum);
-        new Sender(socket).send(request);
-        Response response = (Response) new Receiver(socket).receive();
-        if (response.getResponseType().equals(ResponseType.SUCCESS)) {
-            return (List<Putnik>) response.getResult();
-        }
-        throw response.getException();
-    }*/
 
     public Region ubaciRegion(Region region) throws Exception {
         Request request = new Request(Operations.UBACI_REGION, region);

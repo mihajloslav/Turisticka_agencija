@@ -36,35 +36,23 @@ public class Configuration {
         return instance;
     }
 
-    /**
-     * Explicitly reloads both .properties files from disk into the existing
-     * Singleton, without creating a new instance. Should be called whenever
-     * something needs to see the current state on disk (e.g. before opening
-     * the server configuration form), since the Singleton otherwise keeps
-     * the values it loaded when it was first created.
-     */
+
     public void reloadConfiguration() {
         loadFromDisk();
     }
 
-    /**
-     * Loads both .properties files independently, so that the absence of one
-     * file does not prevent the other from loading (and vice versa). If a
-     * file does not exist or cannot be read, the corresponding Properties
-     * object stays empty instead of being null.
-     */
     private void loadFromDisk() {
         dbConfig = new Properties();
         try (FileInputStream in = new FileInputStream(DB_CONFIG_PATH)) {
             dbConfig.load(in);
         } catch (IOException ex) {
-            // File does not exist or cannot be loaded - dbConfig stays empty.
+            //Fajl ne postoji ili ne može da se učita - dbConfig ostaje prazan.
         }
         serverConfig = new Properties();
         try (FileInputStream in = new FileInputStream(SERVER_CONFIG_PATH)) {
             serverConfig.load(in);
         } catch (IOException ex) {
-            // File does not exist or cannot be loaded - serverConfig stays empty.
+            //Fajl ne postoji ili ne može da se učita - serverConfig ostaje prazan.
         }
     }
 
@@ -98,19 +86,6 @@ public class Configuration {
         loadFromDisk();
     }
 
-    /**
-     * Checks whether the server configuration exists and contains all the
-     * values required for the server to start:
-     * - both .properties files must exist on disk,
-     * - url and username (dbconfig.properties) must be non-empty,
-     * - port (server.properties) must be non-empty, an integer in range 0-65535.
-     * Password is NOT required.
-     *
-     * Always reloads the files from disk before checking, so the result
-     * never depends on stale values cached in the Singleton (e.g. if the
-     * file was manually edited, deleted, or recreated while the application
-     * is running).
-     */
     public boolean isConfigurationValid() {
         loadFromDisk();
 

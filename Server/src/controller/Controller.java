@@ -160,24 +160,6 @@ public class Controller {
         return so.getListaRezervacija();
     }
 
-    /*public List<Rezervacija> vratiListuRezervacijaKriterijumAgent(Agent kriterijum) throws Exception {
-        VratiListuRezervacijaKriterijumAgentSO so = new VratiListuRezervacijaKriterijumAgentSO();
-        so.execute(kriterijum);
-        return so.getListaRezervacija();
-    }
-
-    public List<Rezervacija> vratiListuRezervacijaKriterijumPutnik(Putnik kriterijum) throws Exception {
-        VratiListuRezervacijaKriterijumPutnikSO so = new VratiListuRezervacijaKriterijumPutnikSO();
-        so.execute(kriterijum);
-        return so.getListaRezervacija();
-    }
-
-    public List<Rezervacija> vratiListuRezervacijaKriterijumAranzman(Aranzman kriterijum) throws Exception {
-        VratiListuRezervacijaKriterijumAranzmanSO so = new VratiListuRezervacijaKriterijumAranzmanSO();
-        so.execute(kriterijum);
-        return so.getListaRezervacija();
-    }*/
-
     public List<Agent> vratiListuSviAgent() throws Exception {
         VratiListuSviAgentSO so = new VratiListuSviAgentSO();
         so.execute(null);

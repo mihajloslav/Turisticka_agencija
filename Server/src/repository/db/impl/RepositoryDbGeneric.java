@@ -76,12 +76,9 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
     public void edit(GenericEntity entity) throws Exception {
         Connection connection = DbConnectionFactory.getInstance().getConnection();
 
-        // Read the row's current state from the database so we can compute
-        // exactly which columns were actually changed, and update only those.
         GenericEntity original = fetchByPrimaryKey(entity, connection);
         Map<String, Object> changedValues = entity.getChangedValues(original);
         if (changedValues.isEmpty()) {
-            // Nothing changed - no UPDATE needs to be executed.
             return;
         }
 
@@ -108,11 +105,7 @@ public class RepositoryDbGeneric implements DbRepository<GenericEntity, Long> {
         }
     }
 
-    /**
-     * Reads the row currently in the database matching entity's primary key
-     * (which may be a single column or a composite key), reconstructed via
-     * entity.fromResultSet(...). Returns null if no such row exists.
-     */
+    /*Koristi se kod editovanja, kako bismo videli koji atributi su se promenili*/
     private GenericEntity fetchByPrimaryKey(GenericEntity entity, Connection connection) throws Exception {
         String query = "SELECT * FROM " + entity.getTableName() + " WHERE " + entity.getPrimaryKeyClause();
         try (PreparedStatement statement = connection.prepareStatement(query)) {

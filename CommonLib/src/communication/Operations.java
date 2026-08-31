@@ -16,12 +16,6 @@ public class Operations {
     public static final int PROMENI_REZERVACIJA = 3;
     public static final int PRETRAZI_REZERVACIJA = 4;
     public static final int VRATI_LISTU_REZERVACIJA = 5;
-    
-    
-    /*public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_AGENT = 6;
-    public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_PUTNIK = 7;
-    public static final int VRATI_LISTU_REZERVACIJA_KRITERIJUM_ARANZMAN = 8;
-    */
 
     public static final int VRATI_LISTU_SVI_AGENT = 6;
     public static final int VRATI_LISTU_SVI_PUTNIK = 7;
@@ -32,8 +26,6 @@ public class Operations {
     public static final int PROMENI_PUTNIK = 11;
     public static final int OBRISI_PUTNIK = 12;
     public static final int PRETRAZI_PUTNIK = 13;
-    /*public static final int VRATI_LISTU_PUTNIK_KRITERIJUM_PUTNIK = 14;
-    public static final int VRATI_LISTU_PUTNIK_KRITERIJUM_MESTO = 15;*/
     
     public static final int VRATI_LISTU_PUTNIK = 14;
 
