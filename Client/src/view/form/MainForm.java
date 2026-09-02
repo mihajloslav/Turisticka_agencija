@@ -57,6 +57,7 @@ public class MainForm extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Туристичка агенција");
 
         lblNaslov.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
         lblNaslov.setText("Туристичка агенција");
