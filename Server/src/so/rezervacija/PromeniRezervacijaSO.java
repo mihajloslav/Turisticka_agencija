@@ -7,6 +7,8 @@ package so.rezervacija;
 import domain.GenericEntity;
 import domain.Rezervacija;
 import domain.StavkaRezervacije;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import so.AbstractSO;
 
@@ -57,16 +59,35 @@ public class PromeniRezervacijaSO extends AbstractSO {
         rezervacija.setUkupanIznos(ukupanIznos);
         try {
             repository.edit(rezervacija);
-            List<GenericEntity> postojece = repository.getAll(new StavkaRezervacije(),
+
+            List<GenericEntity> postojeceRedovi = repository.getAll(new StavkaRezervacije(),
                     "idRezervacija = ?", new Object[]{rezervacija.getIdRezervacija()});
-            for (GenericEntity e : postojece) {
-                repository.delete(e);
+            List<StavkaRezervacije> postojece = new ArrayList<>();
+            for (GenericEntity e : postojeceRedovi) {
+                postojece.add((StavkaRezervacije) e);
             }
-            int rb = 1;
-            for (StavkaRezervacije s : rezervacija.getStavke()) {
-                s.setRezervacija(rezervacija);
-                s.setRb(rb++);
-                repository.add(s);
+            postojece.sort(Comparator.comparing(StavkaRezervacije::getRb));
+
+            List<StavkaRezervacije> nove = rezervacija.getStavke();
+            int brojPozicija = Math.max(postojece.size(), nove.size());
+            for (int i = 0; i < brojPozicija; i++) {
+                if (i < nove.size()) {
+                    StavkaRezervacije s = nove.get(i);
+                    s.setRezervacija(rezervacija);
+                    s.setRb(i + 1);
+                    if (i < postojece.size()) {
+                        // stavka na ovoj poziciji već postoji - repository.edit() upoređuje
+                        // i ažurira samo kolone koje su se stvarno promenile (ili ništa, ako
+                        // se ova stavka uopšte nije menjala).
+                        repository.edit(s);
+                    } else {
+                        // pozicija koja ranije nije postojala - nova stavka.
+                        repository.add(s);
+                    }
+                } else {
+                    // pozicija koja je postojala, a u novoj listi je više nema.
+                    repository.delete(postojece.get(i));
+                }
             }
         } catch (Exception ex) {
             throw new Exception("Систем не може да запамти резервацију");
