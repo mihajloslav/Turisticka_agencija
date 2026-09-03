@@ -12,8 +12,8 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import controller.Controller;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -31,7 +31,7 @@ import view.components.TableModelKlijent;
 public class ServerAdminForm extends javax.swing.JFrame implements ServerListener {
 
     private final TableModelKlijent modelKlijenti = new TableModelKlijent();
-    private final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     /**
      * Creates new form ServerAdminForm
@@ -375,7 +375,7 @@ public class ServerAdminForm extends javax.swing.JFrame implements ServerListene
     @Override
     public void onLog(String poruka) {
         SwingUtilities.invokeLater(() -> {
-            txtLog.append("[" + sdf.format(new Date()) + "] " + poruka + "\n");
+            txtLog.append("[" + LocalDateTime.now().format(dtf) + "] " + poruka + "\n");
             txtLog.setCaretPosition(txtLog.getDocument().getLength());
         });
     }
