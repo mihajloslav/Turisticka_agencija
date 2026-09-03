@@ -1,0 +1,25 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:VratiListuRezervacijaSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(Rezervacija kriterijum)
+activate SO
+
+SO -> SO : precondition(Rezervacija)
+
+
+SO -> R : getAll(GenericEntity, String, Object[])
+activate R
+R --> SO : signal, List<GenericEntity>
+deactivate R
+
+SO --> C : signal, List<Rezervacija>
+deactivate SO
+
+@enduml

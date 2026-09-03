@@ -1,0 +1,43 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:KreirajRezervacijaSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(Rezervacija)
+activate SO
+
+SO -> SO : precondition(Rezervacija)
+note right of SO
+  Proverava Agent, Putnik, statusPlacanja
+  i da lista stavki nije prazna, i za svaku
+  StavkaRezervacije proverava brojOsoba,
+  datume polaska/dolaska i Aranzman.
+end note
+
+note right of SO
+  Za svaku StavkaRezervacije se prethodno
+  izračunavaju popust i cena (brojOsoba, cenaPoOsobi),
+  bez poziva ka Repository-ju.
+end note
+
+SO -> R : add(Rezervacija)
+activate R
+R --> SO : signal
+deactivate R
+
+loop [za svaku StavkaRezervacije iz rezervacija.getStavke()]
+    SO -> R : add(StavkaRezervacije)
+    activate R
+    R --> SO : signal
+    deactivate R
+end
+
+SO --> C : Rezervacija
+deactivate SO
+
+@enduml

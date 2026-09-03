@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:UbaciRegionSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(Region)
+activate SO
+
+SO -> SO : precondition(Region)
+note right of SO
+  Proverava da naziv, oznaka i kontinent
+  nisu prazni i da oznaka nije duža od 6
+  karaktera.
+end note
+
+SO -> R : add(Region)
+activate R
+R --> SO : signal
+deactivate R
+
+SO --> C : Region
+deactivate SO
+
+@enduml

@@ -1,0 +1,48 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:PretraziRezervacijaSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(Rezervacija kriterijum)
+activate SO
+
+SO -> SO : precondition(Rezervacija)
+
+SO -> R : getById(GenericEntity, Long)
+activate R
+R --> SO : signal, Rezervacija
+deactivate R
+
+SO -> R : getById(GenericEntity, Long)
+activate R
+R --> SO : signal, Agent
+deactivate R
+
+SO -> R : getById(GenericEntity, Long)
+activate R
+R --> SO : signal, Putnik
+deactivate R
+
+SO -> R : getAll(GenericEntity, String, Object[])
+activate R
+R --> SO : signal, List<GenericEntity>
+deactivate R
+
+loop [za svaku pronađenu StavkaRezervacije]
+    SO -> R : getById(GenericEntity, Long)
+    activate R
+    R --> SO : signal, Aranzman
+    deactivate R
+end
+
+
+
+SO --> C : signal, Rezervacija
+deactivate SO
+
+@enduml

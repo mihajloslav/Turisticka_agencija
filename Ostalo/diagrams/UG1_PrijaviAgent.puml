@@ -1,0 +1,29 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:PrijaviAgentSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(String[]{korisnickoIme, sifra})
+activate SO
+
+SO -> SO : precondition(String[])
+note right of SO
+  Proverava da parametar nije null,
+  da ima tačno 2 elementa i da
+  korisničko ime i šifra nisu prazni.
+end note
+
+SO -> R : getAll(new Agent(), "korisnickoIme = ? AND sifra = ?", [korisnickoIme, sifra])
+activate R
+R --> SO : List<GenericEntity>
+deactivate R
+
+SO --> C : Agent
+deactivate SO
+
+@enduml

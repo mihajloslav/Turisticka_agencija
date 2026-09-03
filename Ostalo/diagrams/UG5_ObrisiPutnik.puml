@@ -1,0 +1,28 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:ObrisiPutnikSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(Putnik)
+activate SO
+
+SO -> SO : precondition(Putnik)
+note right of SO
+  Proverava da je parametar Putnik
+  i da idPutnik nije null.
+end note
+
+SO -> R : delete(Putnik)
+activate R
+R --> SO : signal
+deactivate R
+
+SO --> C : signal
+deactivate SO
+
+@enduml

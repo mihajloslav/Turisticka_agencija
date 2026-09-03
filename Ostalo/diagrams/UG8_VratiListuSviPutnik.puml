@@ -1,0 +1,28 @@
+@startuml
+skinparam monochrome true
+skinparam shadowing false
+skinparam sequenceMessageAlign center
+hide footbox
+
+participant "c:Controller" as C
+participant "so:VratiListuSviPutnikSO" as SO
+participant "r:Repository" as R
+
+C -> SO : execute(null)
+activate SO
+
+SO -> SO : precondition(null)
+note right of SO
+  Prazna implementacija - nema uslova
+  koje treba proveriti.
+end note
+
+SO -> R : getAll(new Putnik(), null, null)
+activate R
+R --> SO : List<GenericEntity>
+deactivate R
+
+SO --> C : List<Putnik>
+deactivate SO
+
+@enduml
